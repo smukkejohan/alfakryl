@@ -1,5 +1,6 @@
 import os.path
 import sys
+import platform
  
 PROJECT_ROOT = os.path.dirname(__file__)
 
