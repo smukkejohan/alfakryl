@@ -1,5 +1,5 @@
 from django.contrib import admin
-from alfakrol.ink.models import Article
+from alfakryl.ink.models import Article
 
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
