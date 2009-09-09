@@ -2,36 +2,36 @@ import os.path
 import sys
  
 PROJECT_ROOT = os.path.dirname(__file__)
-sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 
-DEBUG = True
+DEVELOPMENT_MODE = (platform.node() != "li43-156")
+ 
+if DEVELOPMENT_MODE:
+    DEBUG = True
+    MEDIA_URL = '/m/'
+    DATABASE_ENGINE = 'sqlite3'
+    DATABASE_NAME = 'dev.db'
+    CACHE_BACKEND = 'dummy:///'
+else:
+    DEBUG = False
+    MEDIA_URL = 'http://static.alfakryl.dk/'
+    ADMIN_MEDIA_PREFIX = MEDIA_URL + '/admin/'
+    DATABASE_ENGINE = 'postgresql_psycopg2'
+    DATABASE_USER = 'alfakryl'
+    DATABASE_NAME = 'alfakryl_db'
+    
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (('Johan Bichel Lindegaard', 'mr.bichel@gmail.com'),)
 MANAGERS = ADMINS
 
-DATABASE_ENGINE = ''           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-DATABASE_NAME = ''             # Or path to database file if using sqlite3.
-DATABASE_USER = ''             # Not used with sqlite3.
-DATABASE_PASSWORD = ''         # Not used with sqlite3.
-DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
-DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
-
 TIME_ZONE = 'Europe/Copenhagen'
-
-# Language code for this installation. All choices can be found here:
-# http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'dk-DK'
 
 SITE_ID = 1
 
 USE_I18N = False
 
 MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'static')
-
-MEDIA_URL = '/static/'
-
-ADMIN_MEDIA_PREFIX = '/media/'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
