@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" dir="ltr">
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+
+    <!-- Blueprint CSS framework -->
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/screen.css"
+        type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css"
+        type="text/css" media="print" />
+     
+    <!--[if IE]><link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css"
+type="text/css" media="screen, projection" /><![endif]-->
+     
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" media="all"
+        href="{{ MEDIA_URL }}css/base.css" />
+ 
+    <title>{% block title %}{% endblock %} - Alfakryl</title>
+ 
+</head>
+
+<body>
+
+{% block content %}{% endblock %}
+
+{% if user.is_authenticated %}
+    {{ user.username }} |
+    {% if user.is_staff %}
+        <a href="/admin/">admin</a> |
+    {% endif %}
+    <a href="{% url auth_logout %}">log out</a>
+{% else %}
+    <a href="{% url registration_register %}">register</a>
+    <a href="{% url auth_login %}">log in</a>
+{% endif %}
+
+</body>
+</html>

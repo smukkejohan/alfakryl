@@ -1,0 +1,5 @@
+*.pyc
+*~
+dev.db
+settings_local.py
+static/admin

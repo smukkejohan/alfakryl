@@ -63,12 +63,20 @@ TEMPLATE_DIRS = (
 
 INSTALLED_APPS = (
     'django.contrib.auth',
+    'django.contrib.humanize',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'registration',
+    'tagging',
     'alfakryl.ink',
 )
+
+#EMAIL_HOST = 
+#EMAIL_PORT =
+
+ACCOUNT_ACTIVATION_DAYS = 4
 
 try:
     from settings_local import *
