@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from django.conf.urls.defaults import *
 
 from django.conf import settings
@@ -6,18 +8,18 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    #(r'^alfakryl/', include('alfakryl.foo.urls')),
-
-    # Uncomment the admin/doc line below and add 'django.contrib.admindocs' 
-    # to INSTALLED_APPS to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
+    (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
-    url(r'^$',       'django.views.generic.simple.direct_to_template', {'template': 'index.html'}),
-    
+
+    url(r'^$', 'django.views.generic.simple.direct_to_template', {'template': 'index.html'}, name='main_index'), 
+    (r'^articles/', include('alfakryl.articles.urls')),
+    url(r'^profiles/(?P<user>[-\w]+)/$', 'views.user_profile', name='user_profile'), 
     (r'^accounts/', include('registration.urls')),
+
+    #url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', 
+        #{'sitemaps': sitemaps}, name='sitemap'),
+    #rss
+    #url(r'^robots.txt', '')
 )
 
 if settings.DEVELOPMENT_MODE:

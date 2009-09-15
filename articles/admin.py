@@ -1,5 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from django.contrib import admin
-from alfakryl.ink.models import Article
+from articles.models import Article
 
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (

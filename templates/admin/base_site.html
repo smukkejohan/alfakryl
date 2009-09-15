@@ -1,0 +1,12 @@
+{% extends "admin/base.html" %}
+{% load i18n %}
+
+{% block title %}{{ title }} | {% trans 'Alfakryl site admin' %}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">Alfakryl admin |
+<a href="{% url main_index %}" title="Gå til forsiden">Forsiden</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
+

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Skriv artikel{% endblock %}
+
+{% block content %}
+<h1>Skriv artikel</h1>
+
+<form method="post" action="">
+      
+{% include "articles/article_form.html" %}
+
+<input type="submit" value="Gem artikel">
+
+</form>
+{% endblock %}

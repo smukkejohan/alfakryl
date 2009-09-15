@@ -1,7 +1,10 @@
+# coding=<utf-8>
+
 import os.path
 import sys
 import platform
- 
+
+
 PROJECT_ROOT = os.path.dirname(__file__)
 
 DEVELOPMENT_MODE = (platform.node() != "li43-156")
@@ -68,9 +71,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.admin',
+    'django.contrib.admindocs',
     'registration',
     'tagging',
-    'alfakryl.ink',
+    'articles',
 )
 
 #EMAIL_HOST = 
