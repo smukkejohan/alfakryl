@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 
-from articles.model import Article
+from django import template
+from articles.models import Article
+
+register = template.Library()
 
 def get_latest_articles(parser, token):
     bits = token.contents.split()
@@ -16,3 +19,8 @@ class LatestArticlesNode(Node):
         context['latest_articles'] = Article.get_published()[:self.num]
         return ''
 
+def render_month_links(template.Node):
+    return {
+        'dates': Article.objects.dates('pub_date', 'month'),
+    }
+register.inclusion_tag('articles/month_links_snippet.html')(render_month_links)

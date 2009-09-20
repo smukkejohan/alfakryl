@@ -16,15 +16,16 @@ class ArticleManager(models.Manager):
 
 class Article(models.Model):
     headline = models.CharField('overskrift', max_length=200)
-    slug = models.SlugField(help_text="en 'slug' er en URL-venlig titel til artiklen.")
-    summary = models.TextField('resume', help_text="Et kort resume eller introduktion til artiklen.")
+    slug = models.SlugField(unique_for_date="pub_date", help_text="en 'slug' er en URL-venlig titel til artiklen.")
+    summary = models.TextField('resume', help_text="et kort resume eller introduktion til artiklen.")
     body = models.TextField("brødtekst", help_text="brug markdown formatering")
     body_html = models.TextField("rendered body text")
+    sections = models.ManyToManyField('Section', related_name='articles', verbose_name="sektioner", blank=True)
     author = models.ForeignKey(User)
     mod_date = models.DateTimeField(default=datetime.now)
-    pub_date = models.DateTimeField("Publish date", default=datetime.now)
-    publish = models.BooleanField("Publish on site", default=False,
-                                  help_text='Articles will not appear on the site until their "publish date".')
+    pub_date = models.DateTimeField("publicerings dato", default=datetime.now)
+    publish = models.BooleanField("Publiceret på hjemmesiden", default=False,
+                                  help_text='Artikler kan ikke ses på siden før deres "publicerings dato".')
     tags = TagField()
     
     objects = ArticleManager()
@@ -55,4 +56,18 @@ class Article(models.Model):
             'day': self.pub_date.day,
             'slug': self.slug
         })
+
+class Section(models.Model):
+    title = models.CharField(max_length=80, unique=True)
+    slug = models.SlugField()
+
+    class Meta:
+        ordering = ['title']
+
+    def __unicode__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('articles_section', args=[self.slug])
+        
 

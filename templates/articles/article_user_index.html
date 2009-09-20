@@ -8,14 +8,14 @@
 <h2>Kladder</h2>
 <ul>
 {% for a in drafts %}
-    <li>{{ a.headline }}, <a href="{% url article_update a.id %}">rediger</a></li>
+    <li>{{ a.headline }}, <a href="{% url article_update a.id %}">rediger</a> <a href="{% url article_delete a.id %}">slet</a></li>
 {% endfor %}
 </ul>
 
 <h2>Publicerede artikler</h2>
 <ul>
 {% for a in articles %}
-    <li><a href="{{ a.get_asolute_url }}">{{ a.headline }}</a>, <a href="{% url article_update a.id %}">rediger</a> </li>
+    <li><a href="{{ a.get_absolute_url }}">{{ a.headline }}</a>, <a href="{% url article_update a.id %}">rediger</a> <a href="{% url article_delete a.id %}">slet</a></li>
 {% endfor %}
 </ul>
 

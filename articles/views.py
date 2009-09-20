@@ -55,12 +55,33 @@ def article_update(request, article_id):
             form.save()
             
             request.user.message_set.create(message="Artiklen er blevet opdateret.")
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(reverse('article_user_index'))
     else:
         form = ArticleForm(instance=a)
     return render_to_response(
         'articles/article_update.html',
         {'form': form},
-        context_instance = RequestContext(reverse('article_user_index'))
+        context_instance = RequestContext(request)
     )
 article_update = permission_required('articles.can_add_article')(article_update)
+
+def article_delete(request, article_id):
+    """
+    Renders a confirmation form, and deletes article upon post submission.
+    """
+    permission = False
+    a = Article.objects.get(pk=article_id)
+    
+    if a.author == request.user:
+        permission = True
+        if request.method == 'POST':
+            a.delete()
+            request.user.message_set.create(message="Artiklen er blevet slettet.")
+            return HttpResponseRedirect(reverse('article_user_index'))
+        
+    return render_to_response(
+        'articles/article_delete.html',
+        {'article': a, 'permission': permission},
+        context_instance = RequestContext(request)
+    )
+article_delete = permission_required('articles.can_delete_article')(article_delete)

@@ -31,7 +31,14 @@
         <label for="id_summary">{{ form.summary.label }}</label><br />
         {{ form.summary }}
         <p>Et kort resume eller introduktion til artiklen.</p> 
-    </div>   
+    </div>  
+    
+    <div class="field">
+        {{ form.sections.errors }}
+        <label for="id_sections">{{ form.sections.label }}</label><br />
+        {{ form.sections }}
+        <p>Hold ctrl nede for at vælge flere sektioner.</p>
+    </div> 
 
     <div class="field">
         {{ form.tags.errors }}
