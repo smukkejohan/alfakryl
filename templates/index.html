@@ -2,5 +2,12 @@
 
 {% block content %}
 
+{% if user.is_authenticated %}
+{% if perms.articles.add_article %}
+
+<h1> hej smukke {% firstof user.firstname user.username %} </h1>
+                   <h2> <a href="{% url article_create %}">Skriv en artikel!</a> </h2>
+                {% endif %}
+{% endif %}
 
 {% endblock %}

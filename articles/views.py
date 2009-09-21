@@ -3,7 +3,7 @@
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from django.contrib.auth.decorators import permission_required
+from django.contrib.auth.decorators import permission_required, user_passes_test
 from django.http import HttpResponseRedirect
 from articles.models import Article
 from articles.forms import ArticleForm
@@ -17,7 +17,7 @@ def article_user_index(request):
         'articles/article_user_index.html', {'articles': articles, 'drafts': drafts },
         context_instance = RequestContext(request)
     )
-article_user_index = permission_required('articles.can_add_article')(article_user_index)
+article_user_index = user_passes_test(lambda u: u.has_module_perms('articles'))(article_user_index)
 
 def article_create(request):
     """
@@ -41,7 +41,7 @@ def article_create(request):
         {'form': form},
         context_instance = RequestContext(request)
     )
-article_create = permission_required('articles.can_add_article')(article_create)
+article_create = permission_required('articles.add_article')(article_create)
 
 def article_update(request, article_id):
     """
@@ -63,7 +63,7 @@ def article_update(request, article_id):
         {'form': form},
         context_instance = RequestContext(request)
     )
-article_update = permission_required('articles.can_add_article')(article_update)
+article_update = permission_required('articles.change_article')(article_update)
 
 def article_delete(request, article_id):
     """
@@ -84,4 +84,4 @@ def article_delete(request, article_id):
         {'article': a, 'permission': permission},
         context_instance = RequestContext(request)
     )
-article_delete = permission_required('articles.can_delete_article')(article_delete)
+article_delete = permission_required('articles.delete_article')(article_delete)

@@ -81,6 +81,7 @@ INSTALLED_APPS = (
 #EMAIL_PORT =
 
 ACCOUNT_ACTIVATION_DAYS = 4
+LOGIN_REDIRECT_URL = '/'
 
 try:
     from settings_local import *
