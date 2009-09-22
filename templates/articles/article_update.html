@@ -13,6 +13,7 @@
 
 </form>
 
-<a href="{% url article_delete form.instance.id %}">slet artiklen</a>
+<a href="{% url draft_preview form.instance.id %}">preview</a> |
+<a href="{% url article_delete form.instance.id %}">slet</a>
 
 {% endblock %}

@@ -74,6 +74,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'registration',
     'tagging',
+    'photologue',
     'articles',
 )
 
@@ -81,7 +82,7 @@ INSTALLED_APPS = (
 #EMAIL_PORT =
 
 ACCOUNT_ACTIVATION_DAYS = 4
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/dashboard/'
 
 try:
     from settings_local import *

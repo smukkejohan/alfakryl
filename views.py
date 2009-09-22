@@ -7,7 +7,32 @@ from django.contrib.auth.models import User
 from articles.models import Article
 
 def index(request):
-    pass
+    articles = Article.objects.published()[:6]
+    #leder = articles.filter(section=leder)[:1]
+    
+    return render_to_response(
+        'index.html', {'articles': articles,},
+        context_instance = RequestContext(request)
+    )
+
+def dashboard(request):
+    """
+    render all drafts
+    """
+    
+    articles = Article.objects.published()[:12]
+    context = {'articles': articles}
+    
+    if request.user.has_module_perms('articles'):
+        drafts = Article.objects.drafts()
+        context.update({'drafts': drafts})
+      
+    
+    return render_to_response(
+        'dashboard.html', context,
+        context_instance = RequestContext(request)
+    )
+# login required decorator
 
 def user_profile(request, user):
     """
@@ -15,10 +40,6 @@ def user_profile(request, user):
     """
     
     u = get_object_or_404(User, username=user)
-    
-    #if request.user.has_perms('')
-    
-    #drafts = Article.objects.drafts().filter(author=u)  
     
     articles = Article.objects.published().filter(author=u)
     

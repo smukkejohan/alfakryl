@@ -1,0 +1,6 @@
+{% extends "base.html" %}
+ 
+{% block content %}
+    <h1>{{ object.headline }}</h1>
+    {{ object.body_html|safe }}
+{% endblock %}

@@ -2,12 +2,26 @@
 
 {% block content %}
 
-{% if user.is_authenticated %}
-{% if perms.articles.add_article %}
-
-<h1> hej smukke {% firstof user.firstname user.username %} </h1>
-                   <h2> <a href="{% url article_create %}">Skriv en artikel!</a> </h2>
-                {% endif %}
+{% if primary_article %}
+    <h1><a href="{{ a.get_absolute_url }}">primary_article.headline</a></h1>
+    {{ a.author }} | {{ a.pub_date.date }}
+    <p>primary_article.summary</p>
 {% endif %}
+
+{% if articles %}
+    {% for a in articles %}
+        <h2><a href="{{ a.get_absolute_url }}">
+        {{ a.headline }}</a></h2>
+        
+        {{ a.author }} | {{ a.pub_date.date }}
+        
+        <p>{{ a.summary }}</p>
+        <a href="{{ a.get_absolute_url }}">læs mere</a>
+                    
+    {% endfor %}
+{% else %}
+    <p>Der er desværre ingen artikler, kom tilbage igen snart.</p>
+{% endif %}
+
 
 {% endblock %}

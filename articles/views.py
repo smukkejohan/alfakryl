@@ -1,12 +1,22 @@
 # -*- coding: utf-8 -*-
 
 from django.core.urlresolvers import reverse
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import permission_required, user_passes_test
 from django.http import HttpResponseRedirect
 from articles.models import Article
 from articles.forms import ArticleForm
+
+def draft_preview(request, article_id):
+    a = get_object_or_404(Article, pk=article_id)
+    
+    return render_to_response(
+        'articles/draft_preview.html',
+        {'object': a},
+        context_instance = RequestContext(request)
+    )
+draft_preview = user_passes_test(lambda u: u.has_module_perms('articles'))(draft_preview)    
 
 def article_user_index(request):
     user = request.user
@@ -33,7 +43,7 @@ def article_create(request):
             article.save()
             
             request.user.message_set.create(message="Din artikel er blevet gemt.")
-            return HttpResponseRedirect(reverse('article_user_index'))
+            return HttpResponseRedirect(reverse('dashboard'))
     else:
         form = ArticleForm()
     return render_to_response(
@@ -55,7 +65,7 @@ def article_update(request, article_id):
             form.save()
             
             request.user.message_set.create(message="Artiklen er blevet opdateret.")
-            return HttpResponseRedirect(reverse('article_user_index'))
+            return HttpResponseRedirect(reverse('dashboard'))
     else:
         form = ArticleForm(instance=a)
     return render_to_response(
@@ -77,7 +87,7 @@ def article_delete(request, article_id):
         if request.method == 'POST':
             a.delete()
             request.user.message_set.create(message="Artiklen er blevet slettet.")
-            return HttpResponseRedirect(reverse('article_user_index'))
+            return HttpResponseRedirect(reverse('dashboard'))
         
     return render_to_response(
         'articles/article_delete.html',

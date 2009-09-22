@@ -9,7 +9,7 @@ class SectionInline(admin.TabularInline):
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'author')
+            'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'author', 'photos')
         }),
         ('Publication', {
             'fields': ('pub_date', 'publish')
@@ -17,7 +17,7 @@ class ArticleAdmin(admin.ModelAdmin):
     )
     prepopulated_fields = {'slug': ('headline',)}
     list_display = ('headline', 'author', 'pub_date', 'publish')
-    list_filter = ['pub_date', 'author', 'publish']
+    list_filter = ['pub_date', 'publish']
     
 
 class SectionAdmin(admin.ModelAdmin):

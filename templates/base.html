@@ -24,7 +24,7 @@ type="text/css" media="screen, projection" /><![endif]-->
 <div class="container">
     <div class="span-24 last">
         <div class="span-8">
-            <a href="{% url main_index %}"><p>Alfakryl branding</p></a>    
+            <a href="{% url main_index %}"><span>Alfakryl forside</span></a>    
         </div>
         
         <div class="span-8">
@@ -33,13 +33,13 @@ type="text/css" media="screen, projection" /><![endif]-->
                 {% if user.is_staff %}
                     <a href="/admin/">admin</a> |
                 {% endif %}
-                <a href="{% url auth_logout %}">log out</a>
+                <a href="{% url auth_logout %}">log ud</a>
                 {% if perms.articles %}
-                   <br /> <a href="{% url article_user_index %}">mine artikler</a>
+                   <br /> <a href="{% url dashboard %}">dashboard</a>
                 {% endif %} 
             {% else %}
                 <a href="{% url registration_register %}">register</a>
-                <a href="{% url auth_login %}">log in</a>
+                <a href="{% url auth_login %}">log ind</a>
             {% endif %}
         </div>
 

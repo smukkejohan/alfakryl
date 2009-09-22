@@ -3,10 +3,11 @@
 from datetime import datetime
 from django.db import models
 from django.conf import settings
-from markdown2 import markdown
 from django.contrib.auth.models import User
+from markdown2 import markdown
 from tagging.fields import TagField
 from tagging.models import Tag
+from photologue.models import Photo
 
 class ArticleManager(models.Manager):
     def published(self):
@@ -22,6 +23,7 @@ class Article(models.Model):
     body_html = models.TextField("rendered body text")
     sections = models.ManyToManyField('Section', related_name='articles', verbose_name="sektioner", blank=True)
     author = models.ForeignKey(User)
+    photos = models.ManyToManyField(Photo, related_name='articles', null=True, blank=True)
     mod_date = models.DateTimeField(default=datetime.now)
     pub_date = models.DateTimeField("publicerings dato", default=datetime.now)
     publish = models.BooleanField("Publiceret på hjemmesiden", default=False,
