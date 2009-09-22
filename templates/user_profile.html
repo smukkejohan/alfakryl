@@ -6,7 +6,7 @@
 <p>{{ user.first_name }} {{ user.last_name }}</p>
 
 {% if articles %}
-<h2>Articles</h2>
+<h2>Artikler</h2>
 {% for a in articles %}
 <h3><a href="{{ a.get_absolute_url }}">
 {{ a.headline }}</a></h3>
