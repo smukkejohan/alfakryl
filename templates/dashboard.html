@@ -5,23 +5,26 @@
 <p><a href="{% url article_create %}">Skriv ny artikel</a></p>
 
 <h2>Kladder</h2>
-<ul>
+<table>
+<tr><th>Overskrift</th><th>Forfatter</th></tr>
 {% for a in drafts %}
-    <li><a href="{% url draft_preview a.id %}">{{ a.headline }}</a> af {{ a.author }}
-        {% ifequal user a.author %}<a href="{% url article_update a.id %}">rediger</a>
-        <a href="{% url article_delete a.id %}">slet</a>{% endifequal %}
-    </li>
+    <tr>
+    <td><a href="{% url draft_preview a.id %}">{{ a.headline }}</a></td> <td>{{ a.author }}</td>
+        <td>{% ifequal user a.author %}<a href="{% url article_update a.id %}">rediger</a>
+        <a href="{% url article_delete a.id %}">slet</a>{% endifequal %}</td>
+    </tr>
 {% endfor %}
-</ul>
+</table>
 
 <h2>Nyeste publicerede artikler</h2>
-<ul>
+<table>
+<tr><th>Overskrift</th><th>Forfatter</th></tr>
 {% for a in articles %}
-    <li><a href="{{ a.get_absolute_url }}">{{ a.headline }}</a> af {{ a.author }}
-        {% ifequal user a.author %}<a href="{% url article_update a.id %}">rediger</a>
-        <a href="{% url article_delete a.id %}">slet</a>{% endifequal %}
-        </li>
+    <tr><td><a href="{{ a.get_absolute_url }}">{{ a.headline }}</a></td> <td>{{ a.author }}</td>
+        <td>{% ifequal user a.author %}<a href="{% url article_update a.id %}">rediger</a>
+        <a href="{% url article_delete a.id %}">slet</a>{% endifequal %}</td>
+        </tr>
 {% endfor %}
-</ul>
+</table>
 
 {% endblock %}

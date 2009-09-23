@@ -23,47 +23,54 @@ type="text/css" media="screen, projection" /><![endif]-->
 
 <body>
 <div class="container">
-    <div class="span-24 last">
+    <div id="header" class="span-24 last">
         <div class="span-8">
-            <a href="{% url main_index %}"><span>Alfakryl forside</span></a>    
+            <div id="alfakryl-logo"> <a href="{% url main_index %}"><span>alfakryl</span></a></div>  
         </div>
         
-        <div class="span-8">
+        <div class="span-16 last">
+            <div id="user-menu">
             {% if user.is_authenticated %}
-                <a href="{% url user_profile user.username %}">{{ user.username }}</a> |
-                {% if user.is_staff %}
-                    <a href="/admin/">admin</a> |
-                {% endif %}
-                <a href="{% url auth_logout %}">log ud</a>
+                {{ user.username }} |
                 {% if perms.articles %}
-                   <br /> <a href="{% url dashboard %}">dashboard</a>
-                {% endif %} 
+                    <a href="{% url dashboard %}">dashboard</a> | {% endif %}
+                {% if user.is_staff %}
+                    <a href="/admin/">admin</a> | {% endif %}
+                    
+                <a href="{% url auth_logout %}">log ud</a>
+                
             {% else %}
-                <a href="{% url registration_register %}">register</a>
+                <a href="{% url registration_register %}">register</a> |
                 <a href="{% url auth_login %}">log ind</a>
             {% endif %}
-        </div>
-
-        <div class="span-8 last">
-            {% if messages %}
-            <ul>
-                {% for message in messages %}
-                <li>{{ message }}</li>
-                {% endfor %}
-            </ul>
-            {% endif %}
+            </div>
         </div>
 
     </div>
     
     <div class="span-24 last">
-        
+        måned 1 | måned 2
     </div>
 
+    {% if messages %}
+    <div class="span-24 last"> <p>
+        <ul>{% for message in messages %}
+            <li>{{ message }}</li>
+        {% endfor %}</ul></p></div>
+    {% endif %}   
+    
     <div class="span-24 last">
         <div class="span-16">
             {% block content %}{% endblock %}
         </div>
+    </div>
+    
+    <div id="footer" class="span-24 last">
+        <div class="span-8">
+            <p>alfakryl er ... link til kontakt og til om redaktionen</p>
+        </div>
+        <div class="span-8"><p>alfakryl er drevet af django hosted på en <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a> koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></div>
+         </p>
     </div>
     
 </div>

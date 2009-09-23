@@ -1,9 +1,6 @@
 # coding=<utf-8>
 
-import os.path
-import sys
-import platform
-
+import os.path, sys, platform
 
 PROJECT_ROOT = os.path.dirname(__file__)
 
@@ -78,6 +75,7 @@ INSTALLED_APPS = (
     'articles',
 )
 
+DEFAULT_FROM_EMAIL = 'noreply@alfakryl.dk'
 #EMAIL_HOST = 
 #EMAIL_PORT =
 
