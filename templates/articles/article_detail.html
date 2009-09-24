@@ -1,6 +1,14 @@
 {% extends "base.html" %}
  
+{% block title %}{{ object.headline }}{% endblock %}
+ 
 {% block content %}
     <h1>{{ object.headline }}</h1>
+    <p class="introduction">{{ object.summary }}</p>
+    {% if object.photos %}
+        {% for photo in object.photos.all %}
+        <img src="{{ photo.get_display_url }}"/>
+        {% endfor %}
+    {% endif %}
     {{ object.body_html|safe }}
 {% endblock %}

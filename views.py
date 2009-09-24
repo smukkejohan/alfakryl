@@ -7,11 +7,17 @@ from django.contrib.auth.models import User
 from articles.models import Article
 
 def index(request):
-    articles = Article.objects.published()[:6]
-    #leder = articles.filter(section=leder)[:1]
+    articles = Article.objects.published()
+    
+    try:
+        primary_article = articles.filter(sections__title='Leder')[:1].get()
+    except:
+        primary_article = articles[:1].get()
+    
+    articles = articles.exclude(pk=primary_article.id)[:6]
     
     return render_to_response(
-        'index.html', {'articles': articles,},
+        'index.html', {'articles': articles, 'primary_article': primary_article},
         context_instance = RequestContext(request)
     )
 

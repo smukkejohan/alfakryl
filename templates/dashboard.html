@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 
+{% block title %}Dashboard{% endblock %}
+
 {% block content %}
 <h1>Yo søde {% firstof user.full_name user.first_name user.username %}</h1>
 <p><a href="{% url article_create %}">Skriv ny artikel</a></p>
 
+
 <h2>Kladder</h2>
+{% if drafts %}
 <table>
 <tr><th>Overskrift</th><th>Forfatter</th></tr>
 {% for a in drafts %}
@@ -15,8 +19,12 @@
     </tr>
 {% endfor %}
 </table>
+{% else %}
+<p>Der er ingen artikler under udarbejdelse.</p>
+{% endif %}
 
 <h2>Nyeste publicerede artikler</h2>
+{% if articles %}
 <table>
 <tr><th>Overskrift</th><th>Forfatter</th></tr>
 {% for a in articles %}
@@ -26,5 +34,9 @@
         </tr>
 {% endfor %}
 </table>
+{% else %}
+<p>Der er endnu ikke nogen publicerede artikler.</p>
+{% endif %}
+
 
 {% endblock %}

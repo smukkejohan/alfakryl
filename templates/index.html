@@ -1,27 +1,54 @@
 {% extends 'base.html' %}
 
+{% block title %}forside{% endblock %}
+
 {% block content %}
 
+<div class="span-9">
 {% if primary_article %}
-    <h1><a href="{{ a.get_absolute_url }}">primary_article.headline</a></h1>
-    {{ a.author }} | {{ a.pub_date.date }}
-    <p>primary_article.summary</p>
-{% endif %}
+{% with primary_article as a %}
 
-{% if articles %}
-    {% for a in articles %}
-        <h2><a href="{{ a.get_absolute_url }}">
-        {{ a.headline }}</a></h2>
+       
+    <div class="span-9">
+    
+    
+        {% if a.photos %}
+        {% for photo in a.photos.all %}
+        <img src="{{ photo.get_thumbnail_url }}"/>
+        {% endfor %}
+        {% endif %}
         
-        {{ a.author }} | {{ a.pub_date.date }}
-        
+        <h1><a href="{{ a.get_absolute_url }}"> {{ a.headline }} </a></h1>   
+
         <p>{{ a.summary }}</p>
-        <a href="{{ a.get_absolute_url }}">læs mere</a>
-                    
-    {% endfor %}
-{% else %}
-    <p>Der er desværre ingen artikler, kom tilbage igen snart.</p>
+        <div class="meta">{{ a.author }} | {{ a.pub_date.date }} | 
+        <a href="{{ a.get_absolute_url }}">læs mere</a></div>
+    
+    </div>          
+
+{% endwith %}
 {% endif %}
 
+{% if articles %}    
+{% for a in articles %}
+<div class="span-9">
+    
+    {% if a.photos %}
+    {% for photo in a.photos.all %}
+    <img src="{{ photo.get_thumbnail_url }}"/>
+    {% endfor %}
+    {% endif %}
+    
+    <h2><a href="{{ a.get_absolute_url }}">{{ a.headline }}</a></h2>
+    
+   
+          
+    <p>{{ a.summary }}</p>
+    <div class="meta">{{ a.author }} | {{ a.pub_date.date }} | 
+    <a href="{{ a.get_absolute_url }}">læs mere</a> </div>
+</div>     
+{% endfor %}    
+{% endif %}
+</div> 
 
 {% endblock %}

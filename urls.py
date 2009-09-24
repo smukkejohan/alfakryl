@@ -10,7 +10,10 @@ admin.autodiscover()
 urlpatterns = patterns('',
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
-
+    
+    (r'^admin/(.*)', admin.site.root),
+    (r'^photos/', include('photologue.urls')),
+    
     url(r'^$', 'views.index', name='main_index'),
     url(r'^dashboard/$', 'views.dashboard', name='dashboard'),
     (r'^articles/', include('alfakryl.articles.urls')),

@@ -1,5 +1,12 @@
 #user-menu { text-align: right;  }
 #alfakryl-logo a { font-size: 4em; text-decoration: none;}
 
-#header { border-bottom: 10px solid black;  border-top: 10px solid black;}
-#footer { border-top: 10px solid black; }
+
+#header { border-bottom: 18px solid #333;  border-top: 18px solid #333;}
+#footer { border-top: 18px solid #333; padding: 18px 0; margin-top: 18px; }
+
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none;}
+
+.introduction { font-weight: bold;}
+
+
