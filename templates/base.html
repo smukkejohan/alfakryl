@@ -52,16 +52,26 @@ type="text/css" media="screen, projection" /><![endif]-->
         måned 1 | måned 2
     </div>
 
-    {% if messages %}
+    
     <div class="span-24 last"> <p>
         <ul>{% for message in messages %}
             <li>{{ message }}</li>
         {% endfor %}</ul></p></div>
-    {% endif %}   
+       
     
     <div class="span-24 last">
         <div class="span-18">
+            {% if messages %}
+            <div class="span-18 last">
+                <ul id="messages">{% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}</ul>
+            </div>
+            {% endif %}
+            
             {% block content %}{% endblock %}
+            
+            
         </div>
         <div class="span-6 last">
         <h3>Klamamsebamsen</h3>
@@ -72,7 +82,8 @@ type="text/css" media="screen, projection" /><![endif]-->
     
     <div id="footer" class="span-24 last">
         <div class="span-8">
-            <p>alfakryl er ... link til kontakt og til om redaktionen</p>
+            <p><a href="/redaktionen/">Redaktionen</a>
+            </p>
         </div>
         <div class="span-8"><p>alfakryl er drevet af django hosted på en <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a> koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p></div>
          
