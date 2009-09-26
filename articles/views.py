@@ -12,7 +12,7 @@ def draft_preview(request, article_id):
     a = get_object_or_404(Article, pk=article_id)
     
     return render_to_response(
-        'articles/draft_preview.html',
+        'articles/article_detail.html',
         {'object': a},
         context_instance = RequestContext(request)
     )

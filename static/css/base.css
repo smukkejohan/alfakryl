@@ -9,4 +9,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none;}
 
 .introduction { font-weight: bold;}
 
+.photos { overflow: hidden; height: 280px; margin: 18px 0; }
+.messages { margin-bottom: 18px; }
+#main-wrap { margin: 18px 0; }
 
+.article-list .article { margin-bottom: 18px; }

@@ -3,12 +3,57 @@
 {% block title %}{{ object.headline }}{% endblock %}
  
 {% block content %}
+    <div class="span-12">
     <h1>{{ object.headline }}</h1>
     <p class="introduction">{{ object.summary }}</p>
+    
     {% if object.photos %}
+    <div class="photos">
         {% for photo in object.photos.all %}
-        <img src="{{ photo.get_display_url }}"/>
+        <img src="{{ photo.get_article_url }}"/>
         {% endfor %}
+    </div>
     {% endif %}
+    
+    
     {{ object.body_html|safe }}
+    
+    
+    <div id="comments">
+        <h2>Kommentarer</h2>
+        {% if object.publish %}
+        {% load comments %}
+        
+        {% get_comment_list for object as comment_list %}
+    
+        {% if comment_list %}
+        {% for c in comment_list %}
+        {{ c.comment }}
+        {% endfor %}
+        {% else %}
+        <p>Der er endnu ikke nogen der har kommenteret på denne artikel</p>
+        {% endif %}
+    
+    
+    
+        <h3>Skriv kommentar</h3>
+        {% render_comment_form for object %}
+    
+        {% else %}
+        <p>Først når artiklen er publiceret kan man kommentere på den.</p>
+        {% endif %}
+    </div>
+    
+    </div>
+    
+    
+    <div class="span-6 last">
+        Sidst opdateret: {{ object.mod_date }}
+        <h3>Tags</h3>
+        {{ object.tags }}
+    </div>
+    
+    
+
+    
 {% endblock %}

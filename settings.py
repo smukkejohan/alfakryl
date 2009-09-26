@@ -71,6 +71,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.flatpages',
+    'django.contrib.comments',
     'registration',
     'tagging',
     'photologue',
@@ -78,8 +79,6 @@ INSTALLED_APPS = (
 )
 
 DEFAULT_FROM_EMAIL = 'noreply@alfakryl.dk'
-#EMAIL_HOST = 
-#EMAIL_PORT =
 
 ACCOUNT_ACTIVATION_DAYS = 4
 LOGIN_REDIRECT_URL = '/dashboard/'

@@ -14,6 +14,8 @@ urlpatterns = patterns('',
     (r'^admin/(.*)', admin.site.root),
     (r'^photos/', include('photologue.urls')),
     
+    (r'^comments/', include('django.contrib.comments.urls')),
+
     url(r'^$', 'views.index', name='main_index'),
     url(r'^dashboard/$', 'views.dashboard', name='dashboard'),
     (r'^articles/', include('alfakryl.articles.urls')),
