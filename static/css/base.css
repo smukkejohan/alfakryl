@@ -1,16 +1,29 @@
 #user-menu { text-align: right;  }
-#alfakryl-logo a { font-size: 4em; text-decoration: none;}
+#alfakryl-logo a { font-size: 4em; 
+    text-decoration: none;}
 
 
-#header { border-bottom: 18px solid #333;  border-top: 18px solid #333;}
-#footer { border-top: 18px solid #333; padding: 18px 0; margin-top: 18px; }
+#header { border-bottom: 18px solid #333;  
+    border-top: 18px solid #333;}
+#footer { border-top: 18px solid #333; 
+    padding: 18px 0; 
+    margin-top: 18px; }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none;}
 
 .introduction { font-weight: bold;}
 
-.photos { overflow: hidden; height: 280px; margin: 18px 0; }
-.messages { margin-bottom: 18px; }
-#main-wrap { margin: 18px 0; }
+.photos {overflow: hidden; 
+    margin: 18px 0; }
+.messages {margin-bottom: 18px; }
+#main-wrap {margin: 18px 0; }
 
 .article-list .article { margin-bottom: 18px; }
+
+input#id_headline {width: 710px; 
+    font-size:3em;
+    line-height:1;
+    margin: 0 0 0.2em 0;}
+textarea#id_body {width: 700px; 
+    height:450px;}
+textarea#id_summary {height: 90px;}

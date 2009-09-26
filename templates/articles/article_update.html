@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1>Rediger artikel</h1>
+<p>Sidst redigeret: {{ form.instance.mod_date }}</p>
 
 <form method="post" action="">
       
@@ -13,7 +14,6 @@
 
 </form>
 
-<a href="{% url draft_preview form.instance.id %}">preview</a> |
-<a href="{% url article_delete form.instance.id %}">slet</a>
+<a href="{% url article_delete form.instance.id %}">slet artikel</a>
 
 {% endblock %}

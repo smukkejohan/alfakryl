@@ -1,15 +1,15 @@
-    {% if form.errors %}
-        <div class="error">
-        Noget gik galt, ret fejlene og prøv igen.
-{% for error in form.errors %}
-{{ error }}
-{% endfor %}
-        </div>
-    {% endif %}     
+{% if form.errors %}
+<div class="error">
+    Noget gik galt, ret fejlene og prøv igen.
+    {% for error in form.errors %}
+    {{ error }}
+    {% endfor %}
+</div>
+{% endif %}     
     
     <div class="field">
         {{ form.headline.errors }}
-        <label for="id_headline">{{ form.headline.label }}</label>
+        <label for="id_headline">{{ form.headline.label }}</label><br />
         {{ form.headline }}
     </div>    
 
