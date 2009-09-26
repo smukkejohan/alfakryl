@@ -1,1 +1,8 @@
-500 server error
+{% extends base.html %}
+{% block title %}
+fejl [500] noget gik galt på serveren
+{% endblock %}
+{% block content %}
+<h1 class="error">Ups, øv! - noget er gået galt på serveren [500]</h1>
+<p>Serverens nørd Johan har fået en mail med nærmere informationer om fejlen. Du skal endvidere være velkommen til at fortælle ham personligt hvad du prøvede på da fejlen opstod.</p>
+{% endblock %}
