@@ -3,7 +3,8 @@
     {% if object.photos.all|first %} 
     {% with object.photos.all|first as photo %}
     <div class="photo">
-        <a href="{{ object.get_absolute_url }}"><img src="{{ photo.get_index_url }}"/></a>
+        <a href="{{ object.get_absolute_url }}" title="{{ object.headline }}">
+            <img src="{{ photo.get_index_url }}" alt="{{ photo.caption }}" title="{{ photo.title }}"/></a>
     </div>
     {% endwith %}
     {% endif %}

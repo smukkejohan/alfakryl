@@ -10,7 +10,8 @@
     {% if object.photos.all|first %} 
     {% with object.photos.all|first as photo %}
     <div class="photos">
-        <img src="{{ photo.get_article_url }}"/>
+        <img src="{{ photo.get_article_url }}" alt="{{ photo.caption }}" title="{{ photo.title }}"/>
+        <span class="title"><em>{{ photo.title }}</em></span>, <span class="caption">{{ photo.caption }}</span>
     </div>
     {% endwith %}
     {% endif %}
