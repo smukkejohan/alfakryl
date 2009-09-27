@@ -14,7 +14,7 @@ def index(request):
     except:
         primary_article = articles[:1].get()
     
-    articles = articles.exclude(pk=primary_article.id)[:6]
+    articles = articles.exclude(pk=primary_article.id)
     
     return render_to_response(
         'index.html', {'articles': articles, 'primary_article': primary_article},

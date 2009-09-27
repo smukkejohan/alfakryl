@@ -7,12 +7,12 @@
     <h1>{{ object.headline }}</h1>
     <p class="introduction">{{ object.summary }}</p>
     
-    {% if object.photos %}
+    {% if object.photos.all|first %} 
+    {% with object.photos.all|first as photo %}
     <div class="photos">
-        {% for photo in object.photos.all %}
         <img src="{{ photo.get_article_url }}"/>
-        {% endfor %}
     </div>
+    {% endwith %}
     {% endif %}
     
     

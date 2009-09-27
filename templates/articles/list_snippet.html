@@ -1,10 +1,11 @@
 <div class="article">
-    {% if object.photos %}
+
+    {% if object.photos.all|first %} 
+    {% with object.photos.all|first as photo %}
     <div class="photo">
-    {% for photo in object.photos.all %}
-    <a href="{{ object.get_absolute_url }}"><img src="{{ photo.get_index_url }}"/></a>
-    {% endfor %}
+        <a href="{{ object.get_absolute_url }}"><img src="{{ photo.get_index_url }}"/></a>
     </div>
+    {% endwith %}
     {% endif %}
     
     <h2><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></h2>
