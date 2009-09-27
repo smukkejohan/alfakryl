@@ -1,0 +1,15 @@
+<div class="article">
+    {% if object.photos %}
+    <div class="photo">
+    {% for photo in object.photos.all %}
+    <a href="{{ object.get_absolute_url }}"><img src="{{ photo.get_index_url }}"/></a>
+    {% endfor %}
+    </div>
+    {% endif %}
+    
+    <h2><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></h2>
+             
+    <p>{{ object.summary }}</p>
+    <p class="meta">{{ object.pub_date.date }} | 
+    <a href="{{ a.get_absolute_url }}">læs mere</a> </p>
+</div>
