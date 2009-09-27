@@ -18,7 +18,9 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none;}
 .messages {margin-bottom: 18px; }
 #main-wrap {margin: 18px 0; }
 
-.article-list .article { margin-bottom: 18px; }
+.article-list .article { margin-bottom: 36px; }
+.article p.meta {}
+.article-list .photo {overflow: hidden;}
 
 input#id_headline {width: 710px; 
     font-size:3em;

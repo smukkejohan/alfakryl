@@ -3,48 +3,20 @@
 {% block title %}Forside{% endblock %}
 
 {% block content %}
+<div class="span-5 append-1">
+<h3>(: :) (: :) (:  :)</h3>
+</div>
 
-<div class="span-9 article-list">
+<div class="span-11 append-1 last article-list">
 {% if primary_article %}
-{% with primary_article as a %}
-
-       
-    <div id="primary-article" class="article">
-        {% if a.photos %}
-        {% for photo in a.photos.all %}
-        <img src="{{ photo.get_thumbnail_url }}"/>
-        {% endfor %}
-        {% endif %}
-        
-        <h1><a href="{{ a.get_absolute_url }}"> {{ a.headline }} </a></h1>   
-
-        <p>{{ a.summary }}</p>
-        <div class="meta">{{ a.author }} | {{ a.pub_date.date }} | 
-        <a href="{{ a.get_absolute_url }}">læs mere</a></div>
-    </div>
-         
-
+{% with primary_article as object %}
+{% include "articles/list_snippet.html" %}  
 {% endwith %}
 {% endif %}
 
 {% if articles %}    
-{% for a in articles %}
-    <div class="article">
-    
-        {% if a.photos %}
-        {% for photo in a.photos.all %}
-        <img src="{{ photo.get_thumbnail_url }}"/>
-        {% endfor %}
-        {% endif %}
-        
-        <h2><a href="{{ a.get_absolute_url }}">{{ a.headline }}</a></h2>
-        
-       
-              
-        <p>{{ a.summary }}</p>
-        <div class="meta">{{ a.author }} | {{ a.pub_date.date }} | 
-        <a href="{{ a.get_absolute_url }}">læs mere</a> </div>
-    </div>     
+{% for object in articles %}
+{% include "articles/list_snippet.html" %}    
 {% endfor %}    
 {% endif %}
 </div> 

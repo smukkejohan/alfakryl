@@ -24,6 +24,7 @@ class Article(models.Model):
     sections = models.ManyToManyField('Section', related_name='articles', verbose_name="sektioner", blank=True)
     author = models.ForeignKey(User)
     photos = models.ManyToManyField(Photo, related_name='articles', null=True, blank=True)
+    
     mod_date = models.DateTimeField(default=datetime.now)
     pub_date = models.DateTimeField("publicerings dato", default=datetime.now)
     publish = models.BooleanField("Publiceret på hjemmesiden", default=False,
@@ -31,6 +32,10 @@ class Article(models.Model):
     tags = TagField()
     
     objects = ArticleManager()
+    
+    #to do:
+    #view_count = models.IntegerField(default=0) .update(views=F('view_count')+1)
+    #authors = models.ManyToManyField(User, related_name='articles', verbose_name='forfattere')
 
     class Meta:
         ordering = ['-pub_date']
