@@ -12,17 +12,18 @@ urlpatterns = patterns('',
         url(r'^delete/(?P<article_id>\d+)/$', views.article_delete, name='article_delete'), 
     url(r'^myarticles/$', views.article_user_index, name='article_user_index'),
     url(r'^preview/(?P<article_id>\d+)/$', views.draft_preview, name='draft_preview'),
+    url(r'^(?P<slug>[-\w]+)/$', views.article_detail, name='article_detail'),
 )
 
 urlpatterns += patterns('django.views.generic.date_based',
-   url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\w{1,2})/(?P<slug>[-\w]+)/$', 
-        'object_detail', {'queryset': Article.objects.published(), 
-            'date_field': 'pub_date',
-            'month_format': '%m'},
-        name="article_detail"),
-
-   #(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\w{1,2})/$', 
-   #     'archive_day', info_dict),
+# url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\w{1,2})/(?P<slug>[-\w]+)/$', 
+#      'object_detail', {'queryset': Article.objects.published(), 
+#          'date_field': 'pub_date',
+#          'month_format': '%m'},
+#      name="article_detail"),
+#
+#(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\w{1,2})/$', 
+#     'archive_day', info_dict),
 
    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/$', 
         'archive_month', {'queryset': Article.objects.published(), 

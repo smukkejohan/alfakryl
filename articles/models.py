@@ -17,7 +17,7 @@ class ArticleManager(models.Manager):
 
 class Article(models.Model):
     headline = models.CharField('overskrift', max_length=200)
-    slug = models.SlugField(unique_for_date="pub_date", help_text="en 'slug' er en URL-venlig titel til artiklen.")
+    slug = models.SlugField(unique=True, help_text="en 'slug' er en URL-venlig titel til artiklen.")
     summary = models.TextField('resume', help_text="et kort resume eller introduktion til artiklen.")
     body = models.TextField("brødtekst", help_text="brug markdown formatering")
     body_html = models.TextField("rendered body text")
@@ -58,9 +58,9 @@ class Article(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('article_detail', None, {
-            'year': self.pub_date.year,
-            'month': self.pub_date.strftime('%m'),
-            'day': self.pub_date.day,
+            #'year': self.pub_date.year,
+            #'month': self.pub_date.strftime('%m'),
+            #'day': self.pub_date.day,
             'slug': self.slug
         })
 
@@ -77,4 +77,3 @@ class Section(models.Model):
     def get_absolute_url(self):
         return reverse('articles_section', args=[self.slug])
         
-

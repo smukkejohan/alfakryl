@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -16,7 +17,17 @@ def draft_preview(request, article_id):
         {'object': a},
         context_instance = RequestContext(request)
     )
-draft_preview = user_passes_test(lambda u: u.has_module_perms('articles'))(draft_preview)    
+draft_preview = user_passes_test(lambda u: u.has_module_perms('articles'))(draft_preview)
+
+def article_detail(request, slug):
+    a = get_object_or_404(Article, slug=slug)
+    
+    if a.publish:
+        return render_to_response(
+            'articles/article_detail.html',
+            {'object': a},
+            context_instance = RequestContext(request)
+        )
 
 def article_user_index(request):
     user = request.user
