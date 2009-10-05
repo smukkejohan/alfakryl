@@ -18,7 +18,7 @@ urlpatterns = patterns('',
 
     url(r'^$', 'views.index', name='main_index'),
     url(r'^dashboard/$', 'views.dashboard', name='dashboard'),
-    (r'^articles/', include('alfakryl.articles.urls')),
+    (r'^a/', include('alfakryl.articles.urls')),
     url(r'^profiles/(?P<user>[-\w]+)/$', 'views.user_profile', name='user_profile'), 
     (r'^accounts/', include('registration.urls')),
 

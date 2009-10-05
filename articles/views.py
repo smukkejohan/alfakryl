@@ -25,7 +25,7 @@ def article_detail(request, slug):
     if a.publish:
         return render_to_response(
             'articles/article_detail.html',
-            {'object': a},
+            {'object': a, 'published': True},
             context_instance = RequestContext(request)
         )
 

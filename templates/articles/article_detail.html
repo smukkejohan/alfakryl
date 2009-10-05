@@ -22,7 +22,7 @@
     
     <div id="comments">
         <h2>Kommentarer</h2>
-        {% if object.publish %}
+        {% if published %}
         {% load comments %}
         
         {% get_comment_list for object as comment_list %}
