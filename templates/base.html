@@ -29,23 +29,29 @@ type="text/css" media="screen, projection" /><![endif]-->
         </div>
         
         <div class="span-16 last">
-            <div id="user-menu">
+            <div id="user-navigation">
+            <ul>
             {% if user.is_authenticated %}
-                {{ user.username }} |
+                <li>{{ user.username }}</li>
                 {% if perms.articles %}
-                    <a href="{% url dashboard %}">dashboard</a> | {% endif %}
+                   <li> <a href="{% url dashboard %}">dashboard</a> </li> {% endif %}
                 {% if user.is_staff %}
-                    <a href="/admin/">admin</a> | {% endif %}
+                    <li> <a href="/admin/">admin</a> </li> {% endif %}
                     
-                <a href="{% url auth_logout %}">log ud</a>
+                <li> <a href="{% url auth_logout %}">log ud</a></li>
                 
             {% else %}
-                <a href="{% url registration_register %}">register</a> |
-                <a href="{% url auth_login %}">log ind</a>
+                <li> <a href="{% url registration_register %}">register</a> </li>
+                <li> <a href="{% url auth_login %}">log ind</a></li>
             {% endif %}
+            </ul>
             </div>
         </div>
-
+        
+        <div id="main-navigation" class="span-24 last">
+        <ul> <li></li> <li></li> <li></li> </ul>
+        </div>
+        
     </div>
     
     <div class="span-24 last">
@@ -70,20 +76,24 @@ type="text/css" media="screen, projection" /><![endif]-->
         <div class="span-6 last">
         <h3>Klamamsebamsen</h3>
         <p><em>At smøre haserne</em>: at skride, smutte, forsvinde.</p>
+        
         </div>
         
     </div>
     
     <div id="footer" class="span-24 last">
-        <div class="span-8">
-            <p><a href="/redaktionen/">Redaktionen</a> |
-                <a href="/grundlag/">Værdigrundlag</a>  
-            </p>
+        <div class="prepend-1 append-1 span-22 last" id="footer-links">
+             <ul><li><a href="/redaktionen/">Redaktionen</a></li>
+                <li><a href="/grundlag/">Værdigrundlag</a></li>  
+            </ul>
         </div>
-        <div class="span-8">
+        <div class="span-7 prepend-1">
             <p>Giv os feedback og send os dine bidrag på alfakryl@hotmail.com!</p>
         </div>
-        <div class="span-8 last"><p>Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
+        <div class="span-8">
+           
+        </div>
+        <div class="span-7 append-1 last"><p>Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
         </div>
          
     </div>

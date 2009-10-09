@@ -16,9 +16,7 @@
     {% endwith %}
     {% endif %}
     
-    
     {{ object.body_html|safe }}
-    
     
     <div id="comments">
         <h2>Kommentarer</h2>
@@ -29,7 +27,8 @@
     
         {% if comment_list %}
         {% for c in comment_list %}
-        {{ c.comment }}
+        <p>{{ c.name }}:</p>
+        <p>{{ c.comment }}</p>
         {% endfor %}
         {% else %}
         <p>Der er endnu ikke nogen der har kommenteret på denne artikel.</p>

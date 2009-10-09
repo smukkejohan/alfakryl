@@ -1,24 +1,41 @@
-#user-menu { text-align: right;  }
 #alfakryl-logo a { font-size: 4em; 
-    text-decoration: none;}
+    text-decoration: none; margin-left: 30px;}
+
+.pattern {background: url(../img/pattern_01.png) repeat}
+
+#header {background-color: #111111; color: #eeeeec;}
+#header a, #header a:link {color: #3465a4; text-decoration: none;}
+#header a:active, #header a:hover, #header a.focus {color: #729fcf;}
 
 
-#header { border-bottom: 18px solid #333;  
-    border-top: 18px solid #333;}
-#footer { border-top: 18px solid #333; 
-    padding: 18px 0; 
-    margin-top: 18px; }
+#main-navigation ul li {display: inline;}
+#main-navigation ul {margin: 0 30px;}
+#main-navigation {background-color: #2e3436;}
 
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none;}
+#user-navigation {text-align: right;}
+#user-navigation ul li {display: inline;}
 
-.introduction { font-weight: bold;}
+#footer {background-color: #111111;
+    color: #eeeeec;
+    margin-top: 18px;}
+#footer-links {background-color: #2e3436; margin-bottom: 18px;}
+#footer-links ul {margin: 0; padding: 9px 0;}
+#footer-links ul li {display: inline;}
+#footer a, #footer a:link {color: #3465a4; text-decoration: none;}
+#footer a:active, #footer a:hover, #footer a.focus {color: #729fcf;}
+
+a {text-decoration: none;}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; color: #111111;}
+a:hover, a:focus, a:active {color: #3465a4;}
+
+.introduction {font-weight: bold;}
 
 .photos {overflow: hidden; 
-    margin: 18px 0; }
-.messages {margin-bottom: 18px; }
-#main-wrap {margin: 18px 0; }
+    margin: 18px 0;}
+.messages {margin-bottom: 18px;}
+#main-wrap {margin: 18px 0;}
 
-.article-list .article { margin-bottom: 36px; }
+.article-list .article {margin-bottom: 36px;}
 .article p.meta {}
 .article-list .photo {overflow: hidden;}
 
