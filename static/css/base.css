@@ -6,16 +6,23 @@
     height: 18px;
     margin-bottom: 18px;}
 
-#header {background-color: #111111; color: #eeeeec;}
+#header {}
 #header a, #header a:link {color: #3465a4; text-decoration: none;}
 #header a:active, #header a:hover, #header a.focus {color: #729fcf;}
 
 
 #main-navigation ul li {display: inline;}
 #main-navigation ul {margin: 0 30px;}
-#main-navigation {background-color: #2e3436;}
+#main-navigation {background-color: #2e3436; 
+    position: relative;
+    -moz-border-radius: 0 0 9px 0;}
 
-#user-navigation {text-align: right;}
+#user-navigation {-moz-border-radius: 9px 9px 0 0;
+    background-color: #2e3436; 
+    text-align: right; 
+    position: absolute; 
+    right: 0; 
+    top: -18px;}
 #user-navigation ul li {display: inline;}
 
 #footer {background-color: #111111;

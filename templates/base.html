@@ -24,32 +24,31 @@ type="text/css" media="screen, projection" /><![endif]-->
 <body>
 <div class="container">
     <div id="header" class="span-24 last">
-        <div class="span-8">
+        <div class="span-24 last">
             <div id="alfakryl-logo"> <a href="{% url main_index %}"><span>alfakryl</span></a></div>  
         </div>
         
-        <div class="span-16 last">
-            <div id="user-navigation">
-            <ul>
-            {% if user.is_authenticated %}
-                <li>{{ user.username }}</li>
-                {% if perms.articles %}
-                   <li> <a href="{% url dashboard %}">dashboard</a> </li> {% endif %}
-                {% if user.is_staff %}
-                    <li> <a href="/admin/">admin</a> </li> {% endif %}
-                    
-                <li> <a href="{% url auth_logout %}">log ud</a></li>
-                
-            {% else %}
-                <li> <a href="{% url registration_register %}">register</a> </li>
-                <li> <a href="{% url auth_login %}">log ind</a></li>
-            {% endif %}
-            </ul>
-            </div>
-        </div>
         
         <div id="main-navigation" class="span-24 last">
-        <ul> <li></li> <li></li> <li></li> </ul>
+            <ul> <li>alfakryl</li> <li>alfakryl</li> <li>alfakryl</li> </ul>
+            
+            <div id="user-navigation">
+                <ul>
+                {% if user.is_authenticated %}
+                    <li>{{ user.username }}</li>
+                    {% if perms.articles %}
+                        <li> <a href="{% url dashboard %}">dashboard</a> </li> {% endif %}
+                    {% if user.is_staff %}
+                        <li> <a href="/admin/">admin</a> </li> {% endif %}
+                        
+                    <li> <a href="{% url auth_logout %}">log ud</a></li>
+                    
+                {% else %}
+                    <li> <a href="{% url registration_register %}">register</a> </li>
+                    <li> <a href="{% url auth_login %}">log ind</a></li>
+                {% endif %}
+                </ul>
+            </div>
         </div>
         
     </div>
