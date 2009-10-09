@@ -22,20 +22,24 @@
     text-align: right; 
     position: absolute; 
     right: 0; 
-    top: -18px;}
-#user-navigation ul li {display: inline;}
+    top: -18px;
+    color: #eeeeec;}
+#user-navigation ul li {display: inline; padding: 9px 15px;}
 
 #footer {background-color: #111111;
     color: #eeeeec;
     margin-top: 18px;}
-#footer-links {background-color: #2e3436; margin-bottom: 18px;}
-#footer-links ul {margin: 0; padding: 9px 0;}
+#footer-links {background-color: #2e3436; 
+    margin-bottom: 18px;}
+#footer-links ul {margin: 0; 
+    padding: 9px 0;}
 #footer-links ul li {display: inline;}
 #footer a, #footer a:link {color: #3465a4; text-decoration: none;}
 #footer a:active, #footer a:hover, #footer a.focus {color: #729fcf;}
 
 a {text-decoration: none;}
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; color: #111111;}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; 
+    color: #111111;}
 a:hover, a:focus, a:active {color: #3465a4;}
 
 .introduction {font-weight: bold;}
@@ -45,9 +49,12 @@ a:hover, a:focus, a:active {color: #3465a4;}
 .messages {margin-bottom: 18px;}
 #main-wrap {margin: 18px 0;}
 
-.article-list .article {margin-bottom: 36px;}
+.article-list .article {margin-bottom: 18px;}
 .article p.meta {}
-.article-list .photo {overflow: hidden;}
+.article-list p.summary {margin-bottom: 0;}
+.article-list .photo {overflow: hidden; 
+    height: 90px; 
+    width: 430px;}
 
 #article img {max-width: 470px;}
 

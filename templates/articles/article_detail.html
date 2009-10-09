@@ -14,6 +14,8 @@
         <span class="title"><em>{{ photo.title }}</em></span>, <span class="caption">{{ photo.caption }}</span>
     </div>
     {% endwith %}
+    {% else %}
+    <div class="space"></div>
     {% endif %}
     
     {{ object.body_html|safe }}
