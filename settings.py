@@ -83,6 +83,8 @@ DEFAULT_FROM_EMAIL = 'noreply@alfakryl.dk'
 ACCOUNT_ACTIVATION_DAYS = 4
 LOGIN_REDIRECT_URL = '/dashboard/'
 
+AUTH_PROFILE_MODULE = 'accounts.UserProfile'
+
 try:
     from settings_local import *
 except ImportError:

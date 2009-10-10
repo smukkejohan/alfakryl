@@ -11,9 +11,13 @@
 #header a:active, #header a:hover, #header a.focus {color: #729fcf;}
 
 
-#main-navigation ul li {display: inline;}
+#main-navigation ul li {display: block; float: left;}
 #main-navigation ul {margin: 0 30px;}
-#main-navigation {background-color: #2e3436; 
+#main-navigation a {font-size: 2em; 
+    color: #eeeeec;
+    padding: 0 15px;}
+#main-navigation {background-color: #2e3436;
+    height: 36px;
     position: relative;
     -moz-border-radius: 0 0 9px 0;}
 
@@ -22,9 +26,12 @@
     text-align: right; 
     position: absolute; 
     right: 0; 
-    top: -18px;
-    color: #eeeeec;}
-#user-navigation ul li {display: inline; padding: 9px 15px;}
+    top: -36px;
+    height: 36px;
+    color: #eeeeec;
+    padding-top: 9px;}
+#user-navigation a {font-size: 1.2em;}
+#user-navigation ul li {}
 
 #footer {background-color: #111111;
     color: #eeeeec;
