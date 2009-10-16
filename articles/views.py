@@ -18,7 +18,8 @@ def article_detail(request, slug):
     """  
     try:
         a = Article.objects.published().get(slug=slug)
-        a.update(view_count=F('view_count')+1)
+        a.view_count += 1
+        a.save()
         published = True
     except Article.DoesNotExist:
         try:
