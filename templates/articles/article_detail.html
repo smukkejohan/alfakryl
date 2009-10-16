@@ -7,7 +7,10 @@
     <h1>{{ object.headline }}</h1>
     <p class="introduction">{{ object.summary }}</p>
     
-    Af {% for author in object.authors.all %}{{ author }},{% endfor %}
+    Af {% for author in object.authors.all %}
+    <a href="{% url user_profile author %}">{% firstof author.full_name author.first_name author.username %}</a>
+    {% ifnotequal forloop.revcounter 1 %} {% ifequal forloop.revcounter 2 %}&amp;{% else %}, {% endifequal %} {% endifnotequal %}
+    {% endfor %}
     
     {% if object.photos.all|first %} 
     {% with object.photos.all|first as photo %}
