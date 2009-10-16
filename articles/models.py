@@ -22,6 +22,7 @@ class Article(models.Model):
     body = models.TextField("brødtekst", help_text="brug markdown formatering")
     body_html = models.TextField("rendered body text")
     sections = models.ManyToManyField('Section', related_name='articles', verbose_name="sektioner", blank=True)
+    author = models.ForeignKey(User)
     authors = models.ManyToManyField(User, related_name='articles', verbose_name="forfattere", blank=True)
     photos = models.ManyToManyField(Photo, related_name='articles', null=True, blank=True)
         
