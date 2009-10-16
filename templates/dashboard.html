@@ -7,35 +7,23 @@
 <p><a href="{% url article_create %}">Skriv ny artikel</a></p>
 
 
+{% load article_tags %}
+
 <h2>Kladder</h2>
 {% if drafts %}
 <table>
 <tr><th>Overskrift</th><th>Forfatter</th></tr>
 {% for a in drafts %}
-    <tr>
-    <td><a href="{% url draft_preview a.id %}">{{ a.headline }}</a></td> <td>{{ a.author }}</td>
-        <td>{% ifequal user a.author %}<a href="{% url article_update a.id %}">rediger</a>
-        <a href="{% url article_delete a.id %}">slet</a>{% endifequal %}</td>
+    <tr class="{% cycle 'odd' 'even' %}">
+    <td><a href="{{ a.get_absolute_url }}">{{ a.headline }}</a></td> <td>{% for author in a.authors.all %}
+        {{ author }}{% endfor %}</td>
+    
+        <td>{% get_crud_links a %}</td>
     </tr>
 {% endfor %}
 </table>
 {% else %}
 <p>Der er ingen artikler under udarbejdelse.</p>
-{% endif %}
-
-<h2>Nyeste publicerede artikler</h2>
-{% if articles %}
-<table>
-<tr><th>Overskrift</th><th>Forfatter</th></tr>
-{% for a in articles %}
-    <tr><td><a href="{{ a.get_absolute_url }}">{{ a.headline }}</a></td> <td>{{ a.author }}</td>
-        <td>{% ifequal user a.author %}<a href="{% url article_update a.id %}">rediger</a>
-        <a href="{% url article_delete a.id %}">slet</a>{% endifequal %}</td>
-        </tr>
-{% endfor %}
-</table>
-{% else %}
-<p>Der er endnu ikke nogen publicerede artikler.</p>
 {% endif %}
 
 

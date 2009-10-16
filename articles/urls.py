@@ -9,9 +9,7 @@ from articles.models import Article
 urlpatterns = patterns('',
     url(r'^create/$', views.article_create, name='article_create'),
     url(r'^update/(?P<article_id>\d+)/$', views.article_update, name='article_update'),
-    url(r'^delete/(?P<article_id>\d+)/$', views.article_delete, name='article_delete'), 
-    #url(r'^myarticles/$', views.article_user_index, name='article_user_index'),
-    url(r'^preview/(?P<article_id>\d+)/$', views.draft_preview, name='draft_preview'),
+    url(r'^delete/(?P<article_id>\d+)/$', views.article_delete, name='article_delete'),
     url(r'^(?P<slug>[-\w]+)/$', views.article_detail, name='article_detail'),
 )
 

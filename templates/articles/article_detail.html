@@ -7,6 +7,8 @@
     <h1>{{ object.headline }}</h1>
     <p class="introduction">{{ object.summary }}</p>
     
+    Skrevet af {% for author in object.authors %}{{ author }},{% endfor %}
+    
     {% if object.photos.all|first %} 
     {% with object.photos.all|first as photo %}
     <div class="photos">

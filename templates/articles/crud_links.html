@@ -1,0 +1,4 @@
+{% if crud_perms %}
+<a href="{% url article_update article.id %}">rediger</a>
+<a href="{% url article_delete article.id %}">slet</a>
+{% endif %}

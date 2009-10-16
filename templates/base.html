@@ -75,7 +75,8 @@ type="text/css" media="screen, projection" /><![endif]-->
             {% tag_cloud_for_model articles.Article as cloud with steps=3 min_count=2 %}
             <h3>Tag cloud</h3>
             {% for tag in cloud %}
-            <span style="font-size:{{ tag.font_size }}em;">{{ tag.name }}</span>
+            <p><a href="" style="font-size:{{ tag.font_size }}em;">{{ tag.name }}</a></p>
+            <div class="space"></div>
             {% endfor %}
             
 

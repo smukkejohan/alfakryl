@@ -31,8 +31,7 @@ def dashboard(request):
     
     if request.user.has_module_perms('articles'):
         drafts = Article.objects.drafts()
-        context.update({'drafts': drafts})
-      
+        context.update({'drafts': drafts}) 
     
     return render_to_response(
         'dashboard.html', context,
@@ -45,8 +44,7 @@ def user_profile(request, user):
     Renders a profile for the given user if the user exists or returns 404.
     """
     
-    u = get_object_or_404(User, username=user)
-    
+    u = get_object_or_404(User, username=user)   
     articles = Article.objects.published().filter(author=u)
     
     return render_to_response(

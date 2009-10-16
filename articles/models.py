@@ -22,20 +22,19 @@ class Article(models.Model):
     body = models.TextField("brødtekst", help_text="brug markdown formatering")
     body_html = models.TextField("rendered body text")
     sections = models.ManyToManyField('Section', related_name='articles', verbose_name="sektioner", blank=True)
-    author = models.ForeignKey(User)
+    authors = models.ManyToManyField(User, related_name='articles', verbose_name="forfattere", blank=True)
     photos = models.ManyToManyField(Photo, related_name='articles', null=True, blank=True)
-    
+        
     mod_date = models.DateTimeField(default=datetime.now)
     pub_date = models.DateTimeField("publicerings dato", default=datetime.now)
     publish = models.BooleanField("Publiceret på hjemmesiden", default=False,
                                   help_text='Artikler kan ikke ses på siden før deres "publicerings dato".')
     tags = TagField()
+    view_count = models.IntegerField(default=0, null=True)
     
     objects = ArticleManager()
     
-    #to do:
-    #view_count = models.IntegerField(default=0) .update(views=F('view_count')+1)
-    #authors = models.ManyToManyField(User, related_name='articles', verbose_name='forfattere')
+    
 
     class Meta:
         ordering = ['-pub_date']

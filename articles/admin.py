@@ -3,20 +3,17 @@
 from django.contrib import admin
 from articles.models import Article, Section
 
-class SectionInline(admin.TabularInline):
-    model = Section
-
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'author', 'photos')
+            'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'authors', 'photos')
         }),
         ('Publication', {
             'fields': ('pub_date', 'publish')
          }),
     )
     prepopulated_fields = {'slug': ('headline',)}
-    list_display = ('headline', 'author', 'pub_date', 'publish')
+    list_display = ('headline', 'pub_date', 'publish')
     list_filter = ['pub_date', 'publish']
     
 
