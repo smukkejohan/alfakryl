@@ -22,7 +22,7 @@ class Article(models.Model):
     body = models.TextField("brødtekst", help_text="brug markdown formatering")
     body_html = models.TextField("rendered body text")
     sections = models.ManyToManyField('Section', related_name='articles', verbose_name="sektioner", blank=True)
-    author = models.ForeignKey(User)
+    #author = models.ForeignKey(User) #Deprecated
     authors = models.ManyToManyField(User, related_name='articles', verbose_name="forfattere", blank=True)
     photos = models.ManyToManyField(Photo, related_name='articles', null=True, blank=True)
         
@@ -31,7 +31,7 @@ class Article(models.Model):
     publish = models.BooleanField("Publiceret på hjemmesiden", default=False,
                                   help_text='Artikler kan ikke ses på siden før deres "publicerings dato".')
     tags = TagField()
-    view_count = models.IntegerField(default=0, null=True)
+    view_count = models.IntegerField(default=0)
     
     objects = ArticleManager()
     
