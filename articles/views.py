@@ -20,9 +20,9 @@ def section_archive(request, slug):
         context_instance = RequestContext(request)
     )
  
-def tag_archive(request, name):
-    tag = get_object_or_404(Tag, name=name)
-    articles = Article.objects.published().filter(tags=tag.name)
+def tag_archive(request, tag_id):
+    tag = get_object_or_404(Tag, pk=tag_id)
+    articles = Article.objects.published().filter(tags=tag_id)
     
     return render_to_response(
         'articles/tag_archive.html',

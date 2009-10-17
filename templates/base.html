@@ -77,7 +77,7 @@ type="text/css" media="screen, projection" /><![endif]-->
             <h3>Tag cloud</h3>
             <p>
                 {% for tag in cloud %}
-                <a href="{% url tag_archive tag.name %}" style="font-size:{{ tag.font_size }}em;">{{ tag.name }}</a>
+                <a href="{% url tag_archive tag.id %}" style="font-size:{{ tag.font_size }}em;">{{ tag.name }}</a>
                 {% endfor %}
             </p>
             <div class="space"></div>
