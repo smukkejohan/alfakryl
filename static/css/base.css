@@ -1,12 +1,12 @@
 #alfakryl-logo a { font-size: 4em; 
-    text-decoration: none; margin-left: 30px;}
+    text-decoration: none; margin-left: 40px;}
 
 .space {background: url(../img/pattern_01.png) repeat; 
     clear: both; 
     height: 18px;
     margin-bottom: 18px;}
 
-#header {}
+#header {background-color: #111111;}
 #header a, #header a:link {color: #3465a4; text-decoration: none;}
 #header a:active, #header a:hover, #header a.focus {color: #729fcf;}
 
@@ -18,11 +18,9 @@
     padding: 0 15px;}
 #main-navigation {background-color: #2e3436;
     height: 36px;
-    position: relative;
-    -moz-border-radius: 0 0 9px 0;}
+    position: relative;}
 
-#user-navigation {-moz-border-radius: 9px 9px 0 0;
-    background-color: #2e3436; 
+#user-navigation { 
     text-align: right; 
     position: absolute; 
     right: 0; 
@@ -41,7 +39,8 @@
 #footer-links ul {margin: 0; 
     padding: 9px 0;}
 #footer-links ul li {display: inline;}
-#footer a, #footer a:link {color: #3465a4; text-decoration: none;}
+#footer a, #footer a:link {color: #3465a4; 
+    text-decoration: none;}
 #footer a:active, #footer a:hover, #footer a.focus {color: #729fcf;}
 
 a {text-decoration: none;}
