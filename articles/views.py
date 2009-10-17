@@ -20,9 +20,9 @@ def section_archive(request, slug):
         context_instance = RequestContext(request)
     )
  
-def tag_archive(request, slug):
-    tag = get_object_or_404(Tag, slug=slug)
-    articles = Article.objects.published().filter(tags=section)
+def tag_archive(request, name):
+    tag = get_object_or_404(Tag, name=name)
+    articles = Article.objects.published().filter(tags=tag.name)
     
     return render_to_response(
         'articles/tag_archive.html',
@@ -56,17 +56,6 @@ def article_detail(request, slug):
         {'object': a, 'published': published},
         context_instance = RequestContext(request)
     )
-
-def article_user_index(request):
-    user = request.user
-    drafts = Article.objects.drafts().filter(author=user)
-    articles = Article.objects.published().filter(author=user)
-    
-    return render_to_response(
-        'articles/article_user_index.html', {'articles': articles, 'drafts': drafts },
-        context_instance = RequestContext(request)
-    )
-article_user_index = user_passes_test(lambda u: u.has_module_perms('articles'))(article_user_index)
 
 def article_create(request):
     """

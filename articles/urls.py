@@ -12,7 +12,7 @@ urlpatterns = patterns('',
     url(r'^delete/(?P<article_id>\d+)/$', views.article_delete, name='article_delete'),
     url(r'^(?P<slug>[-\w]+)/$', views.article_detail, name='article_detail'),
     url(r'^section/(?P<slug>[-\w]+)/$', views.section_archive, name='section_archive'),
-    url(r'^tag/(?P<slug>[-\w]+)/$', views.tag_archive, name='tag_archive'),
+    url(r'^tag/(?P<name>[-\w]+)/$', views.tag_archive, name='tag_archive'),
     
 )
 

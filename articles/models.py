@@ -58,9 +58,6 @@ class Article(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('article_detail', None, {
-            #'year': self.pub_date.year,
-            #'month': self.pub_date.strftime('%m'),
-            #'day': self.pub_date.day,
             'slug': self.slug
         })
 
