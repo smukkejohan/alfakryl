@@ -35,9 +35,11 @@ type="text/css" media="screen, projection" /><![endif]-->
         
         
         <div id="main-navigation" class="span-24 last">
-            <ul><li><a href="{% url section_archive 'emma-glad' %}">Emma Glad</a></li>
-                <li><a href="{% url main_index %}">Nu</a></li>
-                <li><a href="{% url main_index %}">Nu</a></li>
+            <ul>
+            <li><a href="{% url main_index %}">Nu</a></li>
+            {% load article_tags %}
+            {% month_links 2 %}
+            {% section_links 2 %}
             </ul>
             
             <div id="user-navigation">

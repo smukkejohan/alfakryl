@@ -4,10 +4,11 @@
 
 {% block content %}
 
-<h1>Alle artikler i sektionen {{ section }}</h1>
+<p>Sektion:</p>
+<h1>{{ section }}</h1>
 
-{% for a in articles %}
-{{ a.headline }}
+{% for object in articles %}
+{% include "articles/list_snippet.html" %}
 {% endfor %}
 
 {% endblock %}

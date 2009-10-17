@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Arkiv måned{% endblock %}
+
+{% block content %}
+
+<p>Arkiv :</p>
+<h1>måned</h1>
+
+{% for object in articles %}
+{% include "articles/list_snippet.html" %}
+{% endfor %}
+
+{% endblock %}

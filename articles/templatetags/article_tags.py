@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from django import template
-from articles.models import Article
+from articles.models import Article, Section
 
 register = template.Library()
 
@@ -17,6 +17,17 @@ def get_crud_links(context, article):
     } 
 register.inclusion_tag('articles/crud_links.html', takes_context=True)(get_crud_links)
 
+def month_links(num):
+    return {
+        'dates': Article.objects.dates('pub_date', 'month')[:num],
+    }
+register.inclusion_tag('articles/month_links_snippet.html')(month_links)
+
+def section_links(num):
+    return {
+        'sections': Section.objects.all()[:num],
+    }
+register.inclusion_tag('articles/section_links_snippet.html')(section_links)
 
 #def get_crud_links(parser, token):
 #    try:

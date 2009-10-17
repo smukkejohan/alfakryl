@@ -1,0 +1,3 @@
+{% for section in sections %}
+<li><a href="{% url section_archive section.slug %}">{{ section.title }}</a></li>
+{% endfor %}
