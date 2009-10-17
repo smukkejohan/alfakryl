@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import permission_required, user_passes_test
 from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
 from articles.models import Article, Section
+from tagging.models import Tag 
 from articles.forms import ArticleForm
 
 def section_archive(request, slug):
