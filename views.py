@@ -45,9 +45,9 @@ def user_profile(request, user):
     """
     
     u = get_object_or_404(User, username=user)   
-    #articles = Article.objects.published().filter(author=u)
+    articles = Article.objects.published().filter(authors=u)
     
     return render_to_response(
-        'user_profile.html', {'user': u },
+        'user_profile.html', {'user': u, 'articles': articles },
         context_instance = RequestContext(request)
     )
