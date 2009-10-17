@@ -16,7 +16,7 @@ def section_archive(request, slug):
     
     return render_to_response(
         'articles/section_archive.html',
-        {'articles': articles, 'section': section},
+        {'object_list': articles, 'section': section},
         context_instance = RequestContext(request)
     )
  
@@ -26,7 +26,7 @@ def tag_archive(request, tag_id):
     
     return render_to_response(
         'articles/tag_archive.html',
-        {'articles': articles, 'tag': tag},
+        {'object_list': articles, 'tag': tag},
         context_instance = RequestContext(request)
     )   
 
