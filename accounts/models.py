@@ -5,7 +5,7 @@ from photologue.models import ImageModel
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
-    portrait = models.ForeignKey(UserPortrait, null=True)
+    #portrait = models.ForeignKey(UserPortrait, null=True)
     bio = models.TextField(null=True)
     facebook = models.CharField(null=True)
     twitter = models.CharField(null=True)
@@ -14,4 +14,4 @@ class UserProfile(models.Model):
     #letter
     url = models.UrlField(null=True)
 
-class UserPortrait(ImageModel):
+#class UserPortrait(ImageModel):

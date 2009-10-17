@@ -4,7 +4,6 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="verify-v1" content="XjWhf/cIs3ATDUhKw84RWOKn7lwFKNnK7V/TYwsLSH4=" />
-    
     <meta http-equiv="Content-language" content="da" />
     
     {# Blueprint CSS framework #}
@@ -19,8 +18,10 @@ type="text/css" media="screen, projection" /><![endif]-->
     <link rel="stylesheet" type="text/css" media="all"
         href="{{ MEDIA_URL }}css/base.css" />
  
-    <meta name="keywords" content="{% block meta_keywords %}alfakryl, avis, østre borgerdyd, artikler, nyheder, kultur{% endblock %}" />
-    <meta name="description" content="{% block meta_description %}Alfakryl Østre Borgerdyds online udgivelse, af elever for elever.{% endblock %}" />
+    <meta name="keywords" content="{% block meta_keywords %}
+        alfakryl, avis, østre borgerdyd, artikler, nyheder, kultur{% endblock %}" />
+    <meta name="description" content="{% block meta_description %}
+        Alfakryl Østre Borgerdyds online udgivelse, af elever for elever.{% endblock %}" />
     <title>{% block title %}{% endblock %} - Alfakryl</title>
  
 </head>
@@ -29,12 +30,12 @@ type="text/css" media="screen, projection" /><![endif]-->
 <div class="container">
     <div id="header" class="span-24 last">
         <div class="span-24 last">
-            <div id="alfakryl-logo"> <a href="{% url main_index %}"><span>alfakryl</span></a></div>  
+            <div id="alfakryl-logo"><a href="{% url main_index %}"><span>alfakryl</span></a></div>  
         </div>
         
         
         <div id="main-navigation" class="span-24 last">
-            <ul><li><a href="{% url main_index %}">Nu</a></li>
+            <ul><li><a href="{% url section_archive 'emma-glad' %}">Emma Glad</a></li>
                 <li><a href="{% url main_index %}">Nu</a></li>
                 <li><a href="{% url main_index %}">Nu</a></li>
             </ul>
@@ -76,9 +77,8 @@ type="text/css" media="screen, projection" /><![endif]-->
             <h3>Tag cloud</h3>
             {% for tag in cloud %}
             <p><a href="" style="font-size:{{ tag.font_size }}em;">{{ tag.name }}</a></p>
-            <div class="space"></div>
             {% endfor %}
-            
+            <div class="space"></div>
 
 
         </div>

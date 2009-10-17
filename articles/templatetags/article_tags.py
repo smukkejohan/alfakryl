@@ -5,12 +5,6 @@ from articles.models import Article
 
 register = template.Library()
 
-#@register.simple_tag
-#def get_crud_perms(article, user):
-#    if article.authors.all().get(pk=user.id):
-#    
-#    return ''
-
 def get_crud_links(context, article):
     try:
         article.authors.all().get(pk=context['user'].id)
@@ -20,9 +14,9 @@ def get_crud_links(context, article):
     return { 
         'article': article,
         'crud_perms': crud_perms
-    }
-    
+    } 
 register.inclusion_tag('articles/crud_links.html', takes_context=True)(get_crud_links)
+
 
 #def get_crud_links(parser, token):
 #    try:

@@ -6,8 +6,19 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.contrib.auth.decorators import permission_required, user_passes_test
 from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
-from articles.models import Article
+from articles.models import Article, Section
 from articles.forms import ArticleForm
+
+def section_archive(request, slug):
+    section = get_object_or_404(Section, slug=slug)
+    articles = Article.objects.published().filter(sections=section)
+    
+    return render_to_response(
+        'articles/section_archive.html',
+        {'articles': articles, 'section': section},
+        context_instance = RequestContext(request)
+    )
+    
 
 def article_detail(request, slug):
     """

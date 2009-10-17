@@ -11,6 +11,8 @@ urlpatterns = patterns('',
     url(r'^update/(?P<article_id>\d+)/$', views.article_update, name='article_update'),
     url(r'^delete/(?P<article_id>\d+)/$', views.article_delete, name='article_delete'),
     url(r'^(?P<slug>[-\w]+)/$', views.article_detail, name='article_detail'),
+    url(r'^section/(?P<slug>[-\w]+)/$', views.section_archive, name='section_archive'),
+    
 )
 
 urlpatterns += patterns('django.views.generic.date_based',
