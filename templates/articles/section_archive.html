@@ -1,14 +1,8 @@
-{% extends "base.html" %}
+{% extends "archive_base.html" %}
 
 {% block title %}{{ section }}{% endblock %}
 
-{% block content %}
-
+{% block archive-info %}
 <p>Sektion:</p>
 <h1>{{ section }}</h1>
-
-{% for object in articles %}
-{% include "articles/list_snippet.html" %}
-{% endfor %}
-
 {% endblock %}

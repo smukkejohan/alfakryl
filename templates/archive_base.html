@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}arkiv{% endblock %}
+
+{% block content %}
+
+<div class="span-5 append-1">
+
+{% block archive-info %}
+{% endblock %}
+
+</div>
+
+<div class="span-11 append-1 last article-list">
+    {% block archive-content %}
+    {% if latest %}
+    {% for object in latest %}
+    {% include "articles/list_snippet.html" %}
+    {% endfor %}
+    {% else %}
+    {% for object in object_list %}
+    {% include "articles/list_snippet.html" %}
+    {% endfor %}
+    {% endif %}
+    {% endblock %}
+</div>
+
+{% endblock %}

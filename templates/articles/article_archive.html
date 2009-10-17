@@ -1,7 +1,8 @@
-{% extends "base.html" %}
+{% extends "archive_base.html" %}
 
-{% block content %}
-{% for a in latest %}
-    {{ a.headline }}
-{% endfor %}
+{% block title %}Artikel arkiv{% endblock %}
+
+{% block archive-info %}
+<p>Arkiv:</p>
+<h1>Seneste</h1>
 {% endblock %}

@@ -1,14 +1,8 @@
-{% extends "base.html" %}
+{% extends "archive_base.html" %}
 
-{% block title %}Arkiv måned{% endblock %}
+{% block title %}{{ month|date:"Y m" }}{% endblock %}
 
-{% block content %}
-
+{% block archive-info %}
 <p>Arkiv :</p>
-<h1>måned</h1>
-
-{% for object in object_list %}
-{% include "articles/list_snippet.html" %}
-{% endfor %}
-
+<h1>{{ month|date:"Y m" }}</h1>
 {% endblock %}
