@@ -19,7 +19,7 @@ register.inclusion_tag('articles/crud_links.html', takes_context=True)(get_crud_
 
 def month_links(num):
     return {
-        'dates': Article.objects.dates('pub_date', 'month')[:num],
+        'dates': Article.objects.published().dates('pub_date', 'month')[:num],
     }
 register.inclusion_tag('articles/month_links_snippet.html')(month_links)
 
