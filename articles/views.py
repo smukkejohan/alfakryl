@@ -84,7 +84,7 @@ def article_update(request, article_id):
     """
     Renders a form for updating an existing article
     """
-    a = Article.objects.get(pk=article_id)
+    a = get_object_or_404(Article, pk=article_id)
     
     if not a.authors.all().get(pk=request.user.id):
         return HttpResponseForbidden("You don't have permissions to update this article.")
@@ -110,7 +110,7 @@ def article_delete(request, article_id):
     Renders a confirmation form, and deletes article upon post submission.
     """
 
-    a = Article.objects.get(pk=article_id)
+    a = get_object_or_404(Article, pk=article_id)
     
     if not a.authors.all().get(pk=request.user.id):
         return HttpResponseForbidden("You don't have permissions to delete this article.")
@@ -126,3 +126,6 @@ def article_delete(request, article_id):
         context_instance = RequestContext(request)
     )
 article_delete = permission_required('articles.delete_article')(article_delete)
+
+def article_image_upload(request):
+    pass

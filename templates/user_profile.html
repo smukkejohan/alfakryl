@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ user.username }}
+{{ object.username }}
 {% endblock %}
 
 {% block content %}
 
-<h1>{{ user.username }}</h1>
-<p>{{ user.first_name }} {{ user.last_name }}</p>
+<h1>{{ object.username }}</h1>
+<p>{{ object.first_name }} {{ object.last_name }}</p>
 
 
 {% if articles %}

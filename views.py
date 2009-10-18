@@ -9,15 +9,15 @@ from articles.models import Article
 def index(request):
     articles = Article.objects.published()
     
-    try:
-        primary_article = articles.filter(sections__title='Leder')[:1].get()
-    except:
-        primary_article = articles[:1].get()
-    
-    articles = articles.exclude(pk=primary_article.id)
+    #try:
+    #    primary_article = articles.filter(sections__title='Leder')[:1].get()
+    #except:
+    #    primary_article = articles[:1].get()
+    #
+    #articles = articles.exclude(pk=primary_article.id)
     
     return render_to_response(
-        'index.html', {'articles': articles, 'primary_article': primary_article},
+        'index.html', {'articles': articles},
         context_instance = RequestContext(request)
     )
 
@@ -44,10 +44,10 @@ def user_profile(request, user):
     Renders a profile for the given user if the user exists or returns 404.
     """
     
-    u = get_object_or_404(User, username=user)   
+    user = get_object_or_404(User, username=user)   
     articles = Article.objects.published().filter(authors=u)
     
     return render_to_response(
-        'user_profile.html', {'user': u, 'articles': articles },
+        'user_profile.html', {'object': user, 'articles': articles },
         context_instance = RequestContext(request)
     )

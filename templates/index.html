@@ -5,7 +5,7 @@
 {% block content %}
 <div class="span-5 append-1">
 <h3>Læs!</h3>
-{% if articles|slice:"2:" %}{% with articles|slice:"2:" as list %}
+{% if articles|slice:"8:" %}{% with articles|slice:"8:" as list %}
 <ul>
     {% for object in list %}
     <li><h4><a href="{{ object.get_absolute_url }}">
@@ -17,11 +17,7 @@
 </div>
 
 <div class="span-11 append-1 last article-list">
-{% if primary_article %}{% with primary_article as object %}
-{% include "articles/list_snippet.html" %}  
-{% endwith %}{% endif %}
-
-{% if articles %}{% with articles|slice:":2" as list %}    
+{% if articles %}{% with articles|slice:":8" as list %}    
 {% for object in list %}{% include "articles/list_snippet.html" %}    
 {% endfor %}{% endwith %}{% endif %}
 </div> 

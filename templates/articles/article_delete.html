@@ -1,17 +1,11 @@
 {% extends "base.html" %}
 
+{% block title %}Delete {{ article.headline }}{% endblock %}
+
 {% block content %}
-    {% if permission %}
-        <form method="post" action"">
-        <p>Er du sikker på du vil slette artiklen med overskriften {{ article.headline }}? <br /> 
-            Den vil være væk for evigt og altid.</p>
-            
-        <input type="submit" value="Slet Artiklen">
-        </form>
-        
-    {% else %}
-    
-        <p class="error">Du har ikke rettighedder til at slette artiklen med overskriften {{ article.headline }}.</p>
-        
-    {% endif %}
+<form method="post" action"">
+    <p>Er du sikker på du vil slette artiklen med overskriften {{ article.headline }}? <br /> 
+        Den vil være væk for evigt og altid.</p>   
+    <input type="submit" value="Slet Artiklen">
+</form>     
 {% endblock %}

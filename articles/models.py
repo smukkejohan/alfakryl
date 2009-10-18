@@ -22,10 +22,8 @@ class Article(models.Model):
     body = models.TextField("brødtekst", help_text="brug markdown formatering")
     body_html = models.TextField("rendered body text")
     sections = models.ManyToManyField('Section', related_name='articles', verbose_name="sektioner", blank=True)
-    #author = models.ForeignKey(User) #Deprecated
     authors = models.ManyToManyField(User, related_name='articles', verbose_name="forfattere", blank=True)
     photos = models.ManyToManyField(Photo, related_name='articles', null=True, blank=True)
-        
     mod_date = models.DateTimeField(default=datetime.now)
     pub_date = models.DateTimeField("publicerings dato", default=datetime.now)
     publish = models.BooleanField("Publiceret på hjemmesiden", default=False,
@@ -35,8 +33,6 @@ class Article(models.Model):
     
     objects = ArticleManager()
     
-    
-
     class Meta:
         ordering = ['-pub_date']
         get_latest_by = 'pub_date'
@@ -72,5 +68,5 @@ class Section(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('articles_section', args=[self.slug])
+        return reverse('section_archive', args=[self.slug])
         
