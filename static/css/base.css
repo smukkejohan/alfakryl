@@ -10,7 +10,6 @@
 #header a, #header a:link {color: #3465a4; text-decoration: none;}
 #header a:active, #header a:hover, #header a.focus {color: #729fcf;}
 
-
 #main-navigation ul li {display: block; float: left;}
 #main-navigation ul {margin: 0 30px;}
 #main-navigation a {font-size: 2em; 
@@ -55,9 +54,10 @@ a:hover, a:focus, a:active {color: #3465a4;}
 .messages {margin-bottom: 18px;}
 #main-wrap {margin: 18px 0;}
 
+h2 {line-height: 1.2em; margin: 0.2em 0}
 .article-list .article {margin-bottom: 18px;}
 .article p.meta {}
-.article-list p.summary {margin-bottom: 0;}
+.article-list p.summary {font-size: 1.2em; margin-bottom: 0.2em;}
 .article-list .photo {overflow: hidden; 
     height: 90px; 
     width: 430px;}
