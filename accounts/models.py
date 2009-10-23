@@ -1,17 +1,21 @@
+# -*- coding: utf-8 -*-
+
 from django.db import models
 from django.contrib.auth.models import User, SiteProfileNotAvailable
 from datetime import datetime
 from photologue.models import ImageModel
 
+
 class UserProfile(models.Model):
     user = models.ForeignKey(User, unique=True)
-    #portrait = models.ForeignKey(UserPortrait, null=True)
-    bio = models.TextField(null=True)
-    facebook = models.CharField(null=True)
-    twitter = models.CharField(null=True)
-    #year = models.
+    bio = models.TextField(null=True, blank=True)
+    facebook = models.CharField(null=True, blank=True, max_length=56)
+    twitter = models.CharField(null=True, blank=True, max_length=56)
+    year = models.IntegerField(max_length=4)
+    class_letter = models.CharField(max_length=2)
     #school
-    #letter
-    url = models.UrlField(null=True)
+    #url = models.URLField(null=True, blank=True)
 
-#class UserPortrait(ImageModel):
+class UserPortrait(ImageModel):
+    user = models.OneToOneField(User, primary_key=True)
+    

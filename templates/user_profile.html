@@ -6,17 +6,32 @@
 
 {% block content %}
 
-<h1>{{ object.username }}</h1>
-<p>{{ object.first_name }} {{ object.last_name }}</p>
+<div class="span-5 append-1">
+    <img src="{{ object.userportrait.get_avatar_url }}"/> .
+</div>
+<div class="span-11 append-1 last article-list">
+    <h1>{{ object.username }} /
+        {{ object.get_full_name }}
+    </h1>
+ 
+    
+    {% with object.get_profile as p %}
+    {% if p.class_letter %}<p> klasse: {{ p.year }} {{ p.class_letter }}</p>{% endif %}
+    {% if p.bio %}<p>{{ p.bio }}</p>{% endif %}
+    {% if p.facebook %}<a href="http://www.facebook.com/{{ p.facebook }}/">Facebook</a>{% endif %}
+    {% if p.twitter %}<a href="http://twitter.com/{{ p.twitter }}">Twitter</a>{% endif %}    
+    {% endwith %}
 
-
-{% if articles %}
-<h2>Artikler</h2>
-{% for a in articles %}
-<h3><a href="{{ a.get_absolute_url }}">
-{{ a.headline }}</a></h3>
-<p>{{ a.summary }}</p>
-{% endfor %}
-{% endif %}
+</div>
 
 {% endblock %}
+
+
+
+
+
+
+
+
+
+

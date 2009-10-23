@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.comments',
     'registration',
+    'accounts',
     'tagging',
     'photologue',
     'articles',
