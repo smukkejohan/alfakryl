@@ -45,9 +45,11 @@ def update(request):
 
 def portrait_upload(request):
     if request.method == 'POST':
-        form = UserPortraitForm(request.POST, request.FILES, instance=request.user.userportrait)
+        form = UserPortraitForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            portrait = form.save(commit=False)
+            portrait.user = request.user
+            portrait.save()
             request.user.message_set.create(message="Dit profilbillede er opdateret")
             return HttpResponseRedirect(reverse('user_profile', args=[request.user.username]))
     else:
