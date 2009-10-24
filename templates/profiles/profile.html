@@ -9,13 +9,12 @@
 <div class="span-5 append-1">
     <img src="{{ object.userportrait.get_avatar_url }}"/> .
 </div>
+
 <div class="span-11 append-1 last article-list">
     <h1>{{ object.username }} /
         {{ object.get_full_name }}
     </h1>
-    
-    
-    
+        
     {% with object.get_profile as p %}
     {% if p.class_letter %}<p> klasse: {{ p.year }} {{ p.class_letter }}</p>{% endif %}
     {% if p.bio %}<p>{{ p.bio }}</p>{% endif %}
@@ -23,7 +22,7 @@
     {% if p.twitter %}<a href="http://twitter.com/{{ p.twitter }}">Twitter</a>{% endif %}    
     {% endwith %}
     
-    {% ifequal user object %}
+    {% ifequal user.id object.id %}
         <p><a href="{% url profile_update %}">Rediger profil</a> | <a href="{% url user_portrait_upload %}">Rediger profilbillede</a> | <a href="">Skift kodeord</a>  
         </p>
     {% endifequal %}
