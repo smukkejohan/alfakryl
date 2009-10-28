@@ -4,6 +4,7 @@
 
 {% block content %}
 <h1>Rediger artikel</h1>
+
 <p>Sidst redigeret: {{ form.instance.mod_date }}</p>
 
 <form method="post" action="">
@@ -14,6 +15,20 @@
 
 </form>
 
-<a href="{% url article_delete form.instance.id %}">slet artikel</a>
+<a href="{% url article_delete form.instance.id %}">Slet artiklen</a>
+
+<h2>Billeder</h2>
+
+{% for img in form.instance.photos.all %}
+<div>
+    <img src="{{ img.get_thumbnail_url }}"/>
+    <p>
+        <a href="{% url article_img_update img.id %}">rediger</a>      | <a href="{% url article_img_delete img.id %}">slet</a>
+    </p>
+</div>
+{% endfor %}
+    <p><a href="{% url article_img_upload form.instance.id %}">Upload nyt billede</a></p>
+
+
 
 {% endblock %}

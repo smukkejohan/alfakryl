@@ -1,8 +1,6 @@
 google.load("jquery", "1.2");
 google.load("jqueryui", "1.5");
 
-
-
 google.setOnLoadCallback(function() {
     
     $.fn.slugify = function(obj) {
@@ -15,5 +13,6 @@ google.setOnLoadCallback(function() {
     }
 
     $('#id_headline').slugify('#id_slug'); 
+    $('#id_title').slugify('#id_title_slug');
 
 });

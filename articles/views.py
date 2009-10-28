@@ -8,7 +8,10 @@ from django.contrib.auth.decorators import permission_required, user_passes_test
 from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
 from articles.models import Article, Section
 from tagging.models import Tag 
-from articles.forms import ArticleForm
+from articles.forms import ArticleForm, ImageForm
+from django.forms.models import modelformset_factory
+
+from photologue.models import Photo
 
 def section_archive(request, slug):
     section = get_object_or_404(Section, slug=slug)
@@ -127,5 +130,64 @@ def article_delete(request, article_id):
     )
 article_delete = permission_required('articles.delete_article')(article_delete)
 
-def article_image_upload(request):
+
+def img_upload(request, article_id):
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES)
+        
+        if form.is_valid():
+            article = get_object_or_404(Article, pk=article_id)
+            img = form.save()
+            article.photos.add(img)
+            
+            request.user.message_set.create(message="Billedet er blevet uploadet.")
+            return HttpResponseRedirect(reverse('dashboard'))
+    else:
+        form = ImageForm()
+    return render_to_response(
+        'articles/img/upload.html',
+        {'form': form},
+        context_instance = RequestContext(request)
+    )
+img_upload = permission_required('articles.change_article')(img_upload)
+
+def img_update(request, img_id):
+    img = Photo.objects.get(pk=img_id)
+    if request.method == 'POST':
+        form = ImageForm(request.POST, request.FILES, instance=img)
+       
+        if form.is_valid():
+            img = form.save()
+            
+            request.user.message_set.create(message="Billedet er blevet opdateret.")
+            return HttpResponseRedirect(reverse('dashboard'))
+    else:
+        form = ImageForm(instance=img)
+    return render_to_response(
+        'articles/img/update.html',
+        {'form': form},
+        context_instance = RequestContext(request)
+    )
+img_update = permission_required('articles.change_article')(img_update)
+
+def img_delete(request, img_id):
     pass
+    
+    
+def manage_photos(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+    PhotoFormSet = modelformset_factory(Photo)
+    if request.method == "POST":
+        formset = PhotoFormSet(request.POST, request.FILES)
+        if formset.is_valid():
+            formset.save()
+            # Do something.
+    else:
+        formset = PhotoFormSet(queryset=Photo.objects.filter(articles=article_id))
+    
+    return render_to_response(
+        'articles/red/manage_photos.html',
+        {'formset': formset, 'article': article},
+        context_instance = RequestContext(request)
+    )
+

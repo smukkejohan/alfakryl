@@ -6,14 +6,14 @@ from articles.models import Article, Section
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'authors', 'photos')
+            'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'authors')
         }),
         ('Publication', {
             'fields': ('pub_date', 'publish')
          }),
     )
     prepopulated_fields = {'slug': ('headline',)}
-    list_display = ('headline', 'pub_date', 'publish')
+    list_display = ('headline', 'pub_date', 'publish', 'view_count')
     list_filter = ['pub_date', 'publish']
     
 

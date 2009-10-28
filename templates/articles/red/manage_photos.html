@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Billeder | {{ article.headline }}{% endblock %}
+
+{% block content %}
+
+<h1>Rediger billeder tilknyttet artiklen {{ article.headline }}</h1>
+
+<form method="POST" action="">
+    {{ formset.management_form }}
+    {% for form in formset.forms %}
+        {{ form.id }}
+        {{ form.image }}
+    {% endfor %}
+    <input type="submit" value="gem"/>
+</form>
+
+{% endblock %}

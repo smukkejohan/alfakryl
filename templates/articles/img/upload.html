@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
-{% block title %}upload profilbillede{% endblock %}
+{% block title %}upload image{% endblock %}
 
 {% block content %}
+
 <form enctype="multipart/form-data" method="post" action="">
 {{ form }}
 <input type="submit" value="upload"/>
-
 </form>
+
 {% endblock %}

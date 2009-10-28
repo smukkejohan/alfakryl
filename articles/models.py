@@ -26,7 +26,7 @@ class Article(models.Model):
     photos = models.ManyToManyField(Photo, related_name='articles', null=True, blank=True)
     mod_date = models.DateTimeField(default=datetime.now)
     pub_date = models.DateTimeField("publicerings dato", default=datetime.now)
-    publish = models.BooleanField("Publiceret på hjemmesiden", default=False,
+    publish = models.BooleanField("Publiceret", default=False,
                                   help_text='Artikler kan ikke ses på siden før deres "publicerings dato".')
     tags = TagField()
     view_count = models.IntegerField(default=0)
