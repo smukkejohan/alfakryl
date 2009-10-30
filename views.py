@@ -40,10 +40,10 @@ def dashboard(request):
 # login required decorator
 
 def redaktionen(request):
-    writers = User.objects.all().filter(is_staff=True)
+    staff = User.objects.all().filter(is_staff=True, is_active=True)
     
     return render_to_response(
-        'redaktionen.html', {'writers': writers},
+        'redaktionen.html', {'writers': staff},
         context_instance = RequestContext(request)
     )
     
