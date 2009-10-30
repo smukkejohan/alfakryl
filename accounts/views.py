@@ -18,7 +18,7 @@ def profile(request, user):
     articles = Article.objects.published().filter(authors=user)
     
     return render_to_response(
-        'profiles/profile.html', { 'object': user, 'articles': articles },
+        'profiles/profile.html', { 'object': user, 'article_list': articles },
         context_instance = RequestContext(request)
     )
 

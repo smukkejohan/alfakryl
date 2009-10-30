@@ -17,8 +17,9 @@
 </div>
 
 <div class="span-11 append-1 last article-list">
+{% load article_tags %}
 {% if articles %}{% with articles|slice:":8" as list %}    
-{% for object in list %}{% include "articles/list_snippet.html" %}    
+{% for object in list %}{% render_article object "h2" %}    
 {% endfor %}{% endwith %}{% endif %}
 </div> 
 

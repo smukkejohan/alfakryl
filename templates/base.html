@@ -45,9 +45,7 @@ type="text/css" media="screen, projection" /><![endif]-->
                     {% if user.is_authenticated %}
                     <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
                     {% if perms.articles %}
-                    <li><a href="{% url dashboard %}">dashboard</a></li>{% endif %}
-                    {% if user.is_staff %}
-                    <li><a href="/admin/">admin</a> </li>{% endif %}  
+                    <li><a href="{% url dashboard %}">dashboard</a></li>{% endif %}  
                     <li><a href="{% url auth_logout %}">log ud</a></li>
                     {% else %}
                     <li><a href="{% url registration_register %}">register</a></li>

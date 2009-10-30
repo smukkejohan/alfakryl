@@ -26,7 +26,15 @@
         <p><a href="{% url profile_update %}">Rediger profil</a> | <a href="{% url user_portrait_upload %}">Rediger profilbillede</a> | <a href="">Skift kodeord</a>  
         </p>
     {% endifequal %}
-
+    
+    <h2>Artikler</h2>
+    <div class="span-11 article-list">
+        {% load article_tags %}
+        {% for object in article_list %}
+        {% render_article object "h3" %}
+        {% endfor %}
+    </div>
+    
 </div>
 
 {% endblock %}

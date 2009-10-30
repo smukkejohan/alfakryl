@@ -7,12 +7,9 @@
             <img src="{{ photo.get_index_url }}" alt="{{ photo.caption }}" title="{{ photo.title }}"/></a>
     </div>
     {% endwith %}
-    {% else %}
-    
-    
     {% endif %}
     
-    <h2><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></h2>
+    <{{ h_tag }}><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></{{ h_tag }}>
              
     <p class="summary">{{ object.summary }}</p>
     <p class="meta">{{ object.pub_date.date }} | 
