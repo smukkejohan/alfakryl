@@ -27,11 +27,10 @@
         </p>
     {% endifequal %}
     
-    <h2>Artikler</h2>
     <div class="span-11 article-list">
         {% load article_tags %}
         {% for object in article_list %}
-        {% render_article object "h3" %}
+        {% render_article object "h2" %}
         {% endfor %}
     </div>
     
