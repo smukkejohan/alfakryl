@@ -15,7 +15,7 @@ def get_crud_links(context, article):
         'article': article,
         'crud_perms': crud_perms
     } 
-register.inclusion_tag('articles/crud_links.html', takes_context=True)(get_crud_links)
+register.inclusion_tag('articles/red/crud_links.html', takes_context=True)(get_crud_links)
 
 def month_links(num):
     return {

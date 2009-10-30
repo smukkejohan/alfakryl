@@ -77,7 +77,7 @@ def article_create(request):
     else:
         form = ArticleForm()
     return render_to_response(
-        'articles/article_create.html',
+        'articles/red/article_create.html',
         {'form': form},
         context_instance = RequestContext(request)
     )
@@ -102,7 +102,7 @@ def article_update(request, article_id):
     else:
         form = ArticleForm(instance=a)
     return render_to_response(
-        'articles/article_update.html',
+        'articles/red/article_update.html',
         {'form': form},
         context_instance = RequestContext(request)
     )
@@ -124,7 +124,7 @@ def article_delete(request, article_id):
         return HttpResponseRedirect(reverse('dashboard'))
         
     return render_to_response(
-        'articles/article_delete.html',
+        'articles/red/article_delete.html',
         {'article': a},
         context_instance = RequestContext(request)
     )
@@ -145,14 +145,14 @@ def img_upload(request, article_id):
     else:
         form = ImageForm()
     return render_to_response(
-        'articles/img/upload.html',
+        'articles/red/img/upload.html',
         {'form': form},
         context_instance = RequestContext(request)
     )
 img_upload = permission_required('articles.change_article')(img_upload)
 
 def img_update(request, img_id):
-    img = Photo.objects.get(pk=img_id)
+    img = get_object_or_404(Photo, pk=img_id)
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES, instance=img)
        
@@ -164,15 +164,25 @@ def img_update(request, img_id):
     else:
         form = ImageForm(instance=img)
     return render_to_response(
-        'articles/img/update.html',
+        'articles/red/img/update.html',
         {'form': form},
         context_instance = RequestContext(request)
     )
 img_update = permission_required('articles.change_article')(img_update)
 
 def img_delete(request, img_id):
-    pass
-    
+    img = get_object_or_404(Photo, pk=img_id)
+    if request.method == 'POST':
+        img.delete()
+        request.user.message_set.create(message="Billedet er blevet slettet.")
+        return HttpResponseRedirect(reverse('dashboard'))
+        
+    return render_to_response(
+        'articles/red/img/delete.html',
+        {'img': img},
+        context_instance = RequestContext(request)
+    )         
+img_delete = permission_required('articles.change_article')(img_delete)
     
 def manage_photos(request, article_id):
     article = get_object_or_404(Article, pk=article_id)
@@ -186,7 +196,7 @@ def manage_photos(request, article_id):
         formset = PhotoFormSet(queryset=Photo.objects.filter(articles=article_id))
     
     return render_to_response(
-        'articles/red/manage_photos.html',
+        'articles/red/img/manage.html',
         {'formset': formset, 'article': article},
         context_instance = RequestContext(request)
     )
