@@ -72,12 +72,16 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.flatpages',
     'django.contrib.comments',
+    #'comments',
     'registration',
     'accounts',
     'tagging',
     'photologue',
     'articles',
 )
+
+#COMMENTS_APP = 'comments'
+
 
 DEFAULT_FROM_EMAIL = 'noreply@alfakryl.dk'
 

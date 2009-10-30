@@ -10,7 +10,6 @@
     <p>Sidst opdateret: {{ object.mod_date }}</p>
     <h3>Tags</h3>
     <p>{{ object.tags }}</p>
-    
 
 </div>
 
@@ -52,10 +51,24 @@
         <p>Der er endnu ikke nogen der har kommenteret på denne artikel.</p>
         {% endif %}
     
-    
-    
+        
         <h3>Skriv kommentar</h3>
-        {% render_comment_form for object %}
+        {% if user.is_authenticated %}
+        {% get_comment_form for object as form %}
+        <form action="{% comment_form_target %}" method="POST">
+            {{ form.comment }}
+            {{ form.honneypot }}
+            {{ form.content_type }} 
+            {{ form.object_pk }} 
+            {{ form.timestamp }} 
+            {{ form.security_hash }}
+            <input type="hidden" name="next" value="{% url article_detail object %}" />
+            <input type="submit" name="preview" class="submit-post" value="Preview">
+        </form>
+        {% else %}
+            <p><a href="{% url registration_register %}">Opret en bruger</a> eller
+                    <a href="{% url auth_login %}">log ind</a> for at kommentere.</p>
+        {% endif %}
     
         {% else %}
         <p>Først når artiklen er publiceret kan man kommentere på den.</p>
