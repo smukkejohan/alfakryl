@@ -19,7 +19,7 @@
     <p class="introduction">{{ object.summary }}</p>
     
     Af {% for author in object.authors.all %}
-    <a href="{% url user_profile author %}">{% firstof author.get_full_name author.first_name author.username %}</a>{% ifnotequal forloop.revcounter 1 %}{% ifequal forloop.revcounter 2 %}&amp;{% else %},{% endifequal %}
+    <a href="{% url user_profile author %}">{% firstof author.get_full_name author.first_name author.username %}</a>{% ifnotequal forloop.revcounter 1 %}{% ifequal forloop.revcounter 2 %} &amp;{% else %},{% endifequal %}
     {% endifnotequal %}
     {% endfor %}
     

@@ -17,6 +17,7 @@ urlpatterns = patterns('',
     (r'^comments/', include('django.contrib.comments.urls')),
 
     url(r'^$', 'views.index', name='main_index'),
+    url(r'^redaktionen/$', 'views.redaktionen', name='redaktionen'),
     url(r'^dashboard/$', 'views.dashboard', name='dashboard'),
     (r'^a/', include('alfakryl.articles.urls')),
     (r'^p/', include('accounts.urls')),

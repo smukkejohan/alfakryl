@@ -3,7 +3,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from articles.models import Article
 
 def index(request):
@@ -38,4 +38,13 @@ def dashboard(request):
         context_instance = RequestContext(request)
     )
 # login required decorator
+
+def redaktionen(request):
+    writers = User.objects.all().filter(is_staff=True)
+    
+    return render_to_response(
+        'redaktionen.html', {'writers': writers},
+        context_instance = RequestContext(request)
+    )
+    
 
