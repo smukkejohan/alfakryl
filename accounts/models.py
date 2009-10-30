@@ -10,7 +10,7 @@ class UserProfile(models.Model):
     bio = models.TextField(null=True, blank=True)
     facebook = models.CharField(null=True, blank=True, max_length=56)
     twitter = models.CharField(null=True, blank=True, max_length=56)
-    year = models.IntegerField(max_length=4, null=True, blank=True)
+    year = models.IntegerField("årgang", max_length=4, null=True, blank=True, help_text="Det år du bliver student.")
     class_letter = models.CharField(max_length=2, null=True, blank=True)
     #school
     #url = models.URLField(null=True, blank=True)
