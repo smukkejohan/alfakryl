@@ -11,13 +11,13 @@ class UserProfile(models.Model):
     facebook = models.CharField(null=True, blank=True, max_length=56)
     twitter = models.CharField(null=True, blank=True, max_length=56)
     year = models.IntegerField("årgang", max_length=4, null=True, blank=True, help_text="Det år du bliver student.")
-    class_letter = models.CharField(max_length=2, null=True, blank=True)
+    class_letter = models.CharField("Klasse bogstav", max_length=2, null=True, blank=True, help_text="Skriv kun bogstavet og ikke din årgang.")
     #school
     #url = models.URLField(null=True, blank=True)
     
     def save(self):
-        self.class_letter = self.class_letter.upper()
-        super(Article, self).save()
+        self.class_letter = ''.join(self.class_letter.upper())
+        super(UserProfile, self).save()
 
 class UserPortrait(ImageModel):
     user = models.OneToOneField(User, primary_key=True)

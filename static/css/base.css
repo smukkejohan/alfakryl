@@ -14,7 +14,9 @@
 #main-navigation ul {margin: 0 30px;}
 #main-navigation a {font-size: 2em; 
     color: #eeeeec;
-    padding: 0 15px;}
+    padding: 0 15px;
+    font-variant: small-caps;
+    text-transform: lowercase;}
 #main-navigation {background-color: #2e3436;
     height: 36px;
     position: relative;}
