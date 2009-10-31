@@ -20,7 +20,6 @@
 #main-navigation {background-color: #2e3436;
     height: 36px;
     position: relative;}
-
 #user-navigation { 
     text-align: right; 
     position: absolute; 
@@ -31,7 +30,6 @@
     padding-top: 9px;}
 #user-navigation a {font-size: 1.2em;}
 #user-navigation ul li {}
-
 #footer {background-color: #111111;
     color: #eeeeec;
     margin-top: 18px;}
@@ -50,9 +48,14 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none;
 a:hover, a:focus, a:active {color: #3465a4;}
 
 .introduction {font-weight: bold;}
-
+.crud-links {float: right;}
 .photos {overflow: hidden; 
-    margin: 18px 0;}
+    margin: 18px 0;
+    position: relative;}
+.photos .photo {position: absolute;}
+.photo-meta {background-color: #eeeeec;
+    padding: 0 10px;}
+.photo-actions {float: right;}
 .messages {margin-bottom: 18px;}
 #main-wrap {margin: 18px 0;}
 
