@@ -21,6 +21,7 @@
             <p>{% if p.class_letter %} klasse: {{ p.year }} {{ p.class_letter }}{% endif %} &nbsp; &nbsp;
             {% if p.facebook %}<a href="http://www.facebook.com/{{ p.facebook }}/">Facebook</a>{% endif %}
             {% if p.twitter %}<a href="http://twitter.com/{{ p.twitter }}">Twitter</a>{% endif %}</p>
+            <p>{{ p.job }}</p>
             {% endwith %}
             
         </div>
