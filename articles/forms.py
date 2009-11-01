@@ -9,7 +9,7 @@ class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
         fields = ('headline', 'slug', 'summary', 'body', 'tags', 'sections', 'authors')
-        authors = forms.ModelMultipleChoiceField(queryset=User.objects.all().filter(groups = 'writer'))
+        authors = forms.ModelMultipleChoiceField(queryset=User.objects.all().filter(is_staff=True)
 
 class ImageForm(forms.ModelForm):
     class Meta:

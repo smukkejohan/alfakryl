@@ -12,6 +12,7 @@ class UserProfile(models.Model):
     twitter = models.CharField(null=True, blank=True, max_length=56)
     year = models.IntegerField("årgang", max_length=4, null=True, blank=True, help_text="Det år du bliver student.")
     class_letter = models.CharField("Klasse bogstav", max_length=2, null=True, blank=True, help_text="Skriv kun bogstavet og ikke din årgang.")
+    job = models.CharField(null=True, blank=True, max_length=128)
     #school
     #url = models.URLField(null=True, blank=True)
     
