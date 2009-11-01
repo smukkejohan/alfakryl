@@ -4,7 +4,7 @@ from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.contrib.auth.decorators import permission_required, user_passes_test
+from django.contrib.auth.decorators import permission_required, user_passes_test, login_required
 from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
 from articles.models import Article, Section
 from tagging.models import Tag 
@@ -60,6 +60,7 @@ def article_detail(request, slug):
         context_instance = RequestContext(request)
     )
 
+@login_required
 def article_create(request):
     """
     Renders a form for creating a new article.
@@ -81,16 +82,19 @@ def article_create(request):
         {'form': form},
         context_instance = RequestContext(request)
     )
-article_create = permission_required('articles.add_article')(article_create)
 
+@login_required
 def article_update(request, article_id):
     """
     Renders a form for updating an existing article
     """
     a = get_object_or_404(Article, pk=article_id)
     
-    if not a.authors.all().get(pk=request.user.id):
-        return HttpResponseForbidden("You don't have permissions to update this article.")
+    if not request.user.is_superuser:
+        try:
+            a.authors.all().get(pk=request.user.id)
+        except DoesNotExist:
+            return HttpResponseForbidden("You don't have permissions to delete this article.")
     
     if request.method == 'POST':
         form = ArticleForm(request.POST, instance=a)
@@ -106,8 +110,8 @@ def article_update(request, article_id):
         {'form': form},
         context_instance = RequestContext(request)
     )
-article_update = permission_required('articles.change_article')(article_update)
 
+@login_required
 def article_delete(request, article_id):
     """
     Renders a confirmation form, and deletes article upon post submission.
@@ -115,8 +119,11 @@ def article_delete(request, article_id):
 
     a = get_object_or_404(Article, pk=article_id)
     
-    if not a.authors.all().get(pk=request.user.id):
-        return HttpResponseForbidden("You don't have permissions to delete this article.")
+    if not request.user.is_superuser:
+        try:
+            a.authors.all().get(pk=request.user.id)
+        except DoesNotExist:
+            return HttpResponseForbidden("You don't have permissions to delete this article.")
         
     if request.method == 'POST':
         a.delete()
@@ -128,9 +135,8 @@ def article_delete(request, article_id):
         {'article': a},
         context_instance = RequestContext(request)
     )
-article_delete = permission_required('articles.delete_article')(article_delete)
 
-
+@login_required
 def img_upload(request, article_id):
     if request.method == 'POST':
         form = ImageForm(request.POST, request.FILES)
@@ -149,8 +155,8 @@ def img_upload(request, article_id):
         {'form': form},
         context_instance = RequestContext(request)
     )
-img_upload = permission_required('articles.change_article')(img_upload)
 
+@login_required
 def img_update(request, img_id):
     img = get_object_or_404(Photo, pk=img_id)
     if request.method == 'POST':
@@ -168,8 +174,8 @@ def img_update(request, img_id):
         {'form': form},
         context_instance = RequestContext(request)
     )
-img_update = permission_required('articles.change_article')(img_update)
 
+@login_required
 def img_delete(request, img_id):
     img = get_object_or_404(Photo, pk=img_id)
     if request.method == 'POST':
@@ -181,8 +187,7 @@ def img_delete(request, img_id):
         'articles/red/img/delete.html',
         {'img': img},
         context_instance = RequestContext(request)
-    )         
-img_delete = permission_required('articles.change_article')(img_delete)
+    )
     
 def manage_photos(request, article_id):
     article = get_object_or_404(Article, pk=article_id)

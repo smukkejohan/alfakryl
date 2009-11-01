@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     #url = models.URLField(null=True, blank=True)
     
     def save(self):
-        self.class_letter = ''.join(self.class_letter).upper()
+        #self.class_letter = ''.join(self.class_letter).upper()
         super(UserProfile, self).save()
 
 class UserPortrait(ImageModel):

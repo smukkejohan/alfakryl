@@ -69,6 +69,8 @@ h2 {line-height: 1.2em; margin: 0.2em 0}
 
 #article img {max-width: 470px;}
 
+textarea#id_comment {height: 90px;}
+
 input#id_headline {width: 710px; 
     font-size:3em;
     line-height:1;
