@@ -6,7 +6,7 @@ from django.contrib.auth.decorators import login_required
 from articles import views
 from articles.models import Article
 
-urlpatterns += patterns('django.views.generic.date_based',
+urlpatterns = patterns('django.views.generic.date_based',
 
    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\w{1,2})/$',
          'archive_day', {'queryset': Article.objects.published(),
@@ -31,7 +31,7 @@ urlpatterns += patterns('django.views.generic.date_based',
         name="article_archive_index"),
 )
 
-urlpatterns = patterns('',
+urlpatterns += patterns('',
     url(r'^red/create/$', views.article_create, name='article_create'),
     url(r'^red/update/(?P<article_id>\d+)/$', views.article_update, name='article_update'),
     url(r'^red/delete/(?P<article_id>\d+)/$', views.article_delete, name='article_delete'),
