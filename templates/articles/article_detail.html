@@ -60,9 +60,8 @@
         {% endif %}
     
         
-        <h3>Skriv kommentar</h3>
+        <h3>Sig noget klogt!</h3>
         {% if user.is_authenticated %}
-        <p>Sig noget klogt!</p>
         {% get_comment_form for object as form %}
         <form action="{% comment_form_target %}" method="POST">
             {{ form.comment }}
@@ -80,7 +79,7 @@
         {% endif %}
     
         {% else %}
-        <p>Først når artiklen er publiceret kan man kommentere på den.</p>
+        <p>Når artiklen er publiceret kan man kommentere på den.</p>
         {% endif %}
     </div>
     
