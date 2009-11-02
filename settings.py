@@ -86,7 +86,7 @@ INSTALLED_APPS = (
 DEFAULT_FROM_EMAIL = 'noreply@alfakryl.dk'
 
 ACCOUNT_ACTIVATION_DAYS = 4
-LOGIN_REDIRECT_URL = '/dashboard/'
+LOGIN_REDIRECT_URL = '/'
 
 AUTH_PROFILE_MODULE = 'accounts.UserProfile'
 

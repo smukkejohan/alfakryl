@@ -1,5 +1,5 @@
 Hej smukke
 
-Tryk her for at aktivere din bruger: {{ site }}/accounts/activate/{{ activation_key }}/
+Tryk her for at aktivere din bruger: http://{{ site }}/accounts/activate/{{ activation_key }}/
 
 Venligst Alfakryl
