@@ -12,6 +12,9 @@ class LatestArticles(Feed):
 
     def items(self):
         return Article.objects.published().order_by('-pub_date')[:12]
+    
+    def item_pubdate(self, item):
+        return item.pub_date
 
 class LatestArticlesBySection(Feed):
     def get_object(self, bits):
@@ -28,7 +31,7 @@ class LatestArticlesBySection(Feed):
         return obj.get_absolute_url()
 
     def description(self, obj):
-            return "Seneste artikler i sektionen %s" % obj.title
+        return "Seneste artikler i sektionen %s" % obj.title
             
     def items(self):
         return Article.objects.published().filter(sections=obj).order_by('-pub_date')[:12]
