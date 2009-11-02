@@ -21,7 +21,7 @@ urlpatterns = patterns('',
     url(r'^dashboard/$', 'views.dashboard', name='dashboard'),
     (r'^a/', include('alfakryl.articles.urls')),
     (r'^p/', include('accounts.urls')),
-    (r'^acc/', include('registration.urls')),
+    (r'^accounts/', include('registration.urls')),
 
     #url(r'^sitemap.xml$', 'django.contrib.sitemaps.views.sitemap', 
         #{'sitemaps': sitemaps}, name='sitemap'),
