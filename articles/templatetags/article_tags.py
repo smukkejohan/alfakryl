@@ -13,7 +13,6 @@ def render_article(obj, h_tag = 'h2'):
 register.inclusion_tag('articles/list_snippet.html')(render_article)
     
 def get_crud_links(context, article):
-    
     if context['user'].is_superuser:
         crud_perms = True
     else:
