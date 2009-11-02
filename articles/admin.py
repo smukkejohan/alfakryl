@@ -9,12 +9,12 @@ class ArticleAdmin(admin.ModelAdmin):
             'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'authors')
         }),
         ('Publication', {
-            'fields': ('pub_date', 'publish')
+            'fields': ('pub_date', 'publish', 'pub_ready')
          }),
     )
     prepopulated_fields = {'slug': ('headline',)}
     list_display = ('headline', 'pub_date', 'publish', 'view_count')
-    list_filter = ['pub_date', 'publish']
+    list_filter = ['pub_date', 'publish', 'pub_ready']
     
 
 class SectionAdmin(admin.ModelAdmin):

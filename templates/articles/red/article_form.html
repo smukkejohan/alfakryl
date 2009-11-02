@@ -20,35 +20,15 @@
 </div>
 
 <div class="field">
+    {{ form.summary.errors }}
+    <label for="id_summary">{{ form.summary.label }}</label><br />
+    {{ form.summary }}
+    <p>{{ form.summary.help_text }}</p> 
+</div>
+
+<div class="field">
     {{ form.body.errors }}
     <label for="id_body">{{ form.body.label }}</label><br />
     {{ form.body }}
     <p>Du kan benytte <a href="http://daringfireball.net/projects/markdown/syntax">markdown</a> formatering.</p> 
 </div>
-
-<div class="field">
-    {{ form.summary.errors }}
-    <label for="id_summary">{{ form.summary.label }}</label><br />
-    {{ form.summary }}
-    <p>Et kort resume eller introduktion til artiklen.</p> 
-</div>  
-
-<div class="field">
-    {{ form.sections.errors }}
-    <label for="id_sections">{{ form.sections.label }}</label><br />
-    {{ form.sections }}
-    <p>Hold ctrl nede for at vælge flere sektioner.</p>
-</div>
-
-<div class="field">
-    {{ form.tags.errors }}
-    <label for="id_tags">{{ form.tags.label }}</label>
-    {{ form.tags }}
-</div>
-
-<div class="field">
-    {{ form.authors.errors }}
-    <label for="id_authors">{{ form.authors.label }}</label><br />
-    {{ form.authors }}
-    <p>Hvis du fjerner dig selv som forfatter vil du ikke længere være i stand til at redigere artiklen.</p>
-</div> 

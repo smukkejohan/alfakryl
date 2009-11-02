@@ -13,6 +13,7 @@ from django.forms.models import modelformset_factory
 
 from photologue.models import Photo
 
+
 def section_archive(request, slug):
     section = get_object_or_404(Section, slug=slug)
     articles = Article.objects.published().filter(sections=section)
@@ -74,7 +75,7 @@ def article_create(request):
             article.authors.add(request.user)
             
             request.user.message_set.create(message="Din artikel er blevet gemt.")
-            return HttpResponseRedirect(reverse('dashboard'))
+            return HttpResponseRedirect(reverse('article_update', args=[article.id]))
     else:
         form = ArticleForm()
     return render_to_response(
@@ -99,10 +100,10 @@ def article_update(request, article_id):
     if request.method == 'POST':
         form = ArticleForm(request.POST, instance=a)
         if form.is_valid():
-            form.save()
+            article = form.save()
             
             request.user.message_set.create(message="Artiklen er blevet opdateret.")
-            return HttpResponseRedirect(reverse('dashboard'))
+            return HttpResponseRedirect(article.get_absolute_url())
     else:
         form = ArticleForm(instance=a)
     return render_to_response(
