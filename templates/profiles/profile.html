@@ -28,10 +28,9 @@
     {% endifequal %}
     
     <div class="span-11 article-list">
-        {% load article_tags %}
-        {% for object in article_list %}
-        {% render_article object "h2" %}
-        {% endfor %}
+        {% with article_list as object_list %}
+        {% include "articles/list_snippet.html" %} 
+        {% endwith %}
     </div>
     
 </div>

@@ -4,13 +4,6 @@ from django import template
 from articles.models import Article, Section
 
 register = template.Library()
-
-def render_article(obj, h_tag = 'h2'):
-    return {
-        'object': obj,
-        'h_tag': h_tag
-    }
-register.inclusion_tag('articles/list_snippet.html')(render_article)
     
 def get_crud_links(context, article):
     if context['user'].is_superuser:

@@ -12,16 +12,13 @@
 </div>
 
 <div class="span-11 append-1 last article-list">
-    {% load article_tags %}
     {% block archive-content %}
     {% if latest %}
-    {% for object in latest %}
-    {% render_article object "h2" %}
-    {% endfor %}
+    {% with latest as object_list %}
+    {% include "articles/list_snippet.html" %} 
+    {% endwith %}
     {% else %}
-    {% for object in object_list %}
-    {% render_article object "h2" %}
-    {% endfor %}
+    {% include "articles/list_snippet.html" %} 
     {% endif %}
     {% endblock %}
 </div>

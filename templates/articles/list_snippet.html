@@ -1,5 +1,7 @@
-<div class="article">
+{% load comments %}
+{% for object in object_list %}
 
+<div class="article">
     {% if object.photos.all|first %} 
     {% with object.photos.all|first as photo %}
     <div class="photo">
@@ -9,9 +11,14 @@
     {% endwith %}
     {% endif %}
     
-    <{{ h_tag }}><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></{{ h_tag }}>
+    <h2><a href="{{ object.get_absolute_url }}">{{ object.headline }}</a></h2>
              
     <p class="summary">{{ object.summary }}</p>
-    <p class="meta">{{ object.pub_date.date }} | 
+     
+    {% get_comment_count for object as comment_count  %}
+
+    <p class="meta">{{ object.pub_date.date }} | <a href="{{ object.get_absolute_url }}#comments">{{ comment_count }} kommentarer</a> |
     <a href="{{ object.get_absolute_url }}">læs mere &raquo;</a> </p>
 </div>
+
+{% endfor %}
