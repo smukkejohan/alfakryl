@@ -148,7 +148,7 @@ def img_upload(request, article_id):
             article.photos.add(img)
             
             request.user.message_set.create(message="Billedet er blevet uploadet.")
-            return HttpResponseRedirect(reverse('dashboard'))
+            return HttpResponseRedirect(reverse('article_update', args=[article.id]))
     else:
         form = ImageForm()
     return render_to_response(
