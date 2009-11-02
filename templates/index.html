@@ -3,23 +3,28 @@
 {% block title %}Forside{% endblock %}
 
 {% block content %}
+
 <div class="span-5 append-1">
-<h3>Læs!</h3>
-{% if articles|slice:"8:" %}{% with articles|slice:"8:" as list %}
-<ul>
-    {% for object in list %}
-    <li><h4><a href="{{ object.get_absolute_url }}">
-     {{ object.headline }}</a></h4></li>
+    <h2>Mest læste</h2>
+    {% with articles|dictsort:"view_count" as most_read %}
+    {% for object in most_read %}
+    <h3><a href="{{ object.get_absolute_url }}">
+    {{ object.headline }}</a></h3>   
     {% endfor %}
-</ul>{% endwith %}
-<div class="space"></div>
-{% endif %}
+    {% endwith %}
+
+
+    <!--
+    <h2>De korte</h2>
+    <h2>De lange</h2>
+    -->
+
 </div>
 
 <div class="span-11 append-1 last article-list">
-{% if articles %}{% with articles|slice:":8" as object_list %}    
-{% include "articles/list_snippet.html" %}    
-{% endwith %}{% endif %}
+    {% if articles %}{% with articles as object_list %}    
+    {% include "articles/list_snippet.html" %}    
+    {% endwith %}{% endif %}
 </div> 
 
 {% endblock %}

@@ -10,21 +10,14 @@ def user_is_writer(user):
     return user.is_staff
 
 def index(request):
-    articles = Article.objects.published()
-    
-    #try:
-    #    primary_article = articles.filter(sections__title='Leder')[:1].get()
-    #except:
-    #    primary_article = articles[:1].get()
-    #
-    #articles = articles.exclude(pk=primary_article.id)
+    articles = Article.objects.published()[:12]
     
     return render_to_response(
         'index.html', {'articles': articles},
         context_instance = RequestContext(request)
     )
 
-@user_passes_test(user_is_writer, login_url="/login/")
+@user_passes_test(user_is_writer)
 def dashboard(request):
     """
     render all drafts
