@@ -6,7 +6,7 @@
 
 <div class="span-5 append-1">
     <h2>Mest læste</h2>
-    {% with articles|dictsortreversed:"view_count" as most_read %}
+    {% with articles|dictsort:"view_count" as most_read %}
     {% for object in most_read %}
     <h3><a href="{{ object.get_absolute_url }}">
     {{ object.headline }}</a></h3>   

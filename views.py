@@ -10,7 +10,7 @@ def user_is_writer(user):
     return user.is_staff
 
 def index(request):
-    articles = Article.objects.published()[:12]
+    articles = Article.objects.published()[:20]
     
     return render_to_response(
         'index.html', {'articles': articles},
