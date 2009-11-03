@@ -6,7 +6,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.syndication.feeds import FeedDoesNotExist
 
 class LatestArticles(Feed):
-    title = "alfakryl.dk seneste artikler"
+    title = "Alfakryl"
     link = "/"
     description = "Seneste artikler på alfakryl.dk"
 

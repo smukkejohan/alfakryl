@@ -17,6 +17,14 @@ def index(request):
         context_instance = RequestContext(request)
     )
 
+def redaktionen(request):
+    staff = User.objects.all().filter(is_staff=True, is_active=True)
+    
+    return render_to_response(
+        'redaktionen.html', {'writers': staff},
+        context_instance = RequestContext(request)
+    )
+    
 @user_passes_test(user_is_writer)
 def dashboard(request):
     """
@@ -34,13 +42,3 @@ def dashboard(request):
         'dashboard.html', context,
         context_instance = RequestContext(request)
     )
-
-def redaktionen(request):
-    staff = User.objects.all().filter(is_staff=True, is_active=True)
-    
-    return render_to_response(
-        'redaktionen.html', {'writers': staff},
-        context_instance = RequestContext(request)
-    )
-    
-
