@@ -67,7 +67,8 @@ type="text/css" media="screen, projection" /><![endif]-->
             <ul>{% for message in messages %}
                 <li>{{ message }}</li>{% endfor %}</ul>
         </div>
-        {% endif %}     
+        {% endif %}
+        
         <div id="main-content" class="span-18">
             {% block content %}{% endblock %}
         </div>        
@@ -87,6 +88,7 @@ type="text/css" media="screen, projection" /><![endif]-->
             
             </p>
         </div>
+        
     </div>   
     <div id="footer" class="span-24 last">
         <div class="prepend-1 append-1 span-22 last" id="footer-links">
@@ -115,7 +117,10 @@ type="text/css" media="screen, projection" /><![endif]-->
 {# js #}
 <script src="{{ MEDIA_URL }}js/base.js"
             type="text/javascript"></script>
+
+    
 {% block analytics %}
+{% if not user.is_superuser %}
 <script type="text/javascript">
 // <![CDATA[
 var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
@@ -129,6 +134,7 @@ try { var pageTracker = _gat._getTracker("UA-10780592-1");
 catch(err) {} 
 // ]]>
 </script>
+{% endif %}
 {% endblock %}
 
 </body>
