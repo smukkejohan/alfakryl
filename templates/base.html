@@ -31,7 +31,8 @@ type="text/css" media="screen, projection" /><![endif]-->
 <body>
 <div class="container">
     <div id="header" class="span-24 last">
-    
+        <div id="banner"></div>
+        
         <div id="user-nav">
             <ul class="nav">
                 {% if user.is_authenticated %}
@@ -51,7 +52,7 @@ type="text/css" media="screen, projection" /><![endif]-->
         </div>
         
         <div id="alfakryl-logo"><a href="{% url main_index %}"><span><em>@</em>lfakryl</span></a></div>
-        <div id="banner"></div>
+        
         
         {% load article_tags %}
                
@@ -60,22 +61,25 @@ type="text/css" media="screen, projection" /><![endif]-->
                 <ul class="nav"><li><a href="/redaktionen/">Redaktionen</a></li>
                     <li><a href="/grundlag/">Værdigrundlag</a></li>
                     <!--<li><a href="/redaktionen/">Kontakt</a></li>--></ul>
-            </div>  
-        
+            </div>
             <div class="span-12" id="date-nav">
                 <ul class="nav"><li><a href="{% url main_index %}">Nu</a></li>                   
                     {% month_links 4 %}</ul>
-            </div>
-                    
+            </div>  
             <div class="span-12 last" id="section-nav">
                 <ul class="nav">{% section_links 4 %}</ul>
-            </div>
-                
+            </div>  
         </div>
+        
+        
+        
     </div>
+    
+    
+    
     <div id="main-wrap" class="span-24 last">    
         {% if messages %}
-        <div id="messages" class="span-18 last">
+        <div id="messages" class="span-24 last">
             <ul>{% for message in messages %}
                 <li>{{ message }}</li>{% endfor %}</ul>
         </div>
