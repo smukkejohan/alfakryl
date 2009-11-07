@@ -31,36 +31,48 @@ type="text/css" media="screen, projection" /><![endif]-->
 <body>
 <div class="container">
     <div id="header" class="span-24 last">
-        <div class="span-24 last">
-            <!--<div id="alfakryl-logo"><a href="{% url main_index %}"><span>alfakryl</span></a></div>--> 
-        </div>        
-        <div id="main-navigation" class="span-24 last">
-            <ul>
-                <li><a href="{% url main_index %}">Nu</a></li>
-                {% load article_tags %}
-                {% month_links 4 %}
-                {% section_links 4 %}
-                <li><a href="/redaktionen/">Redaktionen</a></li>
+    
+        <div id="user-nav">
+            <ul class="nav">
+                {% if user.is_authenticated %}
+                <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
+                {% if user.is_staff %}
+                <li><a href="{% url dashboard %}">dashboard</a></li>
+                {% if user.is_superuser %}
+                <li><a href="/admin">admin</a></li>
+                {% endif %}
+                {% endif %}  
+                <li><a href="{% url auth_logout %}">log ud</a></li>
+                {% else %}
+                <li><a href="{% url registration_register %}">register</a></li>
+                <li><a href="{% url auth_login %}">log ind</a></li>
+                {% endif %}
             </ul>
-            <div id="user-navigation">
-                <ul>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
-                    {% if user.is_staff %}
-                    <li><a href="{% url dashboard %}">dashboard</a></li>
-                    {% if user.is_superuser %}
-                    <li><a href="/admin">admin</a></li>
-                    {% endif %}
-                    {% endif %}  
-                    <li><a href="{% url auth_logout %}">log ud</a></li>
-                    {% else %}
-                    <li><a href="{% url registration_register %}">register</a></li>
-                    <li><a href="{% url auth_login %}">log ind</a></li>
-                    {% endif %}
-                </ul>
-            </div>
         </div>
-    </div> 
+        
+        <div id="alfakryl-logo"><a href="{% url main_index %}"><span><em>@</em>lfakryl</span></a></div>
+        <div id="banner"></div>
+        
+        {% load article_tags %}
+               
+        <div id="main-nav" class="span-24 last">
+            <div class="span-24 last" id="pages-nav">
+                <ul class="nav"><li><a href="/redaktionen/">Redaktionen</a></li>
+                    <li><a href="/grundlag/">Værdigrundlag</a></li>
+                    <!--<li><a href="/redaktionen/">Kontakt</a></li>--></ul>
+            </div>  
+        
+            <div class="span-12" id="date-nav">
+                <ul class="nav"><li><a href="{% url main_index %}">Nu</a></li>                   
+                    {% month_links 4 %}</ul>
+            </div>
+                    
+            <div class="span-12 last" id="section-nav">
+                <ul class="nav">{% section_links 4 %}</ul>
+            </div>
+                
+        </div>
+    </div>
     <div id="main-wrap" class="span-24 last">    
         {% if messages %}
         <div id="messages" class="span-18 last">
@@ -77,44 +89,41 @@ type="text/css" media="screen, projection" /><![endif]-->
             <p><em>At smøre haserne</em>: at skride, smutte, forsvinde.</p>
             
             <h3>RSS Feed</h3>
-            <a href="/rss/latest/">Abonner på Alfakryl</a>
+            <p><a href="/rss/latest/">Abonner på Alfakryl</a></p>
             
             <h3>Facebook</h3>
-            <a href="http://www.facebook.com/group.php?gid=169196194891">Alfakryl på facebook</a>
+            <p><a href="http://www.facebook.com/group.php?gid=169196194891">Alfakryl på facebook</a></p>
             
             
-            <!--{% load tagging_tags %}
+            {% load tagging_tags %}
             {% tag_cloud_for_model articles.Article as cloud with steps=3 min_count=2 %}
-            <h3>Tag cloud</h3>
+            <!--<h3>Tag cloud</h3>
             <p>
                 {% for tag in cloud %}
                 <a href="{% url tag_archive tag.id %}" style="font-size:{{ tag.font_size }}em;">{{ tag.name }}</a>
                 {% endfor %}
-            </p>
-            <div class="space"></div>-->
+            </p>-->
+
             
             </p>
         </div>
         
     </div>   
     <div id="footer" class="span-24 last">
-        <div class="prepend-1 append-1 span-22 last" id="footer-links">
-             <ul><li><a href="/redaktionen/">Redaktionen</a></li>
+        
+        <div id="footer-nav">
+            <ul class="nav"><li><a href="/redaktionen/">Redaktionen</a></li>
                 <li><a href="/grundlag/">Værdigrundlag</a></li>  
             </ul>
         </div>
-        <div class="span-7 prepend-1">
-            <p>Giv os feedback og send os dine bidrag på alfakryl@hotmail.com!</p>
-        </div>
-        <div class="span-8">
-            <p>Reporter fejl på <a href="http://github.com/mrbichel/alfakryl/issues">Github</a>!</p>
-            
-        </div>
-        <div class="span-7 append-1 last">
-            <p>Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en 
-               <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, 
-               koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
-        </div>
+
+        <p>Giv os feedback og send os dine bidrag på alfakryl@hotmail.com!</p>
+        <p>Reporter fejl på <a href="http://github.com/mrbichel/alfakryl/issues">Github</a>!</p>
+    
+        <p>Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en 
+            <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, 
+            koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
+
     </div>
 </div>
 
