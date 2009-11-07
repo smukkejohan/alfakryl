@@ -18,7 +18,7 @@ def index(request):
     )
 
 def redaktionen(request):
-    staff = User.objects.all().filter(is_staff=True, is_active=True)
+    staff = User.objects.all().filter(is_staff=True, is_active=True).order_by('username')
     
     return render_to_response(
         'redaktionen.html', {'writers': staff},
