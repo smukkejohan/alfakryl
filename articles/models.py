@@ -16,6 +16,12 @@ class ArticleManager(models.Manager):
         return self.filter(publish=False)
 
 class Article(models.Model):
+    
+    LAYOUT_CHOICES = (
+        ('wide', 'bredt layout'),
+        ('standard', 'standard layout'),
+    )
+    
     headline = models.CharField('overskrift', max_length=200)
     slug = models.SlugField(unique=True, help_text="en 'slug' er en URL-venlig titel til artiklen.")
     summary = models.TextField('resume', help_text="Kort resume eller introduktion til artiklen.")
@@ -28,13 +34,15 @@ class Article(models.Model):
     mod_date = models.DateTimeField(default=datetime.now)
     pub_date = models.DateTimeField("publicerings dato", default=datetime.now)
     publish = models.BooleanField("Publiceret", default=False,
-                                  help_text='Artikler kan ikke ses på siden før deres "publicerings dato".')
+        help_text='Artikler kan ikke ses på siden før deres "publicerings dato".')
     tags = TagField()
     view_count = models.IntegerField(default=0)
     #lix = models.IntegerField()
-    pub_ready = models.BooleanField("Klar til publicering", default=False, help_text="Marker dette felt når artiklen er færdig og er klar til korrekturlæsning og publicering")
+    pub_ready = models.BooleanField("Klar til publicering", default=False, 
+        help_text="Marker dette felt når artiklen er færdig og er klar til korrekturlæsning og publicering")
     
-    
+    layout = models.CharField(max_length=50, choices=LAYOUT_CHOICES, default='standard')
+
     
     objects = ArticleManager()
     
@@ -92,7 +100,7 @@ class Section(models.Model):
     title = models.CharField(max_length=80, unique=True)
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
-    #menu_display = models.BooleanField('Hvis i hovedmenu', default=True)
+    #menu_display = models.BooleanField('Vis i hovedmenu', default=True)
 
     class Meta:
         ordering = ['title']
