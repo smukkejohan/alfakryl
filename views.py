@@ -6,14 +6,22 @@ from django.contrib.auth.decorators import user_passes_test
 from django.contrib.auth.models import User, Group
 from articles.models import Article
 
+from datetime import datetime
+
 def user_is_writer(user):
     return user.is_staff
 
 def index(request):
-    articles = Article.objects.published()[:20]
+    articles = Article.objects.published().filter(pub_date__month=datetime.now().month)
+    latest = articles[:3]
+    least_read = articles.order_by('-view_count')[:5]
+    most_read = articles.order_by('view_count')[:5]
     
     return render_to_response(
-        'index.html', {'articles': articles},
+        'index.html', 
+            {'latest': latest,
+            'least_read': least_read,
+            'most_read': most_read},
         context_instance = RequestContext(request)
     )
 

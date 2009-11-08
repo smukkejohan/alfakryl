@@ -5,13 +5,18 @@
 {% block content %}
 
 <div class="span-5 append-1">
-    <h2>Mest læste</h2>
-    {% with articles|dictsortreversed:"view_count" as most_read %}
-    {% for object in most_read %}
+    <h2>Mindst læste</h2>
+    {% for object in least_read %}    
     <h3><a href="{{ object.get_absolute_url }}">
     {{ object.headline }}</a></h3>   
     {% endfor %}
-    {% endwith %}
+    
+    
+    <h2>Mest læste</h2>
+    {% for object in most_read %}  
+    <h3><a href="{{ object.get_absolute_url }}">
+    {{ object.headline }}</a></h3>   
+    {% endfor %}
 
 
     <!--
@@ -22,9 +27,9 @@
 </div>
 
 <div class="span-11 append-1 last article-list">
-    {% if articles %}{% with articles as object_list %}    
+    {% with latest as object_list %}    
     {% include "articles/list_snippet.html" %}    
-    {% endwith %}{% endif %}
+    {% endwith %}
 </div> 
 
 {% endblock %}
