@@ -4,8 +4,8 @@
 {% block title %}{{ object.headline }}{% endblock %}
  
 {% block content %}
-<div class="span-17 append-1" id="article">
-    <div class="span-5">
+<div class="span-17 append-1 last" id="article">
+    <div class="span-5 leftsidebar">
         {% for section in object.sections.all %}
             <h3><a href="{% url section_archive section.slug %}">{{ section.title }}</a></h3>
         {% endfor %}
@@ -43,14 +43,10 @@
     </div>
     <div class="span-17 last" id="wide-article-body">
     {% else %}
-    <div id="article-body">
-    {% endifequal %}
+        <div id="article-body">
+        {% endifequal %}
         {{ object.body_html|safe }}
-    </div>
-    
-    
-              
-    </div>
+        </div>
     
     <div class="prepend-5 span-12" id="comments">
         <h2>Kommentarer</h2>
