@@ -3,6 +3,8 @@ h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none;
     color: #111111;}
 a:hover, a:focus, a:active {color: #3465a4;}
 
+h2 {line-height: 1.2em;}
+
 body {background-color: #ffffff; }
 
 #header {position: relative;}
@@ -34,7 +36,7 @@ ul.nav li a {padding: 0 1.2em;
     border: 2px solid #111111;}
 
 h1.section-title {font-weight: bold;
-    font-size: 2.4em;}
+    font-size: 2em;}
 
 
 .introduction {font-weight: bold;}
@@ -49,7 +51,7 @@ h1.section-title {font-weight: bold;
 .messages {margin-bottom: 18px;}
 #main-wrap {margin: 18px 0;}
 
-h2 {line-height: 1.2em; margin: 0.2em 0}
+
 .article-list .article {margin-bottom: 18px;}
 .article p.meta {}
 .article-list p.summary {font-size: 1.2em; margin-bottom: 0.2em;}
