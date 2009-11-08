@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 class ArticleForm(forms.ModelForm):
     class Meta:
         model = Article
-        fields = ('headline', 'slug', 'summary', 'body', 'tags', 'sections', 'authors', 'layout', 'pub_ready')
+        fields = ('headline', 'slug', 'summary', 'body', 'tags', 'sections', 'authors', 'pub_ready')
         authors = forms.ModelMultipleChoiceField(queryset=User.objects.all().filter(is_staff=True))
 
 class ImageForm(forms.ModelForm):

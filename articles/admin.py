@@ -6,7 +6,7 @@ from articles.models import Article, Section
 class ArticleAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {
-            'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'authors')
+            'fields': ('headline', 'slug', 'body', 'summary', 'tags', 'sections', 'authors', 'layout')
         }),
         ('Publication', {
             'fields': ('pub_date', 'publish', 'pub_ready')
