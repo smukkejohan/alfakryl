@@ -1,3 +1,7 @@
+a {text-decoration: none;}
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; 
+    color: #111111;}
+a:hover, a:focus, a:active {color: #3465a4;}
 
 body {background-color: #ffffff; }
 
@@ -29,10 +33,9 @@ ul.nav li a {padding: 0 1.2em;
     font-size: 1.4em;
     border: 2px solid #111111;}
 
-a {text-decoration: none;}
-h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; 
-    color: #111111;}
-a:hover, a:focus, a:active {color: #3465a4;}
+h1.section-title {font-weight: bold;
+    font-size: 2.4em;}
+
 
 .introduction {font-weight: bold;}
 .crud-links {float: right;}
