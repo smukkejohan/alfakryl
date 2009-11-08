@@ -31,8 +31,8 @@ type="text/css" media="screen, projection" /><![endif]-->
 <body>
 <div class="container">
     <div id="header" class="span-24 last">
-        <div id="banner"></div>
-        
+        <div id="banner">
+        </div>
         <div id="user-nav">
             <ul class="nav">
                 {% if user.is_authenticated %}
@@ -49,13 +49,10 @@ type="text/css" media="screen, projection" /><![endif]-->
                 <li><a href="{% url auth_login %}">log ind</a></li>
                 {% endif %}
             </ul>
+        </div>       
+        <div id="alfakryl-logo"><a href="{% url main_index %}"><span><em>@</em>lfakryl</span></a>
         </div>
-        
-        <div id="alfakryl-logo"><a href="{% url main_index %}"><span><em>@</em>lfakryl</span></a></div>
-        
-        
-        {% load article_tags %}
-               
+        {% load article_tags %}             
         <div id="main-nav" class="span-24 last">
             <div class="span-24 last" id="pages-nav">
                 <ul class="nav"><li><a href="/redaktionen/">Redaktionen</a></li>
@@ -69,14 +66,8 @@ type="text/css" media="screen, projection" /><![endif]-->
             <div class="span-12 last" id="section-nav">
                 <ul class="nav">{% section_links 4 %}</ul>
             </div>  
-        </div>
-        
-        
-        
+        </div>     
     </div>
-    
-    
-    
     <div id="main-wrap" class="span-24 last">    
         {% if messages %}
         <div id="messages" class="span-24 last">
@@ -84,7 +75,6 @@ type="text/css" media="screen, projection" /><![endif]-->
                 <li>{{ message }}</li>{% endfor %}</ul>
         </div>
         {% endif %}
-        
         <div id="main-content" class="span-18">
             {% block content %}{% endblock %}
         </div>        
@@ -107,27 +97,19 @@ type="text/css" media="screen, projection" /><![endif]-->
                 <a href="{% url tag_archive tag.id %}" style="font-size:{{ tag.font_size }}em;">{{ tag.name }}</a>
                 {% endfor %}
             </p>-->
-
-            
-            </p>
-        </div>
-        
+        </div>   
     </div>   
-    <div id="footer" class="span-24 last">
-        
+    <div id="footer" class="span-24 last">        
         <div id="footer-nav">
             <ul class="nav"><li><a href="/redaktionen/">Redaktionen</a></li>
                 <li><a href="/grundlag/">Værdigrundlag</a></li>  
             </ul>
         </div>
-
         <p>Giv os feedback og send os dine bidrag på alfakryl@hotmail.com!</p>
-        <p>Reporter fejl på <a href="http://github.com/mrbichel/alfakryl/issues">Github</a>!</p>
-    
+        <p>Reporter fejl på <a href="http://github.com/mrbichel/alfakryl/issues">Github</a>!</p> 
         <p>Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en 
             <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, 
             koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
-
     </div>
 </div>
 
