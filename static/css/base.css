@@ -51,8 +51,9 @@ h2 {line-height: 1.2em; margin: 0.2em 0}
 .article p.meta {}
 .article-list p.summary {font-size: 1.2em; margin-bottom: 0.2em;}
 .article-list .photo {overflow: hidden; 
-    height: 90px; 
-    width: 430px;}
+    height: 180px; 
+    width: 430px;
+    border: 1px solid black;}
 
 #article-body img {max-width: 470px;}
 #wide-article-body {max-width: 670px;}
