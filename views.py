@@ -14,8 +14,8 @@ def user_is_writer(user):
 def index(request):
     articles = Article.objects.published().filter(pub_date__month=datetime.now().month)
     latest = articles[:3]
-    least_read = articles.order_by('-view_count')[:5]
-    most_read = articles.order_by('view_count')[:5]
+    least_read = articles.order_by('view_count')[:5]
+    most_read = articles.order_by('-view_count')[:5]
     
     return render_to_response(
         'index.html', 
