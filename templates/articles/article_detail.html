@@ -4,6 +4,7 @@
 {% block title %}{{ object.headline }}{% endblock %}
  
 {% block content %}
+
 <div class="span-5">
     {% for section in object.sections.all %}
         <h3><a href="{% url section_archive section.slug %}">{{ section.title }}</a></h3>
@@ -13,7 +14,7 @@
     <p>{{ object.tags }}</p>
 </div>
 
-<div class="span-12 append-1 last" id="article">
+<div class="span-12 append-1 last">
     <span class="crud-links">{% get_crud_links object %}</span>
     <h1>{{ object.headline }}</h1> 
     <p class="introduction">{{ object.summary }}</p>
@@ -36,9 +37,12 @@
         </div> 
         {% endfor %}
     </div>
-    {% else %}
-    <div class="space"></div>
     {% endif %}
+    
+{% ifequal object.layout "wide" %}
+</div>
+<div class="span-17 append-1 last">
+{% endifequal %}
     
     {{ object.body_html|safe }}
     

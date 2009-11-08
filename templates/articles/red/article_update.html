@@ -40,6 +40,13 @@
 </div>
 {% endif %}
 
+<div class="field">
+    {{ form.layout.errors }}
+    <label for="id_layout">{{ form.layout.label }}</label><br />
+    {{ form.layout }}
+    <p>{{ form.layout.help_text }}</p>
+</div>
+
 <input type="submit" value="Gem artikel">
 
 </form>
