@@ -4,49 +4,55 @@
 {% block title %}{{ object.headline }}{% endblock %}
  
 {% block content %}
-
-<div class="span-5">
-    {% for section in object.sections.all %}
-        <h3><a href="{% url section_archive section.slug %}">{{ section.title }}</a></h3>
-    {% endfor %}
-    <p>Sidst opdateret: {{ object.mod_date }}</p>
-    <h3>Tags</h3>
-    <p>{{ object.tags }}</p>
-</div>
-
-<div class="span-12 append-1 last">
-    <span class="crud-links">{% get_crud_links object %}</span>
-    <h1>{{ object.headline }}</h1> 
-    <p class="introduction">{{ object.summary }}</p>
-    
-    Af {% for author in object.authors.all %}
-    <a href="{% url user_profile author %}">{% firstof author.get_full_name author.first_name author.username %}</a>{% ifnotequal forloop.revcounter 1 %}{% ifequal forloop.revcounter 2 %} &amp;{% else %},{% endifequal %}
-    {% endifnotequal %}
-    {% endfor %}
-    
-    {% if object.photos.all|first %}
-    <div class="photos">
-        {% for photo in object.photos.all %}
-        <div class="photo" {% ifnotequal forloop.counter 1 %}style="display:none"{% endifnotequal %}>
-            <img src="{{ photo.get_article_url }}" alt="{{ photo.caption }}" title="{{ photo.title }}"/>
-            <div class="photo-meta">
-                <span class="title"><em>{{ photo.title }}</em></span>, 
-                <span class="caption">{{ photo.caption }}</span>
-                <span class="photo-actions"><a href="{{ photo.image.url }}">vis original</a></span>
-            </div>
-        </div> 
+<div class="span-17 append-1" id="article">
+    <div class="span-5">
+        {% for section in object.sections.all %}
+            <h3><a href="{% url section_archive section.slug %}">{{ section.title }}</a></h3>
         {% endfor %}
+        <p>Sidst opdateret: {{ object.mod_date }}</p>
+        <h3>Tags</h3>
+        <p>{{ object.tags }}</p>
     </div>
-    {% endif %}
+
+    <div class="span-12 last">
+        <span class="crud-links">{% get_crud_links object %}</span>
+        <h1>{{ object.headline }}</h1> 
+        <p class="introduction">{{ object.summary }}</p>
+        
+        Af {% for author in object.authors.all %}
+        <a href="{% url user_profile author %}">{% firstof author.get_full_name author.first_name author.username %}</a>{% ifnotequal forloop.revcounter 1 %}{% ifequal forloop.revcounter 2 %} &amp;{% else %},{% endifequal %}
+        {% endifnotequal %}
+        {% endfor %}
+        
+        {% if object.photos.all|first %}
+        <div class="photos">
+            {% for photo in object.photos.all %}
+            <div class="photo" {% ifnotequal forloop.counter 1 %}style="display:none"{% endifnotequal %}>
+                <img src="{{ photo.get_article_url }}" alt="{{ photo.caption }}" title="{{ photo.title }}"/>
+                <div class="photo-meta">
+                    <span class="title"><em>{{ photo.title }}</em></span>, 
+                    <span class="caption">{{ photo.caption }}</span>
+                    <span class="photo-actions"><a href="{{ photo.image.url }}">vis original</a></span>
+                </div>
+            </div> 
+            {% endfor %}
+        </div>
+        {% endif %}
+        
+    {% ifequal object.layout "wide" %}
+    </div>
+    <div class="span-17 last" id="wide-article-body">
+    {% else %}
+    <div id="article-body">
+    {% endifequal %}
+        {{ object.body_html|safe }}
+    </div>
     
-{% ifequal object.layout "wide" %}
-</div>
-<div class="span-17 append-1 last">
-{% endifequal %}
     
-    {{ object.body_html|safe }}
+              
+    </div>
     
-    <div id="comments">
+    <div class="prepend-5 span-12" id="comments">
         <h2>Kommentarer</h2>
         {% if published %}
         {% load comments %}
@@ -61,8 +67,7 @@
         {% else %}
         <p>Der er endnu ikke nogen der har kommenteret på denne artikel.</p>
         {% endif %}
-    
-        
+            
         <h3>Sig noget klogt!</h3>
         {% if user.is_authenticated %}
         {% get_comment_form for object as form %}
@@ -79,13 +84,11 @@
         {% else %}
             <p><a href="{% url registration_register %}">Opret en bruger</a> eller
                     <a href="{% url auth_login %}">log ind</a> for at kommentere.</p>
-        {% endif %}
-    
+        {% endif %}       
         {% else %}
         <p>Når artiklen er publiceret kan man kommentere på den.</p>
         {% endif %}
-    </div>
+    </div> 
     
-</div>
-        
+</div>     
 {% endblock %}

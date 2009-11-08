@@ -54,7 +54,8 @@ h2 {line-height: 1.2em; margin: 0.2em 0}
     height: 90px; 
     width: 430px;}
 
-#article img {max-width: 470px;}
+#article-body img {max-width: 470px;}
+#wide-article-body {max-width: 670px;}
 
 
 
