@@ -16,10 +16,6 @@ body {background-color: #ffffff; }
 #header a {color: #111111; text-decoration: none;}
 #header a:active, #header a:hover, #header a.focus {color: #729fcf;}
 
-#banner {height: 155px; 
-    background: url(../img/halloween_kasper.gif) no-repeat;
-    margin:18px 0;}
-
 #alfakryl-logo {text-align: center;}
 #alfakryl-logo a { font-size: 4em;}
 
