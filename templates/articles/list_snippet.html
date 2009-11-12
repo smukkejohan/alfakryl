@@ -1,7 +1,7 @@
 {% load comments %}
 {% for object in object_list %}
 
-<div class="article">
+<div class="article cbox">
     {% if object.photos.all|first %} 
     {% with object.photos.all|first as photo %}
     <div class="photo">

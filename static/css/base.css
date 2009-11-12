@@ -1,3 +1,5 @@
+body {background: #dfdeff; }
+
 a {text-decoration: none;}
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; 
     color: #111111;}
@@ -10,7 +12,7 @@ a:hover, a:focus, a:active {color: #3465a4;}
 h2 {line-height: 1.2em; 
     margin: 0.2em 0;}
 
-body {background-color: #ffffff; }
+
 
 #header {position: relative;}
 #header a {color: #111111; text-decoration: none;}
@@ -22,7 +24,7 @@ body {background-color: #ffffff; }
 ul.nav {text-align: center;}
 ul.nav li {display: inline; }
 ul.nav li a {padding: 0 1.2em; 
-    background-color: #eeeeec;}
+    background: url(../img/white-50p.png) repeat;}
 
 #user-nav {font-size: 1.4em;}
 #section-nav ul li a, #date-nav ul li a {font-variant: small-caps;
@@ -49,7 +51,8 @@ ul.nav li a {padding: 0 1.2em;
 .messages {margin-bottom: 18px;}
 #main-wrap {margin: 18px 0;}
 
-
+.cbox {background: url(../img/white-50p.png) repeat; 
+    padding: 8px 8px 9px 8px; margin-bottom: 18px; border-top: 1px solid #333;}
 .article-list .article {margin-bottom: 18px;}
 .article p.meta {}
 .article-list p.summary {font-size: 1.2em; margin-bottom: 0.2em;}

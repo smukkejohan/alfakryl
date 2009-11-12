@@ -5,19 +5,22 @@
 {% block content %}
 
 <div class="span-5 append-1 leftsidebar">
-    <h2>Mindst læste</h2>
-    {% for object in least_read %}    
-    <h3><a href="{{ object.get_absolute_url }}">
-    {{ object.headline }}</a></h3>   
-    {% endfor %}
-    
-    
-    <h2>Mest læste</h2>
-    {% for object in most_read %}  
-    <h3><a href="{{ object.get_absolute_url }}">
-    {{ object.headline }}</a></h3>   
-    {% endfor %}
+    <div class="cbox">
+        <h2>Mindst læste</h2>
+        {% for object in least_read %} 
 
+        <h3><a href="{{ object.get_absolute_url }}">
+        {{ object.headline }}</a></h3>   
+        {% endfor %}
+    </div>
+    
+    <div class="cbox"> 
+        <h2>Mest læste</h2>
+        {% for object in most_read %}  
+        <h3><a href="{{ object.get_absolute_url }}">
+        {{ object.headline }}</a></h3>   
+        {% endfor %}
+    </div>
 
     <!--
     <h2>De korte</h2>

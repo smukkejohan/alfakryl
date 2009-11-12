@@ -78,15 +78,18 @@ type="text/css" media="screen, projection" /><![endif]-->
             {% block content %}{% endblock %}
         </div>        
         <div class="span-6 last">
-            <h3>Klamamsebamsen</h3>
-            <p><em>Placebodemokrati</em> – demokratiske processer, der passificerer deltagerne med følelsen af medbestemmelse. Eksempelvis får vi som elever på Østre Borgerdyd ofte lov at vælge, i hvilken rækkefølge vi gennemgår, de ellers obligatoriske delelementer af pensum.</p>
-            
-            <h3>RSS Feed</h3>
-            <p><a href="/rss/latest/">Abonner på Alfakryl</a></p>
-            
-            <h3>Facebook</h3>
-            <p><a href="http://www.facebook.com/group.php?gid=169196194891">Alfakryl på facebook</a></p>
-            
+            <div class="cbox">
+                <h2>Klamamsebamsen</h2>
+                <p><em>Placebodemokrati</em> – demokratiske processer, der passificerer deltagerne med følelsen af medbestemmelse. Eksempelvis får vi som elever på Østre Borgerdyd ofte lov at vælge, i hvilken rækkefølge vi gennemgår, de ellers obligatoriske delelementer af pensum.</p>
+            </div>
+            <div class="cbox"> 
+                <h2>RSS Feed</h2>
+                <p><a href="/rss/latest/">Abonner på Alfakryl</a></p>
+            </div>
+            <div class="cbox"> 
+                <h2>Facebook</h2>
+                <p><a href="http://www.facebook.com/group.php?gid=169196194891">Alfakryl på facebook</a></p>
+            </div>  
             
             {% load tagging_tags %}
             {% tag_cloud_for_model articles.Article as cloud with steps=3 min_count=2 %}
@@ -104,11 +107,13 @@ type="text/css" media="screen, projection" /><![endif]-->
                 <li><a href="/grundlag/">Værdigrundlag</a></li>  
             </ul>
         </div>
-        <p>Giv os feedback og send os dine bidrag på alfakryl@hotmail.com!</p>
-        <p>Reporter fejl på <a href="http://github.com/mrbichel/alfakryl/issues">Github</a>!</p> 
-        <p>Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en 
-            <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, 
-            koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
+        <div class="cbox">
+            <p>Giv os feedback og send os dine bidrag på alfakryl@hotmail.com!<br />
+            Reporter fejl på <a href="http://github.com/mrbichel/alfakryl/issues">Github</a>!<br />
+            Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en 
+                <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, 
+                koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
+        </div>
     </div>
 </div>
 
