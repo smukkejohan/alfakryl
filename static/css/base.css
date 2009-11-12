@@ -51,8 +51,7 @@ ul.nav li a {padding: 0 1.2em;
 .messages {margin-bottom: 18px;}
 #main-wrap {margin: 18px 0;}
 
-.cbox {background: url(../img/white-50p.png) repeat; 
-    padding: 8px 8px 9px 8px; margin-bottom: 18px; border-top: 1px solid #333;}
+.cbox {}
 .article-list .article {margin-bottom: 18px;}
 .article p.meta {}
 .article-list p.summary {font-size: 1.2em; margin-bottom: 0.2em;}
