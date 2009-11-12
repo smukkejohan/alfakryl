@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+import random
 from datetime import datetime
 from django.core.urlresolvers import reverse
 from django.shortcuts import render_to_response, get_object_or_404
@@ -10,7 +11,6 @@ from articles.models import Article, Section
 from tagging.models import Tag 
 from articles.forms import ArticleForm, ImageForm
 from django.forms.models import modelformset_factory
-
 from photologue.models import Photo
 
 
@@ -33,6 +33,14 @@ def tag_archive(request, tag_id):
         {'object_list': articles, 'tag': tag},
         context_instance = RequestContext(request)
     )   
+
+def random_article(request):
+    """
+    gets a random article, this might be a slow method, especially with man y articles 
+    in the db, look into a better method.
+    """
+    article = Article.objects.published().order_by('?')[:1].get()
+    return HttpResponseRedirect(article.get_absolute_url())
 
 def article_detail(request, slug):
     """
