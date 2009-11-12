@@ -13,11 +13,13 @@
     {{ form.headline }}
 </div>    
 
+{% if not form.instance.publish %}
 <div class="field">
     {{ form.slug.errors }}
     <label for="id_slug">{{ form.slug.label }}</label>
     {{ form.slug }}
 </div>
+{% endif %}
 
 <div class="field">
     {{ form.summary.errors }}
