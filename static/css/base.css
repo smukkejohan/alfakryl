@@ -12,8 +12,6 @@ a:hover, a:focus, a:active {color: #3465a4;}
 h2 {line-height: 1.2em; 
     margin: 0.2em 0;}
 
-
-
 #header {position: relative;}
 #header a {color: #111111; text-decoration: none;}
 #header a:active, #header a:hover, #header a.focus {color: #729fcf;}
@@ -44,14 +42,14 @@ ul.nav li a {padding: 0 1.2em;
 
 #articleslideshow {overflow: hidden;
     width: 470px;
-    height: 340px;
+    height: 372px;
     margin: 18px 0;
-    position: relative;}
-
-.photo-meta {background-color: #eeeeec;
-    padding: 0 10px;}
-    
+    position: relative;
+    background: #000000;}
+.photo-meta {color: #eeeeec; 
+    padding: 9px;}
 .photo-actions {float: right;}
+.photo-actions a {color: #eeeeec;}
 
 .messages {margin-bottom: 18px;}
 #main-wrap {margin: 18px 0;}
