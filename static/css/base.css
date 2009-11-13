@@ -64,15 +64,15 @@ ul.nav li a {padding: 0 1.2em;
 #wide-article-body {max-width: 670px;}
 textarea#id_comment {height: 90px;}
 
-.tag1 {font-size: 1em;}
-.tag2 {font-size: 1.1em;}
-.tag3 {font-size: 1.2em;}
-.tag4 {font-size: 1.3em;}
-.tag5 {font-size: 1.4em;}
-.tag6 {font-size: 1.6em;}
-.tag7 {font-size: 1.8em;}
-.tag8 {font-size: 2em;}
-.tag9 {font-size: 2.4em;}
-.tag10 {font-size: 2.8em;}
-.tag11 {font-size: 3.2em;}
-.tag12 {font-size: 4em;}
+.tag1 {font-size: 10px;}
+.tag2 {font-size: 11px;}
+.tag3 {font-size: 12px;}
+.tag4 {font-size: 13px;}
+.tag5 {font-size: 14px;}
+.tag6 {font-size: 15px;}
+.tag7 {font-size: 16px;}
+.tag8 {font-size: 17px;}
+.tag9 {font-size: 18px;}
+.tag10 {font-size: 19px;}
+.tag11 {font-size: 20px;}
+.tag12 {font-size: 21px;}
