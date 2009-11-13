@@ -1,0 +1,7 @@
+input#id_headline {width: 600px; 
+    font-size:3em;
+    line-height:1;
+    margin: 0 0 0.2em 0;}
+textarea#id_body {width: 600px; 
+    height:450px;}
+textarea#id_summary {height: 90px;}
