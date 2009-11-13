@@ -94,11 +94,11 @@ type="text/css" media="screen, projection" /><![endif]-->
             </div>  
             
             {% load tagging_tags %}
-            {% tag_cloud_for_model articles.Article as cloud with steps=8 min_count=2 %}
+            {% tag_cloud_for_model articles.Article as cloud with steps=12 min_count=2 distribution=log %}
             <h3>Tag cloud</h3>
             <p>
                 {% for tag in cloud %}
-                <a href="{% url tag_archive tag %}" style="font-size:{{ tag.font_size }}0px;">{{ tag.name }}</a>
+                <a href="{% url tag_archive tag %}" class="tag{{ tag.font_size }}">{{ tag.name }}</a>
                 {% endfor %}
             </p>
         </div>   
