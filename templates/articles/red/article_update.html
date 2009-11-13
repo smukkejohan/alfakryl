@@ -2,49 +2,23 @@
 
 {% block title %}Rediger artikel{% endblock %}
 
+{% block css %}{{ form.media.css }}{% endblock %}
+{% block js %}{{ form.media.js }}{% endblock %}
+
 {% block content %}
 <h1>Rediger artikel</h1>
 
 <p>Sidst redigeret: {{ form.instance.mod_date }}</p>
 
 <form method="post" action="">
-      
 {% include "articles/red/article_form.html" %}
-
-<div class="field">
-    {{ form.sections.errors }}
-    <label for="id_sections">{{ form.sections.label }}</label><br />
-    {{ form.sections }}
-    <p>Hold ctrl nede for at vælge flere sektioner.</p>
-</div>
-
-<div class="field">
-    {{ form.tags.errors }}
-    <label for="id_tags">{{ form.tags.label }}</label>
-    {{ form.tags }}
-</div>
-
-<div class="field">
-    {{ form.authors.errors }}
-    <label for="id_authors">{{ form.authors.label }}</label><br />
-    {{ form.authors }}
-    <p>Hvis du fjerner dig selv som forfatter vil du ikke længere være i stand til at redigere artiklen.</p>
-</div>
-
-{% if not form.instance.publish %}
-<div class="field">
-    {{ form.pub_ready.errors }}
-    <label for="id_pub_ready">{{ form.pub_ready.label }}:</label>
-    {{ form.pub_ready }}
-    <p>{{ form.pub_ready.help_text }}</p>
-</div>
-{% endif %}
-
 <input type="submit" value="Gem artikel">
 
 </form>
 
 <a href="{% url article_delete form.instance.id %}">Slet artiklen</a>
+
+
 
 <h2>Billeder</h2>
 
@@ -52,7 +26,7 @@
 <div>
     <img src="{{ img.get_thumbnail_url }}"/>
     <p>
-        <a href="{% url article_img_update img.id %}">rediger</a>      | <a href="{% url article_img_delete img.id %}">slet</a>
+        <a href="{% url article_img_update img.id %}">rediger</a> | <a href="{% url article_img_delete img.id %}">slet</a>
     </p>
 </div>
 {% endfor %}

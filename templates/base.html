@@ -17,7 +17,9 @@ type="text/css" media="screen, projection" /><![endif]-->
     {# CSS #}
     <link rel="stylesheet" type="text/css" media="all"
         href="{{ MEDIA_URL }}css/base.css" />
- 
+    
+    {% block css %}{% endblock %}
+    
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/latest/" />
  
     <meta name="keywords" content="{% block meta_keywords %}
@@ -92,13 +94,13 @@ type="text/css" media="screen, projection" /><![endif]-->
             </div>  
             
             {% load tagging_tags %}
-            {% tag_cloud_for_model articles.Article as cloud with steps=3 min_count=2 %}
-            <!--<h3>Tag cloud</h3>
+            {% tag_cloud_for_model articles.Article as cloud with steps=8 min_count=2 %}
+            <h3>Tag cloud</h3>
             <p>
                 {% for tag in cloud %}
-                <a href="{% url tag_archive tag.id %}" style="font-size:{{ tag.font_size }}em;">{{ tag.name }}</a>
+                <a href="{% url tag_archive tag %}" style="font-size:{{ tag.font_size }}0px;">{{ tag.name }}</a>
                 {% endfor %}
-            </p>-->
+            </p>
         </div>   
     </div>   
     <div id="footer" class="span-24 last">        
@@ -124,6 +126,7 @@ type="text/css" media="screen, projection" /><![endif]-->
 <script src="{{ MEDIA_URL }}js/base.js"
             type="text/javascript"></script>
 
+{% block js %}{% endblock %}
     
 {% block analytics %}
 {% if not user.is_superuser %}

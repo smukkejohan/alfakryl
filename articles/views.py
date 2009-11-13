@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import permission_required, user_passes_test
 from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
 from articles.models import Article, Section
 from tagging.models import Tag 
-from articles.forms import ArticleForm, ImageForm
+from articles.forms import ArticleForm, ArticleCreateForm, ArticleUpdatePublishedForm, ImageForm
 from django.forms.models import modelformset_factory
 from photologue.models import Photo
 
@@ -76,7 +76,7 @@ def article_create(request):
     """
     
     if request.method == 'POST':
-        form = ArticleForm(request.POST)
+        form = ArticleCreateForm(request.POST)
         
         if form.is_valid():
             article = form.save()
@@ -85,7 +85,7 @@ def article_create(request):
             request.user.message_set.create(message="Din artikel er blevet gemt.")
             return HttpResponseRedirect(reverse('article_update', args=[article.id]))
     else:
-        form = ArticleForm()
+        form = ArticleCreateForm()
     return render_to_response(
         'articles/red/article_create.html',
         {'form': form},
@@ -98,22 +98,28 @@ def article_update(request, article_id):
     Renders a form for updating an existing article
     """
     a = get_object_or_404(Article, pk=article_id)
-    
+         
     if not request.user.is_superuser:
         try:
             a.authors.all().get(pk=request.user.id)
         except DoesNotExist:
             return HttpResponseForbidden("You don't have permissions to delete this article.")
     
+    if a.publish:
+        Form = ArticleUpdatePublishedForm
+    else:
+        Form = ArticleForm
+    
     if request.method == 'POST':
-        form = ArticleForm(request.POST, instance=a)
+        form = Form(request.POST, instance=a)
         if form.is_valid():
             article = form.save()
-            
+                        
             request.user.message_set.create(message="Artiklen er blevet opdateret.")
             return HttpResponseRedirect(article.get_absolute_url())
     else:
-        form = ArticleForm(instance=a)
+        form = Form(instance=a)
+    
     return render_to_response(
         'articles/red/article_update.html',
         {'form': form},

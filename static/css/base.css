@@ -66,11 +66,3 @@ ul.nav li a {padding: 0 1.2em;
 
 
 textarea#id_comment {height: 90px;}
-
-input#id_headline {width: 710px; 
-    font-size:3em;
-    line-height:1;
-    margin: 0 0 0.2em 0;}
-textarea#id_body {width: 700px; 
-    height:450px;}
-textarea#id_summary {height: 90px;}

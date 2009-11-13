@@ -7,7 +7,6 @@ from articles import views
 from articles.models import Article
 
 urlpatterns = patterns('django.views.generic.date_based',
-
    url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\w{1,2})/$',
          'archive_day', {'queryset': Article.objects.published(),
          'date_field': 'pub_date',
@@ -41,6 +40,7 @@ urlpatterns += patterns('',
     url(r'^red/img/delete/(?P<img_id>\d+)/$', views.img_delete, name='article_img_delete'),
     url(r'^random/$', views.random_article, name='random_article'),
     url(r'^section/(?P<slug>[-\w]+)/$', views.section_archive, name='section_archive'),
-    url(r'^tag/(?P<tag_id>\d+)/$', views.tag_archive, name='tag_archive'),
+    url(r'^tag/(?P<tag>[^/]+)/$', 'tagging.views.tagged_object_list',
+        dict(queryset_or_model=Article), name='tag_archive'),
     url(r'^(?P<slug>[-\w]+)/$', views.article_detail, name='article_detail'),
 )
