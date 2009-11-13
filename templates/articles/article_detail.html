@@ -25,18 +25,15 @@
         {% endfor %}
         
         {% if object.photos.all|first %}
-        <div class="photos">
+        <div id="articleslideshow">
             {% for photo in object.photos.all %}
             <div class="photo" {% ifnotequal forloop.counter 1 %}style="display:none"{% endifnotequal %}>
-                <img src="{{ photo.get_article_url }}" alt="{{ photo.caption }}" title="{{ photo.title }}"/>
-                <div class="photo-meta">
-                    <span class="title"><em>{{ photo.title }}</em></span>, 
-                    <span class="caption">{{ photo.caption }}</span>
-                    <span class="photo-actions"><a href="{{ photo.image.url }}">vis original</a></span>
-                </div>
-            </div> 
+                <img src="{{ photo.get_article_url }}" alt="{{ photo.title }}, {{ photo.caption }}" title="{{ photo.title }}"/>
+            </div>
             {% endfor %}
         </div>
+        <div id="phototitle"></div>
+        
         {% endif %}
     {% ifequal object.layout "wide" %} 
     </div> 

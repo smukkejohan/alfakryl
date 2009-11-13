@@ -41,13 +41,18 @@ ul.nav li a {padding: 0 1.2em;
 
 .introduction {font-weight: bold;}
 .crud-links {float: right;}
-.photos {overflow: hidden; 
+
+#articleslideshow {overflow: hidden;
+    width: 470px;
+    height: 340px;
     margin: 18px 0;
     position: relative;}
-.photos .photo {}
+
 .photo-meta {background-color: #eeeeec;
     padding: 0 10px;}
+    
 .photo-actions {float: right;}
+
 .messages {margin-bottom: 18px;}
 #main-wrap {margin: 18px 0;}
 
