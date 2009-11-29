@@ -58,8 +58,7 @@ class Article(models.Model):
     
     def save(self, force_insert=False, force_update=False):
         """
-        the body is only processed if it has changed
-        
+        the body is only processed if it has changed        
         """
         
         body_has_changed = False
@@ -83,6 +82,8 @@ class Article(models.Model):
         
         if self.publish:
             self.pub_ready = True
+        elif self.pub_date < datetime.now():
+            self.pub_date = datetime.now()
         
         super(Article, self).save(force_insert, force_update)
         
@@ -110,4 +111,4 @@ class Section(models.Model):
 
     def get_absolute_url(self):
         return reverse('section_archive', args=[self.slug])
-        
+      

@@ -23,7 +23,7 @@
     {% endwith %}
     
     {% ifequal user.id object.id %}
-        <p><a href="{% url profile_update %}">Rediger profil</a> | <a href="{% url user_portrait_upload %}">Rediger profilbillede</a> | <a href="">Skift kodeord</a>  
+        <p><a href="{% url profile_update %}">Rediger profil</a> | <a href="{% url user_portrait_upload %}">Rediger profilbillede</a> | <a href="{% url auth_password_change %}">Skift kodeord</a>  
         </p>
     {% endifequal %}
     
