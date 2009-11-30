@@ -45,8 +45,9 @@ ul.nav li a {padding: 0 1.2em;
     height: 372px;
     margin: 18px 0;
     position: relative;
-    background: #000000;
-    text-align: center;}
+    background: #000000;}
+#articleslideshow .photo {text-align: center;}
+#articleslideshow .photo img {margin: 0 auto;}
 .photo-meta {color: #eeeeec; 
     padding: 9px;}
 .photo-actions {float: right;}
