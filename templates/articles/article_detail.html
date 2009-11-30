@@ -12,7 +12,12 @@
         {% endfor %}
         <p>Sidst opdateret: {{ object.mod_date }}</p>
         <h3>Tags</h3>
-        <p><a href="">{{ object.tags }}</a></p>
+        
+        {% load tagging_tags %}
+        {% tags_for_object object as tags %}
+        <p>{% for tag in tags %}
+        <a href="{% url tag_archive tag %}">{{ tag.name }}</a>
+        {% endfor %}</p>
     </div>
 
     <div class="span-12 last">
