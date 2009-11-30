@@ -99,7 +99,7 @@ class Article(models.Model):
 
 class Section(models.Model):
     title = models.CharField(max_length=80, unique=True)
-    slug = models.SlugField()
+    slug = models.SlugField(unique=True)
     description = models.TextField(blank=True, null=True)
     importance = models.IntegerField(default=1)
 
