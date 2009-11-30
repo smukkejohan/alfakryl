@@ -101,7 +101,7 @@ class Section(models.Model):
     title = models.CharField(max_length=80, unique=True)
     slug = models.SlugField()
     description = models.TextField(blank=True, null=True)
-    #menu_display = models.BooleanField('Vis i hovedmenu', default=True)
+    importance = models.IntegerField(default=1)
 
     class Meta:
         ordering = ['title']

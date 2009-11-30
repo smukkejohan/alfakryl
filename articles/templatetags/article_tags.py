@@ -33,48 +33,22 @@ def section_links(num):
     }
 register.inclusion_tag('articles/section_links_snippet.html')(section_links)
 
-#def get_crud_links(parser, token):
-#    try:
-#        tag_name, article, user = token.split_contents()
-#    except ValueError:
-#        raise template.TemplateSyntaxError, "%r tag requires exactly two arguments" % token.contents.split()[0]
-#    return CrudLinksNode(article, user)
 
-#register.tag(get_crud_links)
+@register.tag()
+def get_sections(parser, token):
+    try:
+        # split_contents() knows not to split quoted strings.
+        tag_name, max_num = token.split_contents()
+    except ValueError:
+        raise template.TemplateSyntaxError, "%r tag requires exactly one arguments" % token.contents.split()[0]
+    return SectionsNode(max_num)
+ 
+class SectionsNode(template.Node):
+    def __init__(self, max_num):
+        self.max_num = max_num
+    def render(self, context):
+        context['sections'] = Section.objects.all().filter(importance__gte=1)[:self.max_num]
+        return ''
 
-#class CrudLinksNode(template.Node):
-#    def __init__(self, article, user):
-#        self.article = template.Variable(article)
-#        self.user = template.Variable(user)
-#    
-#    def render(self, context):
-#        try:
-#            user = self.user.resolve(context)
-#            article = self.article.resolve(context)
-#            if article.authors.all().get(pk=user.id):
-#                context['crud_links'] = True
-#                return ''      
-#        except template.VariableDoesNotExist:
-#            return ''
-#        return ''
-    
-# most read
-#def get_latest_articles(parser, token):
-#    bits = token.contents.split()
-#    if len(bits) != 2:
-#        raise TemplateSyntaxError, "get_latest_articles tag takes exactly one argument"
-#    return LatestArticlesNode(bits[1])
-#
-#class LatestArticlesNode(Node):
-#    def __init__(self, num):
-#        self.num = num
-#    
-#    def render(self, context):
-#        context['latest_articles'] = Article.get_published()[:self.num]
-#        return ''
-#
-#def render_month_links(template.Node):
-#    return {
-#        'dates': Article.objects.dates('pub_date', 'month'),
-#    }
-#register.inclusion_tag('articles/month_links_snippet.html')(render_month_links)
+
+

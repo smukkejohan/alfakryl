@@ -65,7 +65,12 @@ type="text/css" media="screen, projection" /><![endif]-->
                     </li></ul>
             </div>  
             <div class="span-12 last" id="section-nav">
-                <ul class="nav">{% section_links 4 %}</ul>
+                <ul class="nav">
+                    {% get_sections 4 %}
+                    {% for section in sections %}
+                    <li><a href="{% url section_archive section.slug %}">{{ section.title }}</a></li>
+                    {% endfor %}
+                </ul>
             </div>  
         </div>     
     </div>
