@@ -5,8 +5,7 @@ google.setOnLoadCallback(function() {
     
     $('#articleslideshow').cycle({ 
         delay:  2000, 
-        speed:  500, 
-        before: onBefore 
+        speed:  500,
     }); 
  
 });

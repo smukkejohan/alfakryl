@@ -19,7 +19,7 @@ class ArticleAdmin(admin.ModelAdmin):
 
 class SectionAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
-    list_display = ('title',)
+    list_display = ('title', 'importance')
 
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(Section, SectionAdmin)

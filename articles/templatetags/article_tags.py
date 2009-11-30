@@ -27,13 +27,6 @@ def month_links(num):
     }
 register.inclusion_tag('articles/month_links_snippet.html')(month_links)
 
-def section_links(num):
-    return {
-        'sections': Section.objects.all()[:num],
-    }
-register.inclusion_tag('articles/section_links_snippet.html')(section_links)
-
-
 @register.tag()
 def get_sections(parser, token):
     try:
