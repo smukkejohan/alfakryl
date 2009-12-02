@@ -53,25 +53,27 @@ type="text/css" media="screen, projection" /><![endif]-->
         <div id="alfakryl-logo"><a href="{% url main_index %}"><span><em>@</em>lfakryl</span></a>
         </div>
         {% load article_tags %}             
-        <div id="main-nav" class="span-24 last">
-            <div class="span-24 last" id="pages-nav">
-                <ul class="nav"><li><a href="/redaktionen/">Redaktionen</a></li>
+        <div id="navigation" class="span-24 last">
+            <div class="span-24 last">
+                <ul class="nav" id="pages-nav"><li><a href="/redaktionen/">Redaktionen</a></li>
                     <li><a href="/grundlag/">Værdigrundlag</a></li>
                     <!--<li><a href="/redaktionen/">Kontakt</a></li>--></ul>
             </div>
-            <div class="span-12" id="date-nav">
-                <ul class="nav"><li><a href="{% url main_index %}">Nu</a></li>                   
-                    {% month_links 4 %}<li><a href="{% url random_article %}">[ random ]</a>
-                    </li></ul>
-            </div>  
-            <div class="span-12 last" id="section-nav">
-                <ul class="nav">
+            <div class="span-24">
+                <ul class="nav" id="primary-nav">  
+                    <li><a href="{% url main_index %}">Nu</a>
+                    </li>                   
+                    {% month_links 4 %}
+                    <li><a href="{% url random_article %}">[ random ]</a>
+                    </li>
+                    
                     {% get_sections 4 %}
                     {% for section in sections %}
                     <li><a href="{% url section_archive section.slug %}">{{ section.title }}</a></li>
-                    {% endfor %}
+                    {% endfor %}                   
                 </ul>
             </div>  
+ 
         </div>     
     </div>
     <div id="main-wrap" class="span-24 last">    

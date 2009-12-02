@@ -15,22 +15,18 @@ def get_crud_links(context, article):
         except:
             crud_perms = False
     
-    return { 
-        'article': article,
-        'crud_perms': crud_perms
-    } 
+    return {'article': article,
+        'crud_perms': crud_perms} 
 register.inclusion_tag('articles/red/crud_links.html', takes_context=True)(get_crud_links)
 
 def month_links(num):
     return {
-        'dates': Article.objects.published().dates('pub_date', 'month')[:num],
-    }
+        'dates': Article.objects.published().dates('pub_date', 'month')[:num],}
 register.inclusion_tag('articles/month_links_snippet.html')(month_links)
 
 @register.tag()
 def get_sections(parser, token):
     try:
-        # split_contents() knows not to split quoted strings.
         tag_name, max_num = token.split_contents()
     except ValueError:
         raise template.TemplateSyntaxError, "%r tag requires exactly one arguments" % token.contents.split()[0]

@@ -25,10 +25,10 @@ ul.nav li a {padding: 0 1.2em;
     background: url(../img/white-50p.png) repeat;}
 
 #user-nav {font-size: 1.4em;}
-#section-nav ul li a, #date-nav ul li a {font-variant: small-caps;
+#primary-nav li a {font-variant: small-caps;
     text-transform: lowercase;
     font-size: 2em;}
-#pages-nav ul li a {font-size: 1.2em;}
+#pages-nav li a {font-size: 1.2em;}
 
 #footer {margin-top: 18px; text-align: center;}
 
