@@ -49,11 +49,9 @@ ul.nav li a {padding: 0 1.2em;
 
 #user-nav {position: fixed; 
     bottom: 0; 
-    right: 0; 
+    right: 30px; 
     margin: 0;
     background: #eeeeec;
-    border-right: 60px solid #3465a4;
-    border-left: 2px solid #3465a4;
     padding: 8px;
     z-index: 1;}
 #user-nav li {display: inline; }
