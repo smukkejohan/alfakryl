@@ -12,6 +12,7 @@ a:hover, a:focus, a:active {color: #3465a4;}
     line-height: 1.2em;}
 h2 {line-height: 1.2em; 
     margin: 0.2em 0;}
+h3 {font-size: 1.2em;}
 
 #header {position: relative;}
 #header a {color: #111111; text-decoration: none;}
