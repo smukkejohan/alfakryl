@@ -18,18 +18,16 @@ h3 {font-size: 1.2em;}
 #header a {color: #111111; text-decoration: none;}
 #header a:active, #header a:hover, #header a.focus {color: #729fcf;}
 
-#alfakryl-logo {text-align: center;}
+#alfakryl-logo {}
 #alfakryl-logo a { font-size: 4em;}
 
-ul.nav {text-align: center;}
-ul.nav li {display: inline; white-space: nowrap;}
-ul.nav li a {padding: 0 1.2em;}
+ul.nav {list-style-type:none;}
+ul.nav li {white-space: nowrap;}
+ul.nav li a {padding: 0 1.2em;
+    font-size: 1.4em;
+    font-variant: small-caps;
+    text-transform: lowercase;}
 
-#user-nav {font-size: 1.4em;}
-#primary-nav li a {font-variant: small-caps;
-    text-transform: lowercase;
-    font-size: 2em;}
-#pages-nav li a {font-size: 1.2em;}
 
 #footer {margin-top: 18px; text-align: center;}
 

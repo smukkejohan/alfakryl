@@ -4,34 +4,26 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
     <meta name="verify-v1" content="XjWhf/cIs3ATDUhKw84RWOKn7lwFKNnK7V/TYwsLSH4=" />
-    <meta http-equiv="Content-language" content="da" />
-    
-    {# Blueprint CSS framework #}
+    <meta http-equiv="Content-language" content="da" />    
+    <!-- Blueprint CSS framework -->
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/screen.css"
         type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/print.css"
         type="text/css" media="print" />
     <!--[if IE]><link rel="stylesheet" href="{{ MEDIA_URL }}css/blueprint/ie.css"
-type="text/css" media="screen, projection" /><![endif]-->
-     
-    {# CSS #}
+type="text/css" media="screen, projection" /><![endif]-->    
+    <!-- Main CSS -->
     <link rel="stylesheet" type="text/css" media="all"
         href="{{ MEDIA_URL }}css/base.css" />
-    
     {% block css %}{% endblock %}
-    
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/latest/" />
- 
     <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
     <meta name="description" content="{% block meta_description %}{% endblock %}" />
     <title>{% block title %}{% endblock %} - Alfakryl</title>
- 
 </head>
-
 <body>
-
 <div id="header"><div class="container">
-    <div id="user-nav">
+    <!--<div id="user-nav">
         <ul class="nav">
             {% if user.is_authenticated %}
             <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
@@ -47,28 +39,42 @@ type="text/css" media="screen, projection" /><![endif]-->
             <li><a href="{% url auth_login %}">log ind</a></li>
             {% endif %}
         </ul>
-    </div>       
-    <div id="alfakryl-logo"><a href="{% url main_index %}"><span>@lfakryl</span></a>
+    </div>-->
+     
+    <div id="alfakryl-logo" class="span-4"><a href="{% url main_index %}"><span>@lfakryl</span></a>
     </div>
+    
     {% load article_tags %}             
-    <div id="navigation">
-        <ul class="nav" id="pages-nav"><li><a href="/redaktionen/">Redaktionen</a></li>
-            <li><a href="/grundlag/">Værdigrundlag</a></li>
-            <!--<li><a href="/redaktionen/">Kontakt</a></li>--></ul>
-        <br />
-        <ul class="nav" id="primary-nav">  
-            <li><a href="{% url main_index %}">Nu</a>
-            </li>                   
-            {% month_links 4 %}
-            <li><a href="{% url random_article %}">[ random ]</a>
-            </li>
-            
-            {% get_sections 4 %}
-            {% for section in sections %}
-            <li><a href="{% url section_archive section.slug %}">{{ section.title }}</a></li>
-            {% endfor %}                   
-        </ul>
-    </div>     
+    <div id="navigation" class="span-20 last">   
+        <div class="span-5">
+            <ul class="nav" id="section-nav">
+                {% get_sections 4 %}
+                {% for section in sections %}
+                <li><a href="{% url section_archive section.slug %}">{{ section.title }}</a></li>
+                {% endfor %}                   
+            </ul>
+        </div>
+        <div class="span-5">
+            <ul class="nav" id="time-nav">  
+                <li><a href="{% url main_index %}">Nu</a>
+                </li>                   
+                {% month_links 4 %}
+                <li><a href="{% url article_archive_index %}">Arkiv</a>
+                </li>
+            </ul>
+        </div>
+        <div class="span-5">
+            <ul class="nav" id="section-nav">
+                <li><a href="{% url random_article %}">[ random ]</a>
+                </li>                  
+            </ul>
+        </div>
+         <div class="span-5 last">
+            <ul class="nav" id="pages-nav"><li><a href="/redaktionen/">Redaktionen</a></li>
+                <li><a href="/grundlag/">Værdigrundlag</a></li>
+                <!--<li><a href="/redaktionen/">Kontakt</a></li>--></ul>
+        </div>
+    </div><!-- end navigation -->
 </div></div><!-- end header -->
 
 <div id="main"><div class="container">
