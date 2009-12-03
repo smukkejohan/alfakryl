@@ -49,13 +49,16 @@ ul.nav li a {padding: 0 1.2em;
 
 #user-nav {position: fixed; 
     bottom: 0; 
-    right: 30px; 
+    right: 0; 
     margin: 0;
-    background: #fff;
+    background: #eeeeec;
+    border-right: 60px solid #3465a4;
+    border-left: 2px solid #3465a4;
     padding: 8px;
     z-index: 1;}
 #user-nav li {display: inline; }
-#user-nav li a {padding: 0 1.2em;}
+#user-nav li a {padding: 0 1.2em;
+    font-weight: bold;}
 
 #messages {text-align: center; 
     font-size: 1.4em;
