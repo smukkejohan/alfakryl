@@ -1,5 +1,24 @@
 body {background: #ccc; }
-#main { background: url(../img/bg.png) 50% repeat-y; border-top: 1px solid; border-bottom: 1px solid; border-color: #3465a4;}
+
+#header { background: url(../img/bg.png) 50% repeat-y; 
+    border-top: 1px solid; 
+    border-bottom: 1px solid;
+    margin-top: 18px; 
+    border-color: #3465a4;}
+    
+#main { background: url(../img/bg.png) 50% repeat-y; 
+    border-top: 1px solid; 
+    border-bottom: 1px solid;
+    margin-top: 18px;
+    border-color: #3465a4;}
+
+#footer { background: url(../img/bg.png) 50% repeat-y; 
+    border-top: 1px solid; 
+    border-bottom: 1px solid; 
+    border-color: #3465a4; 
+    margin: 18px 0; 
+    text-align: center;}
+
 .container { margin: 18px auto; position: relative;}
 a {text-decoration: none;}
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; 
@@ -28,11 +47,15 @@ ul.nav li a {padding: 0 1.2em;
     font-variant: small-caps;
     text-transform: lowercase;}
 
-#user-nav {position: absolute; bottom: 0; right: 0; margin: 0;}
+#user-nav {position: fixed; 
+    bottom: 0; 
+    right: 30px; 
+    margin: 0;
+    background: #fff;
+    padding: 8px;
+    z-index: 1;}
 #user-nav li {display: inline; }
 #user-nav li a {padding: 0 1.2em;}
-
-#footer {margin-top: 18px; text-align: center;}
 
 #messages {text-align: center; 
     font-size: 1.4em;

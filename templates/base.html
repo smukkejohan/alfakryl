@@ -25,10 +25,6 @@ type="text/css" media="screen, projection" /><![endif]-->
 
 
 
-
-
-<div id="header"><div class="container">
-
 <ul id="user-nav">
     {% if user.is_authenticated %}
     <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
@@ -44,6 +40,10 @@ type="text/css" media="screen, projection" /><![endif]-->
     <li><a href="{% url auth_login %}">log ind</a></li>
     {% endif %}
 </ul>
+
+<div id="header"><div class="container">
+
+
   
     <div id="alfakryl-logo" class="span-5"><a href="{% url main_index %}"><span>@lfakryl</span></a>
     </div>
