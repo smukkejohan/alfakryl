@@ -1,5 +1,14 @@
 {% extends "base.html" %}
- {% load article_tags %}
+{% load article_tags %}
+{% load tagging_tags %}{% tags_for_object object as tags %}
+
+{% block meta-keywords %}
+{% for tag in tags %}{{ tag.name }}, {% endfor %}
+{% endblock %}
+
+{% block meta-description %}
+{{ object.summary }}
+{% endblock %}
  
 {% block title %}{{ object.headline }}{% endblock %}
  
@@ -13,8 +22,6 @@
         <p>Sidst opdateret: {{ object.mod_date }}</p>
         <h3>Tags</h3>
         
-        {% load tagging_tags %}
-        {% tags_for_object object as tags %}
         <p>{% for tag in tags %}
         <a href="{% url tag_archive tag %}">{{ tag.name }}</a>
         {% endfor %}</p>

@@ -17,13 +17,11 @@ type="text/css" media="screen, projection" /><![endif]-->
         href="{{ MEDIA_URL }}css/base.css" />
     {% block css %}{% endblock %}
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/latest/" />
-    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
-    <meta name="description" content="{% block meta_description %}{% endblock %}" />
+    <meta name="keywords" content="{% block meta-keywords %}{% endblock %}" />
+    <meta name="description" content="{% block meta-description %}{% endblock %}" />
     <title>{% block title %}{% endblock %} - Alfakryl</title>
 </head>
 <body>
-
-
 
 <ul id="user-nav">
     {% if user.is_authenticated %}
@@ -42,9 +40,6 @@ type="text/css" media="screen, projection" /><![endif]-->
 </ul>
 
 <div id="header"><div class="container">
-
-
-  
     <div id="alfakryl-logo" class="span-5"><a href="{% url main_index %}"><span>@lfakryl</span></a>
     </div>
     
@@ -89,20 +84,7 @@ type="text/css" media="screen, projection" /><![endif]-->
     <div id="main-content" class="span-18">
         {% block content %}{% endblock %}
     </div>        
-    <div class="span-6 last">
-        <div class="cbox">
-            <h2>Klamamsebamsen</h2>
-            <p><em>Placebodemokrati</em> – demokratiske processer, der passificerer deltagerne med følelsen af medbestemmelse. Eksempelvis får vi som elever på Østre Borgerdyd ofte lov at vælge, i hvilken rækkefølge vi gennemgår, de ellers obligatoriske delelementer af pensum.</p>
-        </div>
-        <div class="cbox"> 
-            <h2>RSS Feed</h2>
-            <p><a href="/rss/latest/">Abonner på Alfakryl</a></p>
-        </div>
-        <div class="cbox"> 
-            <h2>Facebook</h2>
-            <p><a href="http://www.facebook.com/group.php?gid=169196194891">Alfakryl på facebook</a></p>
-        </div>  
-        
+    <div class="span-6 last">       
         {% load tagging_tags %}
         {% tag_cloud_for_model articles.Article as cloud with steps=12 min_count=2 distribution=log %}
         <h2>Tag cloud</h2>
@@ -111,6 +93,15 @@ type="text/css" media="screen, projection" /><![endif]-->
             <a href="{% url tag_archive tag %}" class="tag{{ tag.font_size }}">{{ tag.name }}</a>
             {% endfor %}
         </p>
+              
+        <h2>Klamamsebamsen</h2>
+        <p><em>Placebodemokrati</em> – demokratiske processer, der passificerer deltagerne med følelsen af medbestemmelse. Eksempelvis får vi som elever på Østre Borgerdyd ofte lov at vælge, i hvilken rækkefølge vi gennemgår, de ellers obligatoriske delelementer af pensum.</p>
+    
+        <h2>RSS Feed</h2>
+        <p><a href="/rss/latest/">Abonner på Alfakryl</a></p>
+        
+        <h2>Facebook</h2>
+        <p><a href="http://www.facebook.com/group.php?gid=169196194891">Alfakryl på facebook</a></p>   
     </div>   
 </div></div><!-- end main -->
 
