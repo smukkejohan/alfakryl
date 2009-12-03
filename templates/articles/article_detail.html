@@ -33,13 +33,17 @@
         {% if object.photos.all|first %}
         <div id="articleslideshow">
             {% for photo in object.photos.all %}
+            
             <div class="photo" {% ifnotequal forloop.counter 1 %}style="display:none"{% endifnotequal %}>
-                <a href="{{ photo.image.url }}"><img src="{{ photo.get_article_url }}" alt="{{ photo.caption }}" title="{{ photo.title }}"/></a>
+                <a href="{{ photo.image.url }}">
+                    <img src="{{ photo.get_article_url }}" alt="{{ photo.caption }}" title="{{ photo.title }}"/>
+                </a>
                 <div class="photo-meta">
                     <span class="title"><em>{{ photo.title }}</em></span>, 
                     <span class="caption">{{ photo.caption }}</span>
                 </div>
-            </div> 
+            </div>
+            
             {% endfor %}
         </div>
         {% endif %}

@@ -1,5 +1,6 @@
-body {background: #ffffff; }
-
+body {background: #ccc; }
+#main { background: url(../img/bg.png) 50% repeat-y; border-top: 1px solid black; border-bottom: 1px solid black; }
+.container { margin: 18px auto; }
 a {text-decoration: none;}
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; 
     color: #111111;}
@@ -20,9 +21,8 @@ h2 {line-height: 1.2em;
 #alfakryl-logo a { font-size: 4em;}
 
 ul.nav {text-align: center;}
-ul.nav li {display: inline; }
-ul.nav li a {padding: 0 1.2em; 
-    background: url(../img/white-50p.png) repeat;}
+ul.nav li {display: inline; white-space: nowrap;}
+ul.nav li a {padding: 0 1.2em;}
 
 #user-nav {font-size: 1.4em;}
 #primary-nav li a {font-variant: small-caps;

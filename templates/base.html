@@ -22,109 +22,105 @@ type="text/css" media="screen, projection" /><![endif]-->
     
     <link rel="alternate" type="application/rss+xml" title="RSS" href="/rss/latest/" />
  
-    <meta name="keywords" content="{% block meta_keywords %}
-        alfakryl, avis, østre borgerdyd, artikler, nyheder, kultur{% endblock %}" />
-    <meta name="description" content="{% block meta_description %}
-        alfakryl er alfakrøll er snabela er @ på norsk er Østre Borgerdyds avis på the interwebs. {% endblock %}" />
+    <meta name="keywords" content="{% block meta_keywords %}{% endblock %}" />
+    <meta name="description" content="{% block meta_description %}{% endblock %}" />
     <title>{% block title %}{% endblock %} - Alfakryl</title>
  
 </head>
 
 <body>
-<div class="container">
-    <div id="header" class="span-24 last">
-        <div id="user-nav">
-            <ul class="nav">
-                {% if user.is_authenticated %}
-                <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
-                {% if user.is_staff %}
-                <li><a href="{% url dashboard %}">dashboard</a></li>
-                {% if user.is_superuser %}
-                <li><a href="/admin">admin</a></li>
-                {% endif %}
-                {% endif %}  
-                <li><a href="{% url auth_logout %}">log ud</a></li>
-                {% else %}
-                <li><a href="{% url registration_register %}">register</a></li>
-                <li><a href="{% url auth_login %}">log ind</a></li>
-                {% endif %}
-            </ul>
-        </div>       
-        <div id="alfakryl-logo"><a href="{% url main_index %}"><span><em>@</em>lfakryl</span></a>
-        </div>
-        {% load article_tags %}             
-        <div id="navigation" class="span-24 last">
-            <div class="span-24 last">
-                <ul class="nav" id="pages-nav"><li><a href="/redaktionen/">Redaktionen</a></li>
-                    <li><a href="/grundlag/">Værdigrundlag</a></li>
-                    <!--<li><a href="/redaktionen/">Kontakt</a></li>--></ul>
-            </div>
-            <div class="span-24">
-                <ul class="nav" id="primary-nav">  
-                    <li><a href="{% url main_index %}">Nu</a>
-                    </li>                   
-                    {% month_links 4 %}
-                    <li><a href="{% url random_article %}">[ random ]</a>
-                    </li>
-                    
-                    {% get_sections 4 %}
-                    {% for section in sections %}
-                    <li><a href="{% url section_archive section.slug %}">{{ section.title }}</a></li>
-                    {% endfor %}                   
-                </ul>
-            </div>  
- 
-        </div>     
+
+<div id="header"><div class="container">
+    <div id="user-nav">
+        <ul class="nav">
+            {% if user.is_authenticated %}
+            <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
+            {% if user.is_staff %}
+            <li><a href="{% url dashboard %}">dashboard</a></li>
+            {% if user.is_superuser %}
+            <li><a href="/admin">admin</a></li>
+            {% endif %}
+            {% endif %}  
+            <li><a href="{% url auth_logout %}">log ud</a></li>
+            {% else %}
+            <li><a href="{% url registration_register %}">register</a></li>
+            <li><a href="{% url auth_login %}">log ind</a></li>
+            {% endif %}
+        </ul>
+    </div>       
+    <div id="alfakryl-logo"><a href="{% url main_index %}"><span>@lfakryl</span></a>
     </div>
-    <div id="main-wrap" class="span-24 last">    
-        {% if messages %}
-        <div id="messages" class="span-24 last">
-            <ul>{% for message in messages %}
-                <li>{{ message }}</li>{% endfor %}</ul>
-        </div>
-        {% endif %}
-        <div id="main-content" class="span-18">
-            {% block content %}{% endblock %}
-        </div>        
-        <div class="span-6 last">
-            <div class="cbox">
-                <h2>Klamamsebamsen</h2>
-                <p><em>Placebodemokrati</em> – demokratiske processer, der passificerer deltagerne med følelsen af medbestemmelse. Eksempelvis får vi som elever på Østre Borgerdyd ofte lov at vælge, i hvilken rækkefølge vi gennemgår, de ellers obligatoriske delelementer af pensum.</p>
-            </div>
-            <div class="cbox"> 
-                <h2>RSS Feed</h2>
-                <p><a href="/rss/latest/">Abonner på Alfakryl</a></p>
-            </div>
-            <div class="cbox"> 
-                <h2>Facebook</h2>
-                <p><a href="http://www.facebook.com/group.php?gid=169196194891">Alfakryl på facebook</a></p>
-            </div>  
+    {% load article_tags %}             
+    <div id="navigation">
+        <ul class="nav" id="pages-nav"><li><a href="/redaktionen/">Redaktionen</a></li>
+            <li><a href="/grundlag/">Værdigrundlag</a></li>
+            <!--<li><a href="/redaktionen/">Kontakt</a></li>--></ul>
+        <br />
+        <ul class="nav" id="primary-nav">  
+            <li><a href="{% url main_index %}">Nu</a>
+            </li>                   
+            {% month_links 4 %}
+            <li><a href="{% url random_article %}">[ random ]</a>
+            </li>
             
-            {% load tagging_tags %}
-            {% tag_cloud_for_model articles.Article as cloud with steps=12 min_count=2 distribution=log %}
-            <h2>Tag cloud</h2>
-            <p>
-                {% for tag in cloud %}
-                <a href="{% url tag_archive tag %}" class="tag{{ tag.font_size }}">{{ tag.name }}</a>
-                {% endfor %}
-            </p>
-        </div>   
-    </div>   
-    <div id="footer" class="span-24 last">        
-        <div id="footer-nav">
-            <ul class="nav"><li><a href="/redaktionen/">Redaktionen</a></li>
-                <li><a href="/grundlag/">Værdigrundlag</a></li>  
-            </ul>
-        </div>
-        <div class="cbox">
-            <p>Giv os feedback og send os dine bidrag på alfakryl@hotmail.com!<br />
-            Reporter fejl på <a href="http://github.com/mrbichel/alfakryl/issues">Github</a>!<br />
-            Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en 
-                <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, 
-                koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
-        </div>
+            {% get_sections 4 %}
+            {% for section in sections %}
+            <li><a href="{% url section_archive section.slug %}">{{ section.title }}</a></li>
+            {% endfor %}                   
+        </ul>
+    </div>     
+</div></div><!-- end header -->
+
+<div id="main"><div class="container">
+    {% if messages %}
+    <div id="messages" class="span-24 last">
+        <ul>{% for message in messages %}
+            <li>{{ message }}</li>{% endfor %}</ul>
     </div>
-</div>
+    {% endif %}
+    <div id="main-content" class="span-18">
+        {% block content %}{% endblock %}
+    </div>        
+    <div class="span-6 last">
+        <div class="cbox">
+            <h2>Klamamsebamsen</h2>
+            <p><em>Placebodemokrati</em> – demokratiske processer, der passificerer deltagerne med følelsen af medbestemmelse. Eksempelvis får vi som elever på Østre Borgerdyd ofte lov at vælge, i hvilken rækkefølge vi gennemgår, de ellers obligatoriske delelementer af pensum.</p>
+        </div>
+        <div class="cbox"> 
+            <h2>RSS Feed</h2>
+            <p><a href="/rss/latest/">Abonner på Alfakryl</a></p>
+        </div>
+        <div class="cbox"> 
+            <h2>Facebook</h2>
+            <p><a href="http://www.facebook.com/group.php?gid=169196194891">Alfakryl på facebook</a></p>
+        </div>  
+        
+        {% load tagging_tags %}
+        {% tag_cloud_for_model articles.Article as cloud with steps=12 min_count=2 distribution=log %}
+        <h2>Tag cloud</h2>
+        <p>
+            {% for tag in cloud %}
+            <a href="{% url tag_archive tag %}" class="tag{{ tag.font_size }}">{{ tag.name }}</a>
+            {% endfor %}
+        </p>
+    </div>   
+</div></div><!-- end main -->
+
+<div id="footer"><div class="container">      
+    <div id="footer-nav">
+        <ul class="nav"><li><a href="/redaktionen/">Redaktionen</a></li>
+            <li><a href="/grundlag/">Værdigrundlag</a></li>  
+        </ul>
+    </div>
+    <div class="cbox">
+        <p>Giv os feedback og send os dine bidrag på alfakryl@hotmail.com!<br />
+        Reporter fejl på <a href="http://github.com/mrbichel/alfakryl/issues">Github</a>!<br />
+        Alfakryl er drevet af <a href="http://djangoproject.org/">django</a> hosted på en 
+            <a href="http://www.linode.com/?r=850e408f57a78445a1970440354f39da5d81b6bf">linode</a>, 
+            koden er på <a href="http://github.com/mrbichel/alfakryl">github</a></p>
+    </div>
+</div></div><!-- end footer -->
+
 
 {# google js API #}
 <script src="http://www.google.com/jsapi"
