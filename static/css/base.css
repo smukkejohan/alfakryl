@@ -1,5 +1,5 @@
 body {background: #ccc; }
-#main { background: url(../img/bg.png) 50% repeat-y; border-top: 1px solid black; border-bottom: 1px solid black; }
+#main { background: url(../img/bg.png) 50% repeat-y; border-top: 1px solid; border-bottom: 1px solid; border-color: #3465a4;}
 .container { margin: 18px auto; }
 a {text-decoration: none;}
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; 
@@ -57,7 +57,7 @@ ul.nav li a {padding: 0 1.2em;}
 #main-wrap {margin: 18px 0;}
 
 .cbox {}
-.article-list .article {margin-bottom: 18px;}
+.article-list .article {margin-bottom: 18px; border-bottom: 1px dotted #3465a4;}
 .article p.meta {}
 .article-list p.summary {font-size: 1.2em; margin-bottom: 0.2em;}
 .article-list .photo {overflow: hidden; 
