@@ -45,7 +45,7 @@ type="text/css" media="screen, projection" /><![endif]-->
     
     {% load article_tags %}             
     <div id="navigation" class="span-19 last">   
-        <div class="span-5">
+        <div class="span-4">
             <ul class="nav" id="section-nav">
                 {% get_sections 4 %}
                 {% for section in sections %}
@@ -60,7 +60,7 @@ type="text/css" media="screen, projection" /><![endif]-->
                 </li>
             </ul>
         </div>
-        <div class="span-5">
+        <div class="span-4">
             <ul class="nav" id="section-nav">
                 <li><a href="{% url random_article %}">[ random ]</a>
                 </li>                  
