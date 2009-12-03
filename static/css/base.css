@@ -1,6 +1,6 @@
 body {background: #ccc; }
 #main { background: url(../img/bg.png) 50% repeat-y; border-top: 1px solid; border-bottom: 1px solid; border-color: #3465a4;}
-.container { margin: 18px auto; }
+.container { margin: 18px auto; position: relative;}
 a {text-decoration: none;}
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {text-decoration: none; 
     color: #111111;}
@@ -28,13 +28,15 @@ ul.nav li a {padding: 0 1.2em;
     font-variant: small-caps;
     text-transform: lowercase;}
 
+#user-nav {position: absolute; bottom: 0; right: 0; margin: 0;}
+#user-nav li {display: inline; }
+#user-nav li a {padding: 0 1.2em;}
 
 #footer {margin-top: 18px; text-align: center;}
 
 #messages {text-align: center; 
     font-size: 1.4em;
-    border: 2px solid #111111;}
-
+    border: 1px dotted #3465a4;}
 
 .introduction {font-weight: bold;}
 .crud-links {float: right;}

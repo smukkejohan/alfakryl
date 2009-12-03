@@ -22,30 +22,34 @@ type="text/css" media="screen, projection" /><![endif]-->
     <title>{% block title %}{% endblock %} - Alfakryl</title>
 </head>
 <body>
+
+
+
+
+
 <div id="header"><div class="container">
-    <!--<div id="user-nav">
-        <ul class="nav">
-            {% if user.is_authenticated %}
-            <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
-            {% if user.is_staff %}
-            <li><a href="{% url dashboard %}">dashboard</a></li>
-            {% if user.is_superuser %}
-            <li><a href="/admin">admin</a></li>
-            {% endif %}
-            {% endif %}  
-            <li><a href="{% url auth_logout %}">log ud</a></li>
-            {% else %}
-            <li><a href="{% url registration_register %}">register</a></li>
-            <li><a href="{% url auth_login %}">log ind</a></li>
-            {% endif %}
-        </ul>
-    </div>-->
-     
-    <div id="alfakryl-logo" class="span-4"><a href="{% url main_index %}"><span>@lfakryl</span></a>
+
+<ul id="user-nav">
+    {% if user.is_authenticated %}
+    <li><a href="{% url user_profile user %}">{{ user.username }}</a></li>
+    {% if user.is_staff %}
+    <li><a href="{% url dashboard %}">dashboard</a></li>
+    {% if user.is_superuser %}
+    <li><a href="/admin">admin</a></li>
+    {% endif %}
+    {% endif %}  
+    <li><a href="{% url auth_logout %}">log ud</a></li>
+    {% else %}
+    <li><a href="{% url registration_register %}">register</a></li>
+    <li><a href="{% url auth_login %}">log ind</a></li>
+    {% endif %}
+</ul>
+  
+    <div id="alfakryl-logo" class="span-5"><a href="{% url main_index %}"><span>@lfakryl</span></a>
     </div>
     
     {% load article_tags %}             
-    <div id="navigation" class="span-20 last">   
+    <div id="navigation" class="span-19 last">   
         <div class="span-5">
             <ul class="nav" id="section-nav">
                 {% get_sections 4 %}
@@ -54,7 +58,7 @@ type="text/css" media="screen, projection" /><![endif]-->
                 {% endfor %}                   
             </ul>
         </div>
-        <div class="span-5">
+        <div class="span-4">
             <ul class="nav" id="time-nav">  
                 <li><a href="{% url main_index %}">Nu</a>
                 </li>                   
