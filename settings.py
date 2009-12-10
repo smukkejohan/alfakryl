@@ -4,7 +4,7 @@ import os.path, sys, platform
 
 PROJECT_ROOT = os.path.dirname(__file__)
 
-DEVELOPMENT_MODE = (platform.node() != "li43-156")
+DEVELOPMENT_MODE = (platform.node() != "li140-9")
  
 if DEVELOPMENT_MODE:
     DEBUG = True
