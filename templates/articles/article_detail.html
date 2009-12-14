@@ -75,10 +75,15 @@
     {% get_comment_list for object as comment_list %}
 
     {% if comment_list %}
-    {% for c in comment_list %}
-    <p>{{ c.name }}:</p>
-    <p>{{ c.comment }}</p>
-    {% endfor %}
+    <div id="commentlist">
+        {% for c in comment_list %}
+        <div id="comment{{ c.id }}" class="comment">
+            <h3><a href="{{ c.user.get_absolute_url }}">{{ c.name }}</a></h3>
+            {% load markup %}
+            <p>{{ c.comment|markdown }}</p>
+        </div>
+        {% endfor %}
+    </div>
     {% else %}
     <p>Der er endnu ikke nogen der har kommenteret på denne artikel.</p>
     {% endif %}

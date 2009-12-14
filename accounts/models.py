@@ -19,7 +19,13 @@ class UserProfile(models.Model):
     def save(self):
         #self.class_letter = ''.join(self.class_letter).upper()
         super(UserProfile, self).save()
-
+    
+    @models.permalink
+    def get_absolute_url(self):
+        return ('user_profile', None, {
+            'user': self.user.username
+        })
+    
 class UserPortrait(ImageModel):
     user = models.OneToOneField(User, primary_key=True)
     

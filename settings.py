@@ -72,6 +72,7 @@ INSTALLED_APPS = (
     'django.contrib.admindocs',
     'django.contrib.flatpages',
     'django.contrib.comments',
+    'django.contrib.markup',
     #'mycomments',
     'registration',
     'accounts',
