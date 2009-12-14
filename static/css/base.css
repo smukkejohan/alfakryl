@@ -94,6 +94,8 @@ ul.nav li a {padding: 0 1.2em;
 #wide-article-body {max-width: 670px;}
 textarea#id_comment {height: 90px;}
 
+.comment {margin-bottom: 18px; border-bottom: 1px dotted #3465a4;}
+
 .tag1 {font-size: 10px;}
 .tag2 {font-size: 11px;}
 .tag3 {font-size: 12px;}
