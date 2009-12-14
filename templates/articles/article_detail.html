@@ -78,7 +78,7 @@
     <div id="commentlist">
         {% for c in comment_list %}
         <div id="comment{{ c.id }}" class="comment">
-            <h3><a href="{{ c.user.get_absolute_url }}">{{ c.name }}</a></h3>
+            <h3><a href="#comment{{ c.id }}">#</a> &nbsp; &nbsp; <a href="{{ c.user.get_absolute_url }}">{{ c.name }}</a></h3>
             {% load markup %}
             <p>{{ c.comment|markdown }}</p>
         </div>
