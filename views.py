@@ -12,16 +12,10 @@ def user_is_writer(user):
     return user.is_staff
 
 def index(request):
-    articles = Article.objects.published().filter(pub_date__month=datetime.now().month)
-    latest = articles[:3]
-    least_read = articles.order_by('view_count')[:5]
-    most_read = articles.order_by('-view_count')[:5]
+    articles = Article.objects.published()[:16]
     
     return render_to_response(
-        'index.html', 
-            {'latest': latest,
-            'least_read': least_read,
-            'most_read': most_read},
+        'index.html', {'articles': articles,},
         context_instance = RequestContext(request)
     )
 

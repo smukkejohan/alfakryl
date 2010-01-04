@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block meta-keywords %}
-alfakryl, avis, østre borgerdyd, artikler, nyheder, kultur
+avis, østre borgerdyd, artikler, nyheder, kultur, elev, gymnasie, uddannelse, københavn
 {% endblock %}
 
 {% block meta-description %}
-alfakryl er alfakrøll er snabela er @ på norsk er Østre Borgerdyds avis på the interwebs.
+Østre Borgerdyd Gymnasiets elevavis.
 {% endblock %}
 
 {% block title %}Forside{% endblock %}
@@ -15,19 +15,22 @@ alfakryl er alfakrøll er snabela er @ på norsk er Østre Borgerdyds avis på t
 <div class="span-5 append-1 leftsidebar">
     <div class="cbox">
         <h2>Mindst læste</h2>
+        {% with articles|dictsortreversed:"view_count"|slice:":6" as least_read %}
         {% for object in least_read %} 
-
         <h3><a href="{{ object.get_absolute_url }}">
-        {{ object.headline }}</a></h3>   
+        {{ object.headline }}</a></h3>
         {% endfor %}
+        {% endwith %}
     </div>
     
     <div class="cbox"> 
         <h2>Mest læste</h2>
+        {% with articles|dictsort:"view_count"|slice:":6" as most_read %}
         {% for object in most_read %}  
         <h3><a href="{{ object.get_absolute_url }}">
         {{ object.headline }}</a></h3>   
         {% endfor %}
+        {% endwith %}
     </div>
 
     <!--
@@ -38,7 +41,7 @@ alfakryl er alfakrøll er snabela er @ på norsk er Østre Borgerdyds avis på t
 </div>
 
 <div class="span-11 append-1 last article-list">
-    {% with latest as object_list %}    
+    {% with articles|slice:":4" as object_list %}    
     {% include "articles/list_snippet.html" %}    
     {% endwith %}
 </div> 
