@@ -12,8 +12,11 @@ def user_is_writer(user):
     return user.is_staff
 
 def index(request):
-    articles = Article.objects.published()[:16]
+    """
+    Get latest articles, further sorting is handled by the template.
+    """
     
+    articles = Article.objects.published()[:16]
     return render_to_response(
         'index.html', {'articles': articles,},
         context_instance = RequestContext(request)

@@ -15,7 +15,7 @@ avis, østre borgerdyd, artikler, nyheder, kultur, elev, gymnasie, uddannelse, k
 <div class="span-5 append-1 leftsidebar">
     <div class="cbox">
         <h2>Mindst læste</h2>
-        {% with articles|dictsortreversed:"view_count"|slice:":6" as least_read %}
+        {% with articles|dictsort:"view_count"|slice:":6" as least_read %}
         {% for object in least_read %} 
         <h3><a href="{{ object.get_absolute_url }}">
         {{ object.headline }}</a></h3>
@@ -25,7 +25,7 @@ avis, østre borgerdyd, artikler, nyheder, kultur, elev, gymnasie, uddannelse, k
     
     <div class="cbox"> 
         <h2>Mest læste</h2>
-        {% with articles|dictsort:"view_count"|slice:":6" as most_read %}
+        {% with articles|dictsortreversed:"view_count"|slice:":6" as most_read %}
         {% for object in most_read %}  
         <h3><a href="{{ object.get_absolute_url }}">
         {{ object.headline }}</a></h3>   
