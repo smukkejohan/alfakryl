@@ -7,7 +7,7 @@ from articles import views
 from articles.models import Article
 
 urlpatterns = patterns('django.views.generic.date_based',
-   url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\w{1,2})/$',
+   url(r'^(?P<year>\d{4})/(?P<month>\d{1,2})/(?P<day>\d{1,2})/$',
          'archive_day', {'queryset': Article.objects.published(),
          'date_field': 'pub_date',
          'month_format': '%m'}, 
