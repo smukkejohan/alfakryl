@@ -1,5 +1,6 @@
 *.pyc
 *~
+*.swp
 dev.db
 settings_local.py
 static/admin

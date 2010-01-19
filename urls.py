@@ -12,6 +12,7 @@ feeds = {
 }
 
 urlpatterns = patterns('',
+    (r'^a/', include('alfakryl.articles.urls')),
     (r'^admin/doc/', include('django.contrib.admindocs.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^admin/(.*)', admin.site.root),
@@ -20,7 +21,7 @@ urlpatterns = patterns('',
     (r'^rss/(?P<url>.*)/$', 'django.contrib.syndication.views.feed', {'feed_dict': feeds}),
     (r'^accounts/', include('registration.urls')),
     (r'^users/', include('accounts.urls')),
-    (r'^a/', include('alfakryl.articles.urls')),
+    
     url(r'^$', 'views.index', name='main_index'),
     url(r'^redaktionen/$', 'views.redaktionen', name='redaktionen'),
     url(r'^dashboard/$', 'views.dashboard', name='dashboard'),
