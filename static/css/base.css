@@ -1,5 +1,10 @@
 body {background: #4e9a06; }
 
+#main, #header, #footer {border-bottom: 4px;
+    border-top: 4px;
+    color: #000;}
+
+
 #header { background: url(../img/bg.png) 50% repeat-y;
     margin-top: 18px; }
     
