@@ -1,21 +1,21 @@
-body {background: #fcaf3e; }
+body {background: #4e9a06; }
 
 #header { background: url(../img/bg.png) 50% repeat-y; 
-    border-top: 1px solid; 
-    border-bottom: 1px solid;
+    border-top: 10px solid; 
+    border-bottom: 10px solid;
     margin-top: 18px; 
-    border-color: #3465a4;}
+    border-color: #75507b;}
     
 #main { background: url(../img/bg.png) 50% repeat-y; 
-    border-top: 1px solid; 
-    border-bottom: 1px solid;
+    border-top: 10px solid; 
+    border-bottom: 10px solid;
     margin-top: 18px;
-    border-color: #3465a4;}
+    border-color: #75507b;}
 
 #footer { background: url(../img/bg.png) 50% repeat-y; 
-    border-top: 1px solid; 
-    border-bottom: 1px solid; 
-    border-color: #3465a4; 
+    border-top: 10px solid; 
+    border-bottom: 10px solid; 
+    border-color: #75507b; 
     margin: 18px 0; 
     text-align: center;}
 
