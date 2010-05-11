@@ -4,7 +4,8 @@ body {background: #4e9a06; }
     margin-top: 18px; }
     
 #main { background: url(../img/bg.png) 50% repeat-y; 
-    margin-top: 18px;}
+    margin-top: 18px;
+    padding-top: 18px;}
 
 #footer { background: url(../img/bg.png) 50% repeat-y; 
     margin: 18px 0; 
@@ -81,8 +82,7 @@ ul.nav li a {padding: 0 1.2em;
 .article-list .photo {overflow: hidden; 
     height: 180px; 
     width: 430px;
-    border: 1px solid black;
-    margin-top: 18px;}
+    border: 1px solid black;}
 
 #article-body img {max-width: 470px;}
 #wide-article-body {max-width: 670px;}
