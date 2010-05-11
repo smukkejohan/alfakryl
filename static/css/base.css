@@ -1,21 +1,12 @@
 body {background: #4e9a06; }
 
-#header { background: url(../img/bg.png) 50% repeat-y; 
-    border-top: 4px solid; 
-    border-bottom: 4px solid;
-    margin-top: 18px; 
-    border-color: #f57900;}
+#header { background: url(../img/bg.png) 50% repeat-y;
+    margin-top: 18px; }
     
 #main { background: url(../img/bg.png) 50% repeat-y; 
-    border-top: 4px solid; 
-    border-bottom: 4px solid;
-    margin-top: 18px;
-    border-color: #f57900;}
+    margin-top: 18px;}
 
 #footer { background: url(../img/bg.png) 50% repeat-y; 
-    border-top: 4px solid; 
-    border-bottom: 4px solid; 
-    border-color: #f57900; 
     margin: 18px 0; 
     text-align: center;}
 
@@ -90,7 +81,8 @@ ul.nav li a {padding: 0 1.2em;
 .article-list .photo {overflow: hidden; 
     height: 180px; 
     width: 430px;
-    border: 1px solid black;}
+    border: 1px solid black;
+    margin-top: 18px;}
 
 #article-body img {max-width: 470px;}
 #wide-article-body {max-width: 670px;}
